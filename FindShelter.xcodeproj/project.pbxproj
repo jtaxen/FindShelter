@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A02B14491EC498F300E331A9 /* GISService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02B14481EC498F300E331A9 /* GISService.swift */; };
 		A0DB16B31EC31470005660F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DB16B21EC31470005660F9 /* AppDelegate.swift */; };
 		A0DB16B51EC31470005660F9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DB16B41EC31470005660F9 /* ViewController.swift */; };
 		A0DB16B81EC31470005660F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0DB16B61EC31470005660F9 /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 /* Begin PBXFileReference section */
 		5F8EE0E802DDEE6D284D25B9 /* Pods-FindShelter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindShelter.release.xcconfig"; path = "Pods/Target Support Files/Pods-FindShelter/Pods-FindShelter.release.xcconfig"; sourceTree = "<group>"; };
 		7B0A42C8F41D8D330F2EDAEF /* Pods-FindShelter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindShelter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FindShelter/Pods-FindShelter.debug.xcconfig"; sourceTree = "<group>"; };
+		A02B14481EC498F300E331A9 /* GISService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GISService.swift; path = Model/GISService.swift; sourceTree = "<group>"; };
 		A0DB16AF1EC31470005660F9 /* FindShelter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindShelter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0DB16B21EC31470005660F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0DB16B41EC31470005660F9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				A0DB16D21EC3193C005660F9 /* CoreDataStack.swift */,
+				A02B14481EC498F300E331A9 /* GISService.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				A0DB16D31EC3193C005660F9 /* CoreDataStack.swift in Sources */,
 				A0DB16B51EC31470005660F9 /* ViewController.swift in Sources */,
 				A0DB16B31EC31470005660F9 /* AppDelegate.swift in Sources */,
+				A02B14491EC498F300E331A9 /* GISService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

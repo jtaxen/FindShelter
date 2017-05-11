@@ -7,8 +7,11 @@
 //
 
 import Foundation
+import ObjectMapper
 
 class CoreDataStack {
+	
+	
 
 	
 	

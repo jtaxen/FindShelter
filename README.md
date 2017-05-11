@@ -1,10 +1,12 @@
 # Find shelter
-======
+
+Find shelter is an iOS application to help you feel safer. It shows you where the closest bomb shelter is, so that you always know where to go, if the worst is happening. Hopefully this app will never be needed, but it is better to have it without the need, than to be missing it.
+
+The data is taken from Myndigheten för Samhällsskydd och Beredskaps (*Swedish Civil Contingencies Agency*) webpage.
 
 ## Installation
-------
 
-The project is dependent on three libraries: *Alamofire*, *SwiftyJSON* and *ObjectMapper*. These instructions show how to install them from the terminal using bash.
+The project is dependent on three libraries: [*Alamofire*](https://github.com/Alamofire/Alamofire), [*SwiftyJSON*](https://github.com/SwiftyJSON/SwiftyJSON) and [*ObjectMapper*](https://github.com/Hearst-DD/ObjectMapper). These instructions show how to install them from the terminal using bash.
 
 **1. Download CocaPods**
 
