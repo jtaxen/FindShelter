@@ -6,14 +6,19 @@
 //  Copyright © 2017 Jacob Taxén. All rights reserved.
 //
 
-import UIKit
+import UIKit 
 
 class ViewController: UIViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
+		
+		let dataFromNetworking = Data()
+		let json = JSON(data: dataFromNetworking)
 	}
+	
+	
 
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
