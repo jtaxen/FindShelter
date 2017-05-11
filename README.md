@@ -1,6 +1,8 @@
-#Find shelter
+# Find shelter
+======
 
-##Installation
+## Installation
+------
 
 The project is dependent on three libraries: *Alamofire*, *SwiftyJSON* and *ObjectMapper*. These instructions show how to install them from the terminal using bash.
 
