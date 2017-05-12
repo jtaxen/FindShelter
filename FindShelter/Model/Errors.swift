@@ -12,4 +12,3 @@ enum ServerError: Error {
 	
 	case badServerResponse(Int)
 }
-

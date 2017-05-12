@@ -12,7 +12,7 @@ import SwiftyJSON
 
 class ArcGISClient {
 
-	func makeAPIRequest(url: URL, parameters: [String: AnyObject]) {
+	func makeAPIRequest(url: URL, parameters: [String: AnyObject], completionHandler: @escaping (_ json: JSON) -> Void) {
 		print("Sending request")
 		request(url.absoluteString, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseJSON { (dataResponse) in
 			
@@ -28,8 +28,8 @@ class ArcGISClient {
 				return
 			}
 			
-			print("Good response: \(response.statusCode)")
-			
+			let json = JSON(dataResponse.data as Any)
+			completionHandler(json)
 		}
 	}
 }
