@@ -9,16 +9,31 @@
 import Foundation
 
 extension GISParameters {
-
-	public struct Constants {
 	
+	public struct Constants {
+		
 		static let Scheme = "https"
 		static let Host   = "gis-services.metria.se"
 		static let Path   = "/arcgis/rest/services/msb/InspireMSB_Skyddsrum/MapServer/find"
 	}
 	
-	public struct ParameterKeys {
+	static var URL: URL? {
+		get {
+			var urlC = URLComponents()
+			urlC.scheme = Constants.Scheme
+			urlC.host = Constants.Host
+			urlC.path = Constants.Path
+			do {
+				return try urlC.asURL()
+			} catch {
+				debugPrint(error)
+				return nil
+			}
+		}
+	}
 	
+	public struct ParameterKeys {
+		
 		static let SearchText       = "searchText"
 		static let Contains         = "contains"
 		static let Layers           = "layers"
@@ -28,7 +43,7 @@ extension GISParameters {
 	}
 	
 	public struct ParameterValues {
-	
+		
 		static let Contains         = true
 		static let Layers           = 0
 		static let ReturnGeometry   = true
