@@ -10,6 +10,8 @@
 		A0763EBB1EC5B7340074E77C /* GISParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0763EB91EC5B7340074E77C /* GISParameters.swift */; };
 		A0763EBC1EC5B7340074E77C /* GISParametersConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0763EBA1EC5B7340074E77C /* GISParametersConstants.swift */; };
 		A0763EC01EC5B8B60074E77C /* GISParametersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0763EBF1EC5B8B60074E77C /* GISParametersTests.swift */; };
+		A0763EC21EC5BF220074E77C /* ArcGISClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0763EC11EC5BF220074E77C /* ArcGISClient.swift */; };
+		A0763EC41EC5D14B0074E77C /* Parameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0763EC31EC5D14B0074E77C /* Parameters.swift */; };
 		A0DB16B31EC31470005660F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DB16B21EC31470005660F9 /* AppDelegate.swift */; };
 		A0DB16B51EC31470005660F9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DB16B41EC31470005660F9 /* ViewController.swift */; };
 		A0DB16B81EC31470005660F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0DB16B61EC31470005660F9 /* Main.storyboard */; };
@@ -36,6 +38,8 @@
 		A0763EB91EC5B7340074E77C /* GISParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GISParameters.swift; path = Model/GISParameters.swift; sourceTree = "<group>"; };
 		A0763EBA1EC5B7340074E77C /* GISParametersConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GISParametersConstants.swift; path = Model/GISParametersConstants.swift; sourceTree = "<group>"; };
 		A0763EBF1EC5B8B60074E77C /* GISParametersTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GISParametersTests.swift; sourceTree = "<group>"; };
+		A0763EC11EC5BF220074E77C /* ArcGISClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArcGISClient.swift; path = Model/ArcGISClient.swift; sourceTree = "<group>"; };
+		A0763EC31EC5D14B0074E77C /* Parameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Parameters.swift; path = Model/Parameters.swift; sourceTree = "<group>"; };
 		A0DB16AF1EC31470005660F9 /* FindShelter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindShelter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0DB16B21EC31470005660F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0DB16B41EC31470005660F9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -136,6 +140,8 @@
 			isa = PBXGroup;
 			children = (
 				A0DB16D21EC3193C005660F9 /* CoreDataStack.swift */,
+				A0763EC11EC5BF220074E77C /* ArcGISClient.swift */,
+				A0763EC31EC5D14B0074E77C /* Parameters.swift */,
 				A0763EB91EC5B7340074E77C /* GISParameters.swift */,
 				A0763EBA1EC5B7340074E77C /* GISParametersConstants.swift */,
 			);
@@ -300,9 +306,11 @@
 			files = (
 				A0DB16D31EC3193C005660F9 /* CoreDataStack.swift in Sources */,
 				A0763EBB1EC5B7340074E77C /* GISParameters.swift in Sources */,
+				A0763EC41EC5D14B0074E77C /* Parameters.swift in Sources */,
 				A0DB16B51EC31470005660F9 /* ViewController.swift in Sources */,
 				A0763EBC1EC5B7340074E77C /* GISParametersConstants.swift in Sources */,
 				A0DB16B31EC31470005660F9 /* AppDelegate.swift in Sources */,
+				A0763EC21EC5BF220074E77C /* ArcGISClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

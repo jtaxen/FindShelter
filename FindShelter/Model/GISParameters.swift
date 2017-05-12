@@ -8,7 +8,7 @@
 
 import Foundation
 
-class GISParameters {
+class GISParameters: Parameters {
 
 	static let shared = GISParameters()
 	
