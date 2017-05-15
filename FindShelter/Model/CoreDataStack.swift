@@ -70,10 +70,31 @@ extension CoreDataStack {
 			if self.persistingContext.hasChanges {
 				do {
 					try self.persistingContext.save()
+					print("Saving context")
 				} catch {
 					debugPrint(error)
 					fatalError("Error while saving persisting context")
 				}
+			}
+		}
+	}
+	
+	func autosave(_ delayInSeconds: Int) {
+		
+		if delayInSeconds > 0 {
+			do {
+				try self.persistingContext.save()
+				print("Autosaving")
+			} catch {
+				debugPrint(error)
+				debugPrint(Errors.errorMessage(errorCode: 405))
+			}
+			
+			let delayInNanoseconds = UInt64(delayInSeconds) * NSEC_PER_SEC
+			let time = DispatchTime.now() + Double( Int64( delayInNanoseconds)) / Double(NSEC_PER_SEC)
+			
+			DispatchQueue.main.asyncAfter(deadline: time) {
+				self.autosave(delayInSeconds)
 			}
 		}
 	}

@@ -61,6 +61,7 @@ extension Errors {
 			case 402 : message = "Unable to create model from URL"
 			case 403 : message = "Unable to reach document folder"
 			case 404 : message = "Unable to add store at URL"
+			case 405 : message = "Error while autosaving"
 			default  : message = "Core Data error"
 			}
 		}
