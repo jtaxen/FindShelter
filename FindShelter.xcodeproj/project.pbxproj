@@ -9,7 +9,8 @@
 /* Begin PBXBuildFile section */
 		A0172A961EC9944600A9235A /* ArcGISClientTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0172A951EC9944600A9235A /* ArcGISClientTest.swift */; };
 		A0172A981EC9994E00A9235A /* JSONMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0172A971EC9994E00A9235A /* JSONMap.swift */; };
-		A06DC64A1EC9FEE700BC4590 /* LanguageList.plist in Resources */ = {isa = PBXBuildFile; fileRef = A06DC6491EC9FEE700BC4590 /* LanguageList.plist */; };
+		A06DC64C1ECA00DE00BC4590 /* MapViewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06DC64B1ECA00DE00BC4590 /* MapViewcontroller.swift */; };
+		A06DC64E1ECA010500BC4590 /* Language.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A06DC64D1ECA010500BC4590 /* Language.storyboard */; };
 		A0763EBB1EC5B7340074E77C /* GISParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0763EB91EC5B7340074E77C /* GISParameters.swift */; };
 		A0763EBC1EC5B7340074E77C /* GISParametersConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0763EBA1EC5B7340074E77C /* GISParametersConstants.swift */; };
 		A0763EC01EC5B8B60074E77C /* GISParametersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0763EBF1EC5B8B60074E77C /* GISParametersTests.swift */; };
@@ -48,7 +49,8 @@
 		7B0A42C8F41D8D330F2EDAEF /* Pods-FindShelter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindShelter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FindShelter/Pods-FindShelter.debug.xcconfig"; sourceTree = "<group>"; };
 		A0172A951EC9944600A9235A /* ArcGISClientTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArcGISClientTest.swift; sourceTree = "<group>"; };
 		A0172A971EC9994E00A9235A /* JSONMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONMap.swift; path = Model/JSONMap.swift; sourceTree = "<group>"; };
-		A06DC6491EC9FEE700BC4590 /* LanguageList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = LanguageList.plist; sourceTree = "<group>"; };
+		A06DC64B1ECA00DE00BC4590 /* MapViewcontroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewcontroller.swift; path = Controller/MapViewcontroller.swift; sourceTree = "<group>"; };
+		A06DC64D1ECA010500BC4590 /* Language.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Language.storyboard; sourceTree = "<group>"; };
 		A0763EB91EC5B7340074E77C /* GISParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GISParameters.swift; path = Model/GISParameters.swift; sourceTree = "<group>"; };
 		A0763EBA1EC5B7340074E77C /* GISParametersConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GISParametersConstants.swift; path = Model/GISParametersConstants.swift; sourceTree = "<group>"; };
 		A0763EBF1EC5B8B60074E77C /* GISParametersTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GISParametersTests.swift; sourceTree = "<group>"; };
@@ -139,7 +141,6 @@
 				A078CB751EC9E4FE0050F37C /* LanguagePickerDelegate.swift */,
 				A078CB6C1EC9CFE30050F37C /* LaunchScreenController.swift */,
 				A078CB731EC9E2F30050F37C /* ChooseLanguageController.swift */,
-				A06DC6491EC9FEE700BC4590 /* LanguageList.plist */,
 			);
 			name = LaunchScreen;
 			sourceTree = "<group>";
@@ -148,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				A078CB6B1EC9CFA40050F37C /* LaunchScreen */,
+				A06DC64B1ECA00DE00BC4590 /* MapViewcontroller.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -156,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				A0DB16B61EC31470005660F9 /* Main.storyboard */,
+				A06DC64D1ECA010500BC4590 /* Language.storyboard */,
 				A0DB16B91EC31470005660F9 /* Assets.xcassets */,
 				A0DB16BB1EC31470005660F9 /* LaunchScreen.storyboard */,
 				A078CB711EC9DF140050F37C /* ColorScheme.swift */,
@@ -309,9 +312,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A06DC64A1EC9FEE700BC4590 /* LanguageList.plist in Resources */,
 				A0DB16BD1EC31470005660F9 /* LaunchScreen.storyboard in Resources */,
 				A0DB16BA1EC31470005660F9 /* Assets.xcassets in Resources */,
+				A06DC64E1ECA010500BC4590 /* Language.storyboard in Resources */,
 				A0DB16B81EC31470005660F9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -386,6 +389,7 @@
 				A0763EC81EC5FCC70074E77C /* ResponseHandler.swift in Sources */,
 				A0172A981EC9994E00A9235A /* JSONMap.swift in Sources */,
 				A078CB671EC9CBC60050F37C /* Shelter+CoreDataClass.swift in Sources */,
+				A06DC64C1ECA00DE00BC4590 /* MapViewcontroller.swift in Sources */,
 				A0763EC41EC5D14B0074E77C /* Parameters.swift in Sources */,
 				A0763EC61EC5F3070074E77C /* Errors.swift in Sources */,
 				A078CB741EC9E2F30050F37C /* ChooseLanguageController.swift in Sources */,
