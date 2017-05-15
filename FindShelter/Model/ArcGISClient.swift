@@ -24,11 +24,17 @@ class ArcGISClient {
 			}
 			
 			guard response.statusCode >= 200 && response.statusCode < 299 else {
-				debugPrint(ServerError.badServerResponse(response.statusCode))
+				debugPrint(Errors.new(code: 100 + response.statusCode % 100))
 				return
 			}
 			
 			let json = JSON(dataResponse.data as Any)
+			
+			guard json.dictionaryObject != nil else {
+				
+				return
+			}
+			
 			completionHandler(json)
 		}
 	}
