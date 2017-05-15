@@ -19,6 +19,10 @@
 		A078CB5B1EC9C3B70050F37C /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A078CB591EC9C3B70050F37C /* Model.xcdatamodeld */; };
 		A078CB671EC9CBC60050F37C /* Shelter+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A078CB651EC9CBC60050F37C /* Shelter+CoreDataClass.swift */; };
 		A078CB681EC9CBC60050F37C /* Shelter+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A078CB661EC9CBC60050F37C /* Shelter+CoreDataProperties.swift */; };
+		A078CB6D1EC9CFE30050F37C /* LaunchScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A078CB6C1EC9CFE30050F37C /* LaunchScreenController.swift */; };
+		A078CB721EC9DF140050F37C /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A078CB711EC9DF140050F37C /* ColorScheme.swift */; };
+		A078CB741EC9E2F30050F37C /* ChooseLanguageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A078CB731EC9E2F30050F37C /* ChooseLanguageController.swift */; };
+		A078CB761EC9E4FE0050F37C /* LanguagePickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A078CB751EC9E4FE0050F37C /* LanguagePickerDelegate.swift */; };
 		A0DB16B31EC31470005660F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DB16B21EC31470005660F9 /* AppDelegate.swift */; };
 		A0DB16B81EC31470005660F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0DB16B61EC31470005660F9 /* Main.storyboard */; };
 		A0DB16BA1EC31470005660F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0DB16B91EC31470005660F9 /* Assets.xcassets */; };
@@ -53,6 +57,10 @@
 		A078CB5A1EC9C3B70050F37C /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		A078CB651EC9CBC60050F37C /* Shelter+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Shelter+CoreDataClass.swift"; path = "Model/Shelter+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A078CB661EC9CBC60050F37C /* Shelter+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Shelter+CoreDataProperties.swift"; path = "Model/Shelter+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A078CB6C1EC9CFE30050F37C /* LaunchScreenController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LaunchScreenController.swift; path = Controller/LaunchScreenController.swift; sourceTree = "<group>"; };
+		A078CB711EC9DF140050F37C /* ColorScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorScheme.swift; path = Controller/ColorScheme.swift; sourceTree = "<group>"; };
+		A078CB731EC9E2F30050F37C /* ChooseLanguageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChooseLanguageController.swift; path = Controller/ChooseLanguageController.swift; sourceTree = "<group>"; };
+		A078CB751EC9E4FE0050F37C /* LanguagePickerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LanguagePickerDelegate.swift; path = Controller/LanguagePickerDelegate.swift; sourceTree = "<group>"; };
 		A0DB16AF1EC31470005660F9 /* FindShelter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindShelter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0DB16B21EC31470005660F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0DB16B71EC31470005660F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -123,6 +131,37 @@
 			name = DataModel;
 			sourceTree = "<group>";
 		};
+		A078CB6B1EC9CFA40050F37C /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				A078CB751EC9E4FE0050F37C /* LanguagePickerDelegate.swift */,
+				A078CB6C1EC9CFE30050F37C /* LaunchScreenController.swift */,
+				A078CB731EC9E2F30050F37C /* ChooseLanguageController.swift */,
+			);
+			name = LaunchScreen;
+			sourceTree = "<group>";
+		};
+		A078CB6F1EC9CFF80050F37C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A078CB6B1EC9CFA40050F37C /* LaunchScreen */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		A078CB701EC9D0290050F37C /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				A0DB16B61EC31470005660F9 /* Main.storyboard */,
+				A0DB16B91EC31470005660F9 /* Assets.xcassets */,
+				A0DB16BB1EC31470005660F9 /* LaunchScreen.storyboard */,
+				A078CB711EC9DF140050F37C /* ColorScheme.swift */,
+				A0DB16BE1EC31470005660F9 /* Info.plist */,
+				A0DB16B21EC31470005660F9 /* AppDelegate.swift */,
+			);
+			name = "Supporting files";
+			sourceTree = "<group>";
+		};
 		A0DB16A61EC31470005660F9 = {
 			isa = PBXGroup;
 			children = (
@@ -147,12 +186,9 @@
 			isa = PBXGroup;
 			children = (
 				A0763EC91EC5FD0F0074E77C /* Protocols */,
+				A078CB6F1EC9CFF80050F37C /* Controller */,
 				A0DB16D41EC31941005660F9 /* Model */,
-				A0DB16B61EC31470005660F9 /* Main.storyboard */,
-				A0DB16B91EC31470005660F9 /* Assets.xcassets */,
-				A0DB16BB1EC31470005660F9 /* LaunchScreen.storyboard */,
-				A0DB16BE1EC31470005660F9 /* Info.plist */,
-				A0DB16B21EC31470005660F9 /* AppDelegate.swift */,
+				A078CB701EC9D0290050F37C /* Supporting files */,
 			);
 			path = FindShelter;
 			sourceTree = "<group>";
@@ -340,13 +376,17 @@
 			files = (
 				A0DB16D31EC3193C005660F9 /* CoreDataStack.swift in Sources */,
 				A0763EBB1EC5B7340074E77C /* GISParameters.swift in Sources */,
+				A078CB6D1EC9CFE30050F37C /* LaunchScreenController.swift in Sources */,
 				A078CB681EC9CBC60050F37C /* Shelter+CoreDataProperties.swift in Sources */,
+				A078CB761EC9E4FE0050F37C /* LanguagePickerDelegate.swift in Sources */,
 				A0763EC81EC5FCC70074E77C /* ResponseHandler.swift in Sources */,
 				A0172A981EC9994E00A9235A /* JSONMap.swift in Sources */,
 				A078CB671EC9CBC60050F37C /* Shelter+CoreDataClass.swift in Sources */,
 				A0763EC41EC5D14B0074E77C /* Parameters.swift in Sources */,
 				A0763EC61EC5F3070074E77C /* Errors.swift in Sources */,
+				A078CB741EC9E2F30050F37C /* ChooseLanguageController.swift in Sources */,
 				A0763EBC1EC5B7340074E77C /* GISParametersConstants.swift in Sources */,
+				A078CB721EC9DF140050F37C /* ColorScheme.swift in Sources */,
 				A078CB5B1EC9C3B70050F37C /* Model.xcdatamodeld in Sources */,
 				A0DB16B31EC31470005660F9 /* AppDelegate.swift in Sources */,
 				A0763EC21EC5BF220074E77C /* ArcGISClient.swift in Sources */,

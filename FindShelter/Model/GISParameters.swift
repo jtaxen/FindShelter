@@ -16,11 +16,11 @@ class GISParameters: Parameters {
 	
 	public func makeParameters() -> [String: AnyObject] {
 		let parameters = [
-			ParameterKeys.Contains: ParameterValues.Contains as AnyObject,
-			ParameterKeys.Layers:     ParameterValues.Layers as AnyObject,
-			ParameterKeys.ReturnGeometry:   ParameterValues.ReturnGeometry as AnyObject,
-			ParameterKeys.F:         ParameterValues.F as AnyObject,
-			ParameterKeys.SpatialReference: ParameterValues.SpatialReference as AnyObject
+			ParameterKeys.Contains         : ParameterValues.Contains as AnyObject,
+			ParameterKeys.Layers           : ParameterValues.Layers as AnyObject,
+			ParameterKeys.ReturnGeometry   : ParameterValues.ReturnGeometry as AnyObject,
+			ParameterKeys.F                : ParameterValues.F as AnyObject,
+			ParameterKeys.SpatialReference : ParameterValues.SpatialReference as AnyObject
 		]
 		return parameters
 	}
