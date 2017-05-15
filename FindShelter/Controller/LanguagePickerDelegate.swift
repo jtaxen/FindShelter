@@ -12,11 +12,11 @@ import UIKit
 extension ChooseLanguageController: UIPickerViewDelegate, UIPickerViewDataSource {
 	
 	func numberOfComponents(in pickerView: UIPickerView) -> Int {
-		return languages.count
+		return 1
 	}
 	
 	func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-		return 1
+		return languages.count
 	}
 	
 	func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
