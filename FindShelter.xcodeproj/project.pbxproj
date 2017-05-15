@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A0172A961EC9944600A9235A /* ArcGISClientTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0172A951EC9944600A9235A /* ArcGISClientTest.swift */; };
+		A0172A981EC9994E00A9235A /* JSONMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0172A971EC9994E00A9235A /* JSONMap.swift */; };
 		A0763EBB1EC5B7340074E77C /* GISParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0763EB91EC5B7340074E77C /* GISParameters.swift */; };
 		A0763EBC1EC5B7340074E77C /* GISParametersConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0763EBA1EC5B7340074E77C /* GISParametersConstants.swift */; };
 		A0763EC01EC5B8B60074E77C /* GISParametersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0763EBF1EC5B8B60074E77C /* GISParametersTests.swift */; };
@@ -36,6 +38,8 @@
 /* Begin PBXFileReference section */
 		5F8EE0E802DDEE6D284D25B9 /* Pods-FindShelter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindShelter.release.xcconfig"; path = "Pods/Target Support Files/Pods-FindShelter/Pods-FindShelter.release.xcconfig"; sourceTree = "<group>"; };
 		7B0A42C8F41D8D330F2EDAEF /* Pods-FindShelter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindShelter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FindShelter/Pods-FindShelter.debug.xcconfig"; sourceTree = "<group>"; };
+		A0172A951EC9944600A9235A /* ArcGISClientTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArcGISClientTest.swift; sourceTree = "<group>"; };
+		A0172A971EC9994E00A9235A /* JSONMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONMap.swift; path = Model/JSONMap.swift; sourceTree = "<group>"; };
 		A0763EB91EC5B7340074E77C /* GISParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GISParameters.swift; path = Model/GISParameters.swift; sourceTree = "<group>"; };
 		A0763EBA1EC5B7340074E77C /* GISParametersConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GISParametersConstants.swift; path = Model/GISParametersConstants.swift; sourceTree = "<group>"; };
 		A0763EBF1EC5B8B60074E77C /* GISParametersTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GISParametersTests.swift; sourceTree = "<group>"; };
@@ -141,6 +145,7 @@
 			children = (
 				A0DB16C71EC31470005660F9 /* FindShelterTests.swift */,
 				A0763EBF1EC5B8B60074E77C /* GISParametersTests.swift */,
+				A0172A951EC9944600A9235A /* ArcGISClientTest.swift */,
 				A0DB16C91EC31470005660F9 /* Info.plist */,
 			);
 			path = FindShelterTests;
@@ -152,6 +157,7 @@
 				A0DB16D21EC3193C005660F9 /* CoreDataStack.swift */,
 				A0763EC11EC5BF220074E77C /* ArcGISClient.swift */,
 				A0763EC71EC5FCC70074E77C /* ResponseHandler.swift */,
+				A0172A971EC9994E00A9235A /* JSONMap.swift */,
 				A0763EC51EC5F3070074E77C /* Errors.swift */,
 				A0763EB91EC5B7340074E77C /* GISParameters.swift */,
 				A0763EBA1EC5B7340074E77C /* GISParametersConstants.swift */,
@@ -318,6 +324,7 @@
 				A0DB16D31EC3193C005660F9 /* CoreDataStack.swift in Sources */,
 				A0763EBB1EC5B7340074E77C /* GISParameters.swift in Sources */,
 				A0763EC81EC5FCC70074E77C /* ResponseHandler.swift in Sources */,
+				A0172A981EC9994E00A9235A /* JSONMap.swift in Sources */,
 				A0763EC41EC5D14B0074E77C /* Parameters.swift in Sources */,
 				A0763EC61EC5F3070074E77C /* Errors.swift in Sources */,
 				A0763EBC1EC5B7340074E77C /* GISParametersConstants.swift in Sources */,
@@ -332,6 +339,7 @@
 			files = (
 				A0DB16C81EC31470005660F9 /* FindShelterTests.swift in Sources */,
 				A0763EC01EC5B8B60074E77C /* GISParametersTests.swift in Sources */,
+				A0172A961EC9944600A9235A /* ArcGISClientTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

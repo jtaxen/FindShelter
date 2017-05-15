@@ -17,8 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 		// Override point for customization after application launch.
 		let arc = ArcGISClient()
-		arc.makeAPIRequest(url: GISParameters.URL!, parameters: GISParameters.shared.makeParameters(search: "Helgeandsvägen"))
-		 
+		arc.makeAPIRequest(url: GISParameters.URL!, parameters: GISParameters.shared.makeParameters(search: "Helgeandsvägen")) { json in
+			print(json.dictionary)
+		}
+		
 		return true
 	}
 

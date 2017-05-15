@@ -16,7 +16,7 @@ class ArcGISClient {
 		print("Sending request")
 		request(url.absoluteString, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseJSON { (dataResponse) in
 			
-			let duration = Int(dataResponse.timeline.requestDuration)
+			let duration = Int(dataResponse.timeline.requestDuration * 1000)
 			print("Response returned in \(duration) ms")
 			
 			guard let response = dataResponse.response else {
