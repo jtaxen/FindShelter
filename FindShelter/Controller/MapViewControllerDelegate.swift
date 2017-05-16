@@ -17,10 +17,6 @@ extension MapViewController: MKMapViewDelegate {
 	
 	func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
 		mapView.centerCoordinate = userLocation.coordinate
-		
-		let point = CGPoint(x: userLocation.coordinate.latitude, y: userLocation.coordinate.longitude)
-		path.addLine(to: point)
-		path.stroke()
 	}
 	
 	func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {

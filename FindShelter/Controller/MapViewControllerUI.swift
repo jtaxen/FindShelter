@@ -14,7 +14,7 @@ internal extension MapViewController {
 	
 	func setUpMap() {
 		
-		map.centerCoordinate = LocationDelegate.shared.getLocation() ?? CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0)
+		map.centerCoordinate = map.userLocation.coordinate 
 		map.userLocation.title = NSLocalizedString("Wherever you go, there you are", comment: "n.a.")
 	}
 }

@@ -12,9 +12,9 @@ import SwiftyJSON
 
 class ArcGISClient {
 
-	func makeAPIRequest(url: URL, parameters: [String: AnyObject], completionHandler: @escaping (_ json: JSON) -> Void) {
+	func makeAPIRequest(url: URL, parameters: [String: AnyObject], completionHandler: @escaping (_ json: String?) -> Void) {
 		print("Sending request")
-		request(url.absoluteString, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseJSON { (dataResponse) in
+		request(url.absoluteString, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseJSON { dataResponse in
 			
 			let duration = Int(dataResponse.timeline.requestDuration * 1000)
 			print("Response returned in \(duration) ms")
@@ -28,14 +28,9 @@ class ArcGISClient {
 				return
 			}
 			
-			let json = JSON(dataResponse.data as Any)
+			print(dataResponse.data?.base64EncodedString())
 			
-			guard json.dictionaryObject != nil else {
-				
-				return
-			}
-			
-			completionHandler(json)
+			completionHandler(dataResponse.data?.base64EncodedString())
 		}
 	}
 }

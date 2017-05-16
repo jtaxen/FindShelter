@@ -17,9 +17,17 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
 		
 		map.delegate = self
-		
         map.userTrackingMode = .follow
 		
+		let client = ArcGISClient()
 		
+		client.makeAPIRequest(url: GISParameters.URL!, parameters: GISParameters.shared.makeParameters(search: "Skogsmyragatan")) { json in
+			
+			
+		}
 	}
+	
+	
+	
+	
 }

@@ -1,4 +1,4 @@
-//
+ //
 //  Errors.swift
 //  FindShelter
 //
@@ -16,7 +16,7 @@ struct Errors {
 		let message = errorMessage(errorCode: code, comment: comment)
 		
 		let userInfo = [NSLocalizedDescriptionKey: message["message"]! as Any,
-		                NSLocalizedFailureReasonErrorKey: message["comment"]! as Any
+		                NSLocalizedFailureReasonErrorKey: message["comment"] as Any
 		                ]
 		let error = NSError(domain: message["domain"]!, code: code, userInfo: userInfo)
 		return error
@@ -63,6 +63,15 @@ extension Errors {
 			case 404 : message = "Unable to add store at URL"
 			case 405 : message = "Error while autosaving"
 			default  : message = "Core Data error"
+			}
+		}
+		
+		if code >= 500 && code <= 599 {
+			errorInfo["domain"] = "resultsError"
+			
+			switch code {
+			case 501 : message = "The search query did not return any results"
+			default  : message = "Unknown result error"
 			}
 		}
 		
