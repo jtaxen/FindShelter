@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Map Viewcontroller-->
+        <!--Map View Controller-->
         <scene sceneID="991-gj-AiB">
             <objects>
-                <viewController storyboardIdentifier="mainMap" id="jiT-QI-Zfa" customClass="MapViewcontroller" customModule="FindShelter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mainMap" id="jiT-QI-Zfa" customClass="MapViewController" customModule="FindShelter" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CRO-hg-1Gb"/>
                         <viewControllerLayoutGuide type="bottom" id="l1o-pK-rcY"/>
@@ -35,7 +35,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="eik-dt-ZYI"/>
                     <connections>
-                        <outlet property="map" destination="tX0-1l-yTB" id="Jui-L7-kqE"/>
+                        <outlet property="map" destination="tX0-1l-yTB" id="qYh-CB-Qj8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rpi-Yv-cBE" userLabel="First Responder" sceneMemberID="firstResponder"/>

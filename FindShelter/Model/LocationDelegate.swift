@@ -14,15 +14,16 @@ class LocationDelegate: CLLocationManager {
 	internal var currentPosition: CLLocationCoordinate2D!
 	
 	
-	public static let shared = CLLocationManager()
+	public static let shared = LocationDelegate()
 	
 	private override init() {
 		super.init()
 		delegate = self
 		desiredAccuracy = kCLLocationAccuracyBest
+		
 	}
 	
-	public func getLocation() -> CLLocationCoordinate2D? {
+	func getLocation() -> CLLocationCoordinate2D? {
 		
 		guard CLLocationManager.locationServicesEnabled() else {
 			return nil
@@ -37,6 +38,8 @@ extension LocationDelegate: CLLocationManagerDelegate {
 	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 		
 		currentPosition = manager.location?.coordinate
-		print("New position: \(currentPosition.latitude), \(currentPosition.longitude)")
+		print("New position: \(currentPosition.latitude), \t \(currentPosition.longitude)")
+		
+		
 	}
 }

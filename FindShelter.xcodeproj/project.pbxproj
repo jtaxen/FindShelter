@@ -24,6 +24,9 @@
 		A078CB741EC9E2F30050F37C /* ChooseLanguageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A078CB731EC9E2F30050F37C /* ChooseLanguageController.swift */; };
 		A078CB761EC9E4FE0050F37C /* LanguagePickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A078CB751EC9E4FE0050F37C /* LanguagePickerDelegate.swift */; };
 		A0B94B591ECAEE1D00F68F8B /* LocationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B94B581ECAEE1D00F68F8B /* LocationDelegate.swift */; };
+		A0B94B5B1ECAF5F000F68F8B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B94B5A1ECAF5F000F68F8B /* MapViewController.swift */; };
+		A0B94B5D1ECAF7E400F68F8B /* MapViewControllerUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B94B5C1ECAF7E400F68F8B /* MapViewControllerUI.swift */; };
+		A0B94B5F1ECAF7F700F68F8B /* MapViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B94B5E1ECAF7F700F68F8B /* MapViewControllerDelegate.swift */; };
 		A0DB16B31EC31470005660F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DB16B21EC31470005660F9 /* AppDelegate.swift */; };
 		A0DB16B81EC31470005660F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0DB16B61EC31470005660F9 /* Main.storyboard */; };
 		A0DB16BA1EC31470005660F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0DB16B91EC31470005660F9 /* Assets.xcassets */; };
@@ -63,6 +66,9 @@
 		A078CB731EC9E2F30050F37C /* ChooseLanguageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChooseLanguageController.swift; path = Controller/ChooseLanguageController.swift; sourceTree = "<group>"; };
 		A078CB751EC9E4FE0050F37C /* LanguagePickerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LanguagePickerDelegate.swift; path = Controller/LanguagePickerDelegate.swift; sourceTree = "<group>"; };
 		A0B94B581ECAEE1D00F68F8B /* LocationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationDelegate.swift; path = Model/LocationDelegate.swift; sourceTree = "<group>"; };
+		A0B94B5A1ECAF5F000F68F8B /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = Controller/MapViewController.swift; sourceTree = "<group>"; };
+		A0B94B5C1ECAF7E400F68F8B /* MapViewControllerUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewControllerUI.swift; path = Controller/MapViewControllerUI.swift; sourceTree = "<group>"; };
+		A0B94B5E1ECAF7F700F68F8B /* MapViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewControllerDelegate.swift; path = Controller/MapViewControllerDelegate.swift; sourceTree = "<group>"; };
 		A0DB16AF1EC31470005660F9 /* FindShelter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindShelter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0DB16B21EC31470005660F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0DB16B71EC31470005660F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -168,6 +174,9 @@
 		A0B94B4F1ECAE4C200F68F8B /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				A0B94B5C1ECAF7E400F68F8B /* MapViewControllerUI.swift */,
+				A0B94B5E1ECAF7F700F68F8B /* MapViewControllerDelegate.swift */,
+				A0B94B5A1ECAF5F000F68F8B /* MapViewController.swift */,
 			);
 			name = Map;
 			sourceTree = "<group>";
@@ -387,6 +396,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0DB16D31EC3193C005660F9 /* CoreDataStack.swift in Sources */,
+				A0B94B5D1ECAF7E400F68F8B /* MapViewControllerUI.swift in Sources */,
 				A0763EBB1EC5B7340074E77C /* GISParameters.swift in Sources */,
 				A078CB681EC9CBC60050F37C /* Shelter+CoreDataProperties.swift in Sources */,
 				A078CB761EC9E4FE0050F37C /* LanguagePickerDelegate.swift in Sources */,
@@ -395,6 +405,7 @@
 				A078CB671EC9CBC60050F37C /* Shelter+CoreDataClass.swift in Sources */,
 				A0763EC41EC5D14B0074E77C /* Parameters.swift in Sources */,
 				A0763EC61EC5F3070074E77C /* Errors.swift in Sources */,
+				A0B94B5F1ECAF7F700F68F8B /* MapViewControllerDelegate.swift in Sources */,
 				A078CB741EC9E2F30050F37C /* ChooseLanguageController.swift in Sources */,
 				A0763EBC1EC5B7340074E77C /* GISParametersConstants.swift in Sources */,
 				A0B94B591ECAEE1D00F68F8B /* LocationDelegate.swift in Sources */,
@@ -402,6 +413,7 @@
 				A078CB5B1EC9C3B70050F37C /* Model.xcdatamodeld in Sources */,
 				A0DB16B31EC31470005660F9 /* AppDelegate.swift in Sources */,
 				A0763EC21EC5BF220074E77C /* ArcGISClient.swift in Sources */,
+				A0B94B5B1ECAF5F000F68F8B /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

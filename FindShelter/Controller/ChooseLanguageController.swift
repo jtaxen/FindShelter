@@ -23,7 +23,7 @@ class ChooseLanguageController: UIViewController {
 	override func viewDidLoad() {
 		
 		locationManager = CLLocationManager()
-		locationManager.requestWhenInUseAuthorization()
+		locationManager.requestAlwaysAuthorization()
 		UserDefaults.standard.set(CLLocationManager.locationServicesEnabled() , forKey: "locationServicesEnabled")
 		
 		picker.dataSource = self
