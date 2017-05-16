@@ -7,8 +7,6 @@
 .Spotlight-V100
 *.swp
 
-*.xcodeproj/
-
 ## Xcode build files
 DerivedData/
 build/
