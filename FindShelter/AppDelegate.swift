@@ -16,13 +16,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 		
-		// Check if it is the first time the application is opened
-		if UserDefaults.standard.value(forKey: "firstTimeOpened") as? Bool != false {
-			UserDefaults.standard.set(false, forKey: "firstTimeOpened")
-			print("First time")
+		window = UIWindow(frame: UIScreen.main.bounds)
+		
+		var storyboard: UIStoryboard!
+		var initialController: UIViewController!
+		
+		if UserDefaults.standard.value(forKey: "firstTimeOpened") as? Bool == false {
+			storyboard = UIStoryboard(name: "Main", bundle: nil)
+			initialController = storyboard.instantiateViewController(withIdentifier: "mainMap") as! MapViewController
 		} else {
-			print("Not the first time")
+			UserDefaults.standard.set(false, forKey: "firstTimeOpened")
+			storyboard = UIStoryboard(name: "Language", bundle: nil)
+			initialController = storyboard.instantiateViewController(withIdentifier: "language") as! ChooseLanguageController
 		}
+		
+		window?.rootViewController = initialController
+		window?.makeKeyAndVisible()
 		
 		return true
 	}

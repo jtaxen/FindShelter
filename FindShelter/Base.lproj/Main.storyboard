@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Map Viewcontroller-->
         <scene sceneID="991-gj-AiB">
             <objects>
-                <viewController id="jiT-QI-Zfa" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mainMap" id="jiT-QI-Zfa" customClass="MapViewcontroller" customModule="FindShelter" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CRO-hg-1Gb"/>
                         <viewControllerLayoutGuide type="bottom" id="l1o-pK-rcY"/>
@@ -34,6 +34,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="eik-dt-ZYI"/>
+                    <connections>
+                        <outlet property="map" destination="tX0-1l-yTB" id="Jui-L7-kqE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rpi-Yv-cBE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -42,7 +45,7 @@
         <!--Navigation Controller-->
         <scene sceneID="t5p-il-eCg">
             <objects>
-                <navigationController id="j8e-9L-q7q" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="mainNavigation" id="j8e-9L-q7q" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="CqV-Hb-8NW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
