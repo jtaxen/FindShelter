@@ -12,7 +12,7 @@ import CoreData
 @objc(Shelter)
 public class Shelter: NSManagedObject {
 	
-	convenience init?(_ map: JSONMap, context: NSManagedObjectContext) {
+	convenience init?(_ item: ShelterObject, context: NSManagedObjectContext) {
 		
 		guard let entity = NSEntityDescription.entity(forEntityName: "Model", in: context) else {
 			fatalError("Unable to find entity name")
@@ -20,19 +20,19 @@ public class Shelter: NSManagedObject {
 		
 		self.init(entity: entity, insertInto: context)
 		
-		self.layerId           = map.layerId
-		self.layerName         = map.layerName
-		self.shape             = map.shape
-		self.address           = map.address
-		self.xCoordinate       = Int32(map.xCoordinate!)
-		self.yCoordinate       = Int32(map.yCoordinate!)
-		self.municipality      = map.municipality
-		self.town              = map.town
-		self.filterType        = map.filterType
-		self.capacity          = Int32(map.capacity!)
-		self.estateDesignation = map.estateDesignation
-		self.shelterNumber     = map.shelterNumber
-		self.coverId           = map.coverId
+		self.layerId           = item.layerId
+		self.layerName         = item.layerName
+		self.shape             = item.attributes?.shape
+		self.address           = item.attributes?.address
+		self.xCoordinate       = Int32((item.attributes?.xCoordinate)!)
+		self.yCoordinate       = Int32((item.attributes?.yCoordinate)!)
+		self.municipality      = item.attributes?.municipality
+		self.town              = item.attributes?.town
+		self.filterType        = item.attributes?.filterType
+		self.capacity          = Int32((item.attributes?.capacity)!)
+		self.estateDesignation = item.attributes?.estateDesignation
+		self.shelterNumber     = item.attributes?.shelterNumber
+		self.coverId           = item.attributes?.coverId
 	}
 
 }

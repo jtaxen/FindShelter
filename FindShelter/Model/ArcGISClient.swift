@@ -9,28 +9,36 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import AlamofireObjectMapper
 
 class ArcGISClient {
-
-	func makeAPIRequest(url: URL, parameters: [String: AnyObject], completionHandler: @escaping (_ json: String?) -> Void) {
+	
+	func makeAPIRequest(url: URL, parameters: [String: AnyObject], completionHandler: @escaping (_ json: [ShelterObject]?) -> Void) {
 		print("Sending request")
-		request(url.absoluteString, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseJSON { dataResponse in
+		request(url.absoluteString, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseObject { ( response: DataResponse<ArcGISResults>) in
 			
-			let duration = Int(dataResponse.timeline.requestDuration * 1000)
+			let duration = Int(response.timeline.requestDuration * 1000)
 			print("Response returned in \(duration) ms")
 			
-			guard let response = dataResponse.response else {
-				return 
-			}
-			
-			guard response.statusCode >= 200 && response.statusCode < 299 else {
-				debugPrint(Errors.new(code: 100 + response.statusCode % 100))
+			guard let code = response.response?.statusCode else {
+				debugPrint(Errors.new(code: 199, comment: "No status code returned"))
+				completionHandler(nil)
 				return
 			}
 			
-			print(dataResponse.data?.base64EncodedString())
+			guard code >= 200 && code <= 299 else {
+				debugPrint(Errors.new(code: 100 + code % 100, comment: "Server returned status code \(code)"))
+				completionHandler(nil)
+				return
+			}
 			
-			completionHandler(dataResponse.data?.base64EncodedString())
+			guard let shelterList = response.result.value?.results else {
+				debugPrint(Errors.new(code: 110))
+				completionHandler(nil)
+				return
+			}
+			
+			completionHandler(shelterList)
 		}
 	}
 }

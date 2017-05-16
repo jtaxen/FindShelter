@@ -21,8 +21,16 @@ class MapViewController: UIViewController {
 		
 		let client = ArcGISClient()
 		
-		client.makeAPIRequest(url: GISParameters.URL!, parameters: GISParameters.shared.makeParameters(search: "Skogsmyragatan")) { json in
+		client.makeAPIRequest(url: GISParameters.URL!, parameters: GISParameters.shared.makeParameters(search: "Skogsmyragatan")) { shelters in
 			
+			guard shelters != nil else {
+				return
+			}
+			
+			for shelter in shelters! {
+				
+				print(shelter.attributes!.address!)
+			}
 			
 		}
 	}
