@@ -22,4 +22,9 @@ extension MapViewController: MKMapViewDelegate {
 	func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
 	}
 	
+	func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+		let pin = MKPinAnnotationView(annotation: annotation, reuseIdentifier: nil)
+		return pin
+	}
+	
 }

@@ -22,11 +22,11 @@ class SpatialServiceTest: XCTestCase {
 		
 		let (lat, lon, height) = service.geodeticFromCarthesian(x: Double(3240036.3696), y: Double(990578.5272), z: Double(5385763.1648))
 		
-		XCTAssertEqualWithAccuracy(lat, 58.0, accuracy: 0.01)
-		print("Latitude accuracy is \(abs(lat - 58.0)) m")
-		XCTAssertEqualWithAccuracy(lon, 17.0, accuracy: 0.01)
-		print("Longitude accuracy is \(abs(lon - 17.0)) m")
-		XCTAssertEqualWithAccuracy(height, 30.0, accuracy: 0.01)
+		XCTAssertEqualWithAccuracy(lat, 58.0, accuracy: 0.000001)
+		print("Latitude accuracy is \(abs(lat - 58.0)) degrees")
+		XCTAssertEqualWithAccuracy(lon, 17.0, accuracy: 0.000001)
+		print("Longitude accuracy is \(abs(lon - 17.0)) degrees")
+		XCTAssertEqualWithAccuracy(height, 30.0, accuracy: 0.001)
 		print("Height accuracy is \(abs(height - 30.0)) m")
 	}
 	
@@ -38,11 +38,11 @@ class SpatialServiceTest: XCTestCase {
 		
 		let (x, y, z) = service.carthesianFromGeodetic(latitude: Double(58.0), longitude: Double(17.0), height: Double(30.0))
 		
-		XCTAssertEqualWithAccuracy(x, targetX, accuracy: 0.01)
+		XCTAssertEqualWithAccuracy(x, targetX, accuracy: 0.001)
 		print("x accuracy is \(abs(x - targetX)) m")
-		XCTAssertEqualWithAccuracy(y, targetY, accuracy: 0.01)
+		XCTAssertEqualWithAccuracy(y, targetY, accuracy: 0.001)
 		print("y accuracy is \(abs(y - targetY)) m")
-		XCTAssertEqualWithAccuracy(z, targetZ, accuracy: 0.01)
+		XCTAssertEqualWithAccuracy(z, targetZ, accuracy: 0.001)
 		print("z accuracy is \(abs(z - targetZ)) m")
 	}
 }

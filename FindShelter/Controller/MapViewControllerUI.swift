@@ -16,5 +16,6 @@ internal extension MapViewController {
 		
 		map.centerCoordinate = map.userLocation.coordinate 
 		map.userLocation.title = NSLocalizedString("Wherever you go, there you are", comment: "n.a.")
+		print(MKMapPointForCoordinate(map.centerCoordinate))
 	}
 }
