@@ -19,8 +19,6 @@ protocol SpatialServiceProtocol {
 	var f : Double { get }
 	/// First excentricy squared
 	var e2: Double { get }
-	/// Curvature radius
-	var N: Double { get }
 	
 	func carthesianToGeodetic(_ x: Int, _ y: Int) -> CLLocationCoordinate2D
 	

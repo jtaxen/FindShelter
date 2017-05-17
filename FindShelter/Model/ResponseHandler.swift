@@ -26,5 +26,18 @@ public class ResponseHandler: ResponseHandlerProtocol {
 		guard shelter.attributes?.xCoordinate != nil && shelter.attributes?.yCoordinate != nil else {
 			return nil
 		}
+		
+		locationCoordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
+		return locationCoordinate
+	}
+	
+	func coordinates(for shelters: [ShelterObject]) -> [CLLocationCoordinate2D]? {
+		var list: [CLLocationCoordinate2D] = []
+		
+		for shelter in shelters {
+			let newCoord = coordinates(for: shelter)
+			list.append(newCoord!)
+		}
+		return list
 	}
 }

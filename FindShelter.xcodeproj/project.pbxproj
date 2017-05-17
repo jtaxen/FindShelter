@@ -22,6 +22,7 @@
 		A078CB721EC9DF140050F37C /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A078CB711EC9DF140050F37C /* ColorScheme.swift */; };
 		A078CB741EC9E2F30050F37C /* ChooseLanguageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A078CB731EC9E2F30050F37C /* ChooseLanguageController.swift */; };
 		A078CB761EC9E4FE0050F37C /* LanguagePickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A078CB751EC9E4FE0050F37C /* LanguagePickerDelegate.swift */; };
+		A0B4BB5E1ECC7782003928AE /* SpatialServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B4BB5D1ECC7782003928AE /* SpatialServiceTest.swift */; };
 		A0B6439D1ECB20E10037B438 /* ShelterAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B6439C1ECB20E10037B438 /* ShelterAnnotationView.swift */; };
 		A0B6439F1ECB3D790037B438 /* ResultsMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B6439E1ECB3D790037B438 /* ResultsMapper.swift */; };
 		A0B94B591ECAEE1D00F68F8B /* LocationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B94B581ECAEE1D00F68F8B /* LocationDelegate.swift */; };
@@ -31,7 +32,6 @@
 		A0D4311B1ECC331D00E024D6 /* ResponseHandlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D4311A1ECC331D00E024D6 /* ResponseHandlerProtocol.swift */; };
 		A0D4311D1ECC5F5D00E024D6 /* SpatialServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D4311C1ECC5F5D00E024D6 /* SpatialServiceProtocol.swift */; };
 		A0D4311F1ECC628E00E024D6 /* SpatialService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D4311E1ECC628E00E024D6 /* SpatialService.swift */; };
-		A0D431211ECC65CC00E024D6 /* SpatialServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D431201ECC65CC00E024D6 /* SpatialServiceTest.swift */; };
 		A0DB16B31EC31470005660F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DB16B21EC31470005660F9 /* AppDelegate.swift */; };
 		A0DB16B81EC31470005660F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0DB16B61EC31470005660F9 /* Main.storyboard */; };
 		A0DB16BA1EC31470005660F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0DB16B91EC31470005660F9 /* Assets.xcassets */; };
@@ -69,6 +69,7 @@
 		A078CB711EC9DF140050F37C /* ColorScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorScheme.swift; path = Controller/ColorScheme.swift; sourceTree = "<group>"; };
 		A078CB731EC9E2F30050F37C /* ChooseLanguageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChooseLanguageController.swift; path = Controller/ChooseLanguageController.swift; sourceTree = "<group>"; };
 		A078CB751EC9E4FE0050F37C /* LanguagePickerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LanguagePickerDelegate.swift; path = Controller/LanguagePickerDelegate.swift; sourceTree = "<group>"; };
+		A0B4BB5D1ECC7782003928AE /* SpatialServiceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpatialServiceTest.swift; sourceTree = "<group>"; };
 		A0B6439C1ECB20E10037B438 /* ShelterAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShelterAnnotationView.swift; path = View/ShelterAnnotationView.swift; sourceTree = "<group>"; };
 		A0B6439E1ECB3D790037B438 /* ResultsMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultsMapper.swift; path = Model/ResultsMapper.swift; sourceTree = "<group>"; };
 		A0B94B581ECAEE1D00F68F8B /* LocationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationDelegate.swift; path = Model/LocationDelegate.swift; sourceTree = "<group>"; };
@@ -78,7 +79,6 @@
 		A0D4311A1ECC331D00E024D6 /* ResponseHandlerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResponseHandlerProtocol.swift; path = Model/ResponseHandlerProtocol.swift; sourceTree = "<group>"; };
 		A0D4311C1ECC5F5D00E024D6 /* SpatialServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpatialServiceProtocol.swift; path = Model/SpatialServiceProtocol.swift; sourceTree = "<group>"; };
 		A0D4311E1ECC628E00E024D6 /* SpatialService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpatialService.swift; path = Model/SpatialService.swift; sourceTree = "<group>"; };
-		A0D431201ECC65CC00E024D6 /* SpatialServiceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpatialServiceTest.swift; sourceTree = "<group>"; };
 		A0DB16AF1EC31470005660F9 /* FindShelter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindShelter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0DB16B21EC31470005660F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0DB16B71EC31470005660F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -228,7 +228,7 @@
 		A0DB16C61EC31470005660F9 /* FindShelterTests */ = {
 			isa = PBXGroup;
 			children = (
-				A0D431201ECC65CC00E024D6 /* SpatialServiceTest.swift */,
+				A0B4BB5D1ECC7782003928AE /* SpatialServiceTest.swift */,
 				A0DB16C71EC31470005660F9 /* FindShelterTests.swift */,
 				A0763EBF1EC5B8B60074E77C /* GISParametersTests.swift */,
 				A0172A951EC9944600A9235A /* ArcGISClientTest.swift */,
@@ -442,7 +442,7 @@
 			files = (
 				A0DB16C81EC31470005660F9 /* FindShelterTests.swift in Sources */,
 				A0763EC01EC5B8B60074E77C /* GISParametersTests.swift in Sources */,
-				A0D431211ECC65CC00E024D6 /* SpatialServiceTest.swift in Sources */,
+				A0B4BB5E1ECC7782003928AE /* SpatialServiceTest.swift in Sources */,
 				A0172A961EC9944600A9235A /* ArcGISClientTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
