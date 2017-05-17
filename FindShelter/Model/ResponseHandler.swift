@@ -11,7 +11,7 @@ import SwiftyJSON
 import ObjectMapper
 import CoreLocation
 
-public class ResponseHandler {
+public class ResponseHandler: ResponseHandlerProtocol {
 	
 	public static let shared = ResponseHandler()
 	
@@ -19,9 +19,12 @@ public class ResponseHandler {
 	
 	private init() {}
 	
-	class func getShelters(_ json: JSON) {
+	func coordinates(for shelter: ShelterObject) -> CLLocationCoordinate2D? {
 		
+		var locationCoordinate: CLLocationCoordinate2D?
 		
-		
+		guard shelter.attributes?.xCoordinate != nil && shelter.attributes?.yCoordinate != nil else {
+			return nil
+		}
 	}
 }
