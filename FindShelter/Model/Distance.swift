@@ -24,11 +24,15 @@ extension CLLocationCoordinate2D: KDTreePoint {
 	}
 	
 	public func squaredDistance(to otherPoint: CLLocationCoordinate2D) -> Double {
+        let sLat = SpatialService.shared.radian(self.latitude)
+        let sLon = SpatialService.shared.radian(self.longitude)
+        let oLat = SpatialService.shared.radian(otherPoint.latitude)
+        let oLon = SpatialService.shared.radian(otherPoint.longitude)
+        
+		let deltaPhi = abs(sLat - oLat)
+		let deltaLambda = abs(sLon - oLon)
 		
-		let deltaPhi = abs(self.latitude - otherPoint.latitude)
-		let deltaLambda = abs(self.longitude - otherPoint.longitude)
-		
-		let deltaSigma = 2 * asin( sqrt( (sin(deltaPhi / 2))**2 + cos(self.latitude) * cos(otherPoint.latitude) * ( sin(deltaLambda / 2))**2) )
+		let deltaSigma = 2 * asin( sqrt( (sin(deltaPhi / 2))**2 + cos(sLat) * cos(oLat) * ( sin(deltaLambda / 2))**2) )
 		
 		let distance = deltaSigma * SpatialService.shared.meanEarthRadius
 		return distance**2

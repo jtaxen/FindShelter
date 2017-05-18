@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2DE92B5B1ECE355900A43B25 /* DistanceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE92B5A1ECE355900A43B25 /* DistanceTest.swift */; };
 		A0172A961EC9944600A9235A /* ArcGISClientTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0172A951EC9944600A9235A /* ArcGISClientTest.swift */; };
 		A03550691ECDF0CE007C5C29 /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03550681ECDF0CE007C5C29 /* Distance.swift */; };
 		A06DC64E1ECA010500BC4590 /* Language.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A06DC64D1ECA010500BC4590 /* Language.storyboard */; };
@@ -53,6 +54,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2DE92B5A1ECE355900A43B25 /* DistanceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceTest.swift; sourceTree = "<group>"; };
 		5F8EE0E802DDEE6D284D25B9 /* Pods-FindShelter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindShelter.release.xcconfig"; path = "Pods/Target Support Files/Pods-FindShelter/Pods-FindShelter.release.xcconfig"; sourceTree = "<group>"; };
 		7B0A42C8F41D8D330F2EDAEF /* Pods-FindShelter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindShelter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FindShelter/Pods-FindShelter.debug.xcconfig"; sourceTree = "<group>"; };
 		A0172A951EC9944600A9235A /* ArcGISClientTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArcGISClientTest.swift; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				A0B4BB5D1ECC7782003928AE /* SpatialServiceTest.swift */,
+				2DE92B5A1ECE355900A43B25 /* DistanceTest.swift */,
 				A0DB16C71EC31470005660F9 /* FindShelterTests.swift */,
 				A0763EBF1EC5B8B60074E77C /* GISParametersTests.swift */,
 				A0172A951EC9944600A9235A /* ArcGISClientTest.swift */,
@@ -453,6 +456,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0DB16C81EC31470005660F9 /* FindShelterTests.swift in Sources */,
+				2DE92B5B1ECE355900A43B25 /* DistanceTest.swift in Sources */,
 				A0763EC01EC5B8B60074E77C /* GISParametersTests.swift in Sources */,
 				A0B4BB5E1ECC7782003928AE /* SpatialServiceTest.swift in Sources */,
 				A0172A961EC9944600A9235A /* ArcGISClientTest.swift in Sources */,
