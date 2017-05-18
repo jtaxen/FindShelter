@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Errors {
+public struct Errors {
 	
 	private init() {}
 	
@@ -24,7 +24,7 @@ struct Errors {
 }
 
 // MARK: - Error codes
-extension Errors {
+private extension Errors {
 	
 	static func errorMessage(errorCode code: Int, comment: String? = nil) -> [String: String] {
 		
@@ -71,6 +71,7 @@ extension Errors {
 			
 			switch code {
 			case 501 : message = "The search query did not return any results"
+			case 502 : message = "Cannot unwrap coordinates from ShelterObject"
 			default  : message = "Unknown result error"
 			}
 		}
