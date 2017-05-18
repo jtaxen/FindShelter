@@ -20,9 +20,19 @@ protocol SpatialServiceProtocol {
 	/// First excentricy squared
 	var e2: Double { get }
 	
+	/// Semi-minor axis
+	var k0: Double { set get }
+	var b: Double { get }
+	var n: Double { get }
+	var B0: Double { get }
+	var mp: Double { get }
+	
 	func carthesianToGeodetic(_ x: Int, _ y: Int) -> CLLocationCoordinate2D
 	
 	func geodeticToCarthesian(_ coordinate: CLLocationCoordinate2D) -> (Int, Int)
 	
 	func convert(fromSWEREF99 coordinate: (Int, Int)) -> CLLocationCoordinate2D
+	
+	/// UTM to latitude/longitude
+	func convertUTMToLatLon(_ x: Double, _ y: Double) -> CLLocationCoordinate2D
 }

@@ -36,17 +36,17 @@ class MapViewController: UIViewController {
 			
 		}
 		
-		print(MKMapPointForCoordinate(CLLocationCoordinate2DMake(0.0, 0.0)))
+//		print(MKMapPointForCoordinate(CLLocationCoordinate2DMake(0.0, 0.0)))
 		let mpX = 134217728.0
 		let mpY = 134217728.0
 		
 		let annotation = MKPointAnnotation()
-		annotation.coordinate = MKCoordinateForMapPoint(MKMapPointMake(mpX + 6611386, mpY + 619270))
+		annotation.coordinate = MKCoordinateForMapPoint(MKMapPointMake(mpX + 6611386, mpY + 619270 + 500000))
 		print("First annotation: \(annotation.coordinate)")
 		map.addAnnotation(annotation)
 		
 		let anothotation = MKPointAnnotation()
-		annotation.coordinate = MKCoordinateForMapPoint(MKMapPointMake(mpX + 619270, mpY + 6611386))
+		annotation.coordinate = MKCoordinateForMapPoint(MKMapPointMake(134217728.0,134217728.0))
 		print("Second annotation: \(anothotation.coordinate)")
 		map.addAnnotation(anothotation)
 		

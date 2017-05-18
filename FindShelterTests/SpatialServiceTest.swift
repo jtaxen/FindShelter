@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import CoreLocation
 @testable import FindShelter
 
 class SpatialServiceTest: XCTestCase {
@@ -44,5 +45,15 @@ class SpatialServiceTest: XCTestCase {
 		print("y accuracy is \(abs(y - targetY)) m")
 		XCTAssertEqualWithAccuracy(z, targetZ, accuracy: 0.001)
 		print("z accuracy is \(abs(z - targetZ)) m")
+	}
+	
+	func testUTMToLatLon() {
+		
+		let coordinates: CLLocationCoordinate2D = service.convertUTMToLatLon(907351.981, 7349217.668)
+		
+		XCTAssertEqualWithAccuracy(coordinates.latitude, 66.0, accuracy: 0.000001)
+		print("Latitude accuracy is \(abs( coordinates.latitude - 66.0)) degrees")
+		XCTAssertEqualWithAccuracy(coordinates.longitude, 24.0, accuracy: 0.000001)
+		print("Longitude accuracy is \(abs( coordinates.longitude - 24.0)) degrees")
 	}
 }

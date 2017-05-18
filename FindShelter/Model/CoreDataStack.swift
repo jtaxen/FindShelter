@@ -42,7 +42,7 @@ class CoreDataStack {
 		let fileManager = FileManager.default
 		
 		guard let docUrl = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {
-			debugPrint(Errors.errorMessage(errorCode: 403))
+			debugPrint(Errors.new(code: 403))
 			return nil
 		}
 		
@@ -87,7 +87,7 @@ extension CoreDataStack {
 				print("Autosaving")
 			} catch {
 				debugPrint(error)
-				debugPrint(Errors.errorMessage(errorCode: 405))
+				debugPrint(Errors.new(code: 405))
 			}
 			
 			let delayInNanoseconds = UInt64(delayInSeconds) * NSEC_PER_SEC
