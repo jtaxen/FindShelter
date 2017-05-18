@@ -7,4 +7,5 @@ pod 'SwiftyJSON'
 pod 'ObjectMapper', '~> 2.2'
 pod 'AlamofireObjectMapper', '~> 4.0'
 ##pod 'ArcGIS-Runtime-SDK-iOS', '100.0'
+pod 'KDTree'
 end

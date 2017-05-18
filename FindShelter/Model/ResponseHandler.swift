@@ -18,6 +18,7 @@ public class ResponseHandler: ResponseHandlerProtocol {
 	
 	private var locationCoordinateList: [CLLocationCoordinate2D]!
 	
+	
 	private init() {}
 	
 	/**
@@ -32,11 +33,14 @@ public class ResponseHandler: ResponseHandlerProtocol {
 		
 		var locationCoordinate: CLLocationCoordinate2D?
 		
-		guard shelter.attributes?.xCoordinate != nil && shelter.attributes?.yCoordinate != nil else {
+		guard shelter.geometry?.xGeometry != nil && shelter.geometry?.yGeometry != nil else {
+			debugPrint(Errors.new(code: 502))
 			return nil
 		}
 		
-		locationCoordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
+		let north = shelter.geometry!.yGeometry
+		let east = shelter.geometry!.xGeometry
+		locationCoordinate = SpatialService.shared.convertUTMToLatLon(north: Double(north!), east: Double(east!))
 		return locationCoordinate
 	}
 	
@@ -50,8 +54,9 @@ public class ResponseHandler: ResponseHandlerProtocol {
 		var list: [CLLocationCoordinate2D] = []
 		
 		for shelter in shelters {
-			let newCoord = coordinates(for: shelter)
-			list.append(newCoord!)
+			if let newCoord = coordinates(for: shelter) {
+				list.append(newCoord)
+			}
 		}
 		return list
 	}

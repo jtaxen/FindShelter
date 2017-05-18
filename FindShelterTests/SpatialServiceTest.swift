@@ -51,7 +51,7 @@ class SpatialServiceTest: XCTestCase {
 		
 		var coordinates: CLLocationCoordinate2D!
 		measure {
-			coordinates = self.service.convertUTMToLatLon(6541771.139,614893.671)
+			coordinates = self.service.convertUTMToLatLon(north: 6541771.139, east: 614893.671)
 		}
 		
 		XCTAssertEqualWithAccuracy(coordinates.latitude, 59.0, accuracy: 0.1)

@@ -71,6 +71,7 @@ private extension Errors {
 			
 			switch code {
 			case 501 : message = "The search query did not return any results"
+			case 502 : message = "Cannot unwrap coordinates from ShelterObject"
 			default  : message = "Unknown result error"
 			}
 		}

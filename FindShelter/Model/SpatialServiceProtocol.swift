@@ -34,5 +34,5 @@ protocol SpatialServiceProtocol {
 	func convert(fromSWEREF99 coordinate: (Int, Int)) -> CLLocationCoordinate2D
 	
 	/// UTM to latitude/longitude
-	func convertUTMToLatLon(_ x: Double, _ y: Double) -> CLLocationCoordinate2D
+	func convertUTMToLatLon(north x: Double, east y: Double) -> CLLocationCoordinate2D
 }

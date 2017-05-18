@@ -34,9 +34,10 @@ class SpatialService: SpatialServiceProtocol {
 	
 	let falseEasting: Double = 500000.0
 	let falseNorthing: Double = 0.0
-	var aHat: Double { get { return a * ( 1 + n**2 / 4 + n**4 / 64) } }
+	var aHat: Double { get { return a * ( 1 + (n**2) / 4 + (n**4) / 64) } }
 	var zone: Int = 33
 	var midmeridian: Double { get { return Double(zone * 6 - 183) } }
+	var meanEarthRadius: Double { get { return ( 2 * a + b) / 3 } }
 	
 	var radian = { (_ degree: Double) -> Double in
 		return Double.pi * degree / 180
@@ -108,7 +109,7 @@ extension SpatialService {
 		return (x, y, z)
 	}
 	
-	func convertUTMToLatLon(_ x: Double, _ y: Double) -> CLLocationCoordinate2D {
+	func convertUTMToLatLon(north x: Double, east y: Double) -> CLLocationCoordinate2D {
 		
 		let xi = ( x - falseNorthing ) / ( k0 * aHat )
 		let eta = ( y - falseEasting) / ( k0 * aHat )
@@ -118,7 +119,7 @@ extension SpatialService {
 		let delta3 = 17 * (n**3) / 480 - 37 * (n**4) / 840
 		let delta4 = 4397 * (n**4) / 161280
 		
-		let xiPrime = xi - delta1 * sin(2 * xi) * cosh(2 * eta) - delta2 * sin( 4 * xi ) * cosh(4 * eta) - delta3 * sin(6 * xi) * cosh(6 * eta) - delta4 * sin( 8 * xi ) * cosh( 8 * eta)
+		let xiPrime  = xi  - delta1 * sin(2 * xi) * cosh(2 * eta) - delta2 * sin( 4 * xi ) * cosh(4 * eta) - delta3 * sin(6 * xi) * cosh(6 * eta) - delta4 * sin( 8 * xi ) * cosh( 8 * eta)
 		let etaPrime = eta - delta1 * cos(2 * xi) * sinh(2 * eta) - delta2 * cos( 4 * xi ) * sinh(4 * eta) - delta3 * cos(6 * xi) * sinh(6 * eta) - delta4 * cos( 8 * xi ) * sinh( 8 * eta)
 		
 		let phistar = asin( sin(xiPrime) / cosh(etaPrime) ) // Conformal latitude

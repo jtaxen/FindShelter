@@ -13,43 +13,30 @@ class MapViewController: UIViewController {
 	
 	@IBOutlet weak var map: MKMapView!
 	
-    override func viewDidLoad() {
-        super.viewDidLoad()
+	override func viewDidLoad() {
+		super.viewDidLoad()
 		
 		map.delegate = self
-        map.userTrackingMode = .follow
+		map.userTrackingMode = .follow
 		
 		setUpMap()
 		
 		let client = ArcGISClient()
 		
-		client.makeAPIRequest(url: GISParameters.URL!, parameters: GISParameters.shared.makeParameters(search: "Skogsmyragatan")) { shelters in
+		client.makeAPIRequest(url: GISParameters.URL!, parameters: GISParameters.shared.makeParameters(search: "Stockholm")) { shelters in
 			
 			guard shelters != nil else {
 				return
 			}
 			
-			for shelter in shelters! {
-				
-				print(shelter.attributes!.address!)
+			let coords = ResponseHandler.shared.coordinates(for: shelters!)
+			
+			for cord in coords! {
+				let annotation = MKPointAnnotation()
+				annotation.coordinate = cord
+				self.map.addAnnotation(annotation)
 			}
 			
 		}
-		
-//		print(MKMapPointForCoordinate(CLLocationCoordinate2DMake(0.0, 0.0)))
-		let mpX = 134217728.0
-		let mpY = 134217728.0
-		
-		let annotation = MKPointAnnotation()
-		annotation.coordinate = MKCoordinateForMapPoint(MKMapPointMake(mpX + 6611386, mpY + 619270 + 500000))
-		print("First annotation: \(annotation.coordinate)")
-		map.addAnnotation(annotation)
-		
-		let anothotation = MKPointAnnotation()
-		annotation.coordinate = MKCoordinateForMapPoint(MKMapPointMake(134217728.0,134217728.0))
-		print("Second annotation: \(anothotation.coordinate)")
-		map.addAnnotation(anothotation)
-		
-		
 	}
 }
