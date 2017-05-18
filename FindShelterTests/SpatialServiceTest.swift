@@ -49,11 +49,14 @@ class SpatialServiceTest: XCTestCase {
 	
 	func testUTMToLatLon() {
 		
-		let coordinates: CLLocationCoordinate2D = service.convertUTMToLatLon(907351.981, 7349217.668)
+		var coordinates: CLLocationCoordinate2D!
+		measure {
+			coordinates = self.service.convertUTMToLatLon(6541771.139,614893.671)
+		}
 		
-		XCTAssertEqualWithAccuracy(coordinates.latitude, 66.0, accuracy: 0.000001)
-		print("Latitude accuracy is \(abs( coordinates.latitude - 66.0)) degrees")
-		XCTAssertEqualWithAccuracy(coordinates.longitude, 24.0, accuracy: 0.000001)
-		print("Longitude accuracy is \(abs( coordinates.longitude - 24.0)) degrees")
+		XCTAssertEqualWithAccuracy(coordinates.latitude, 59.0, accuracy: 0.1)
+		print("Latitude accuracy is \(abs( coordinates.latitude - 59.0)) degrees")
+		XCTAssertEqualWithAccuracy(coordinates.longitude, 17.0, accuracy: 0.01)
+		print("Longitude accuracy is \(abs( coordinates.longitude - 17.0)) degrees")
 	}
 }
