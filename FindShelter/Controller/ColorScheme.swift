@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 
+
+/// Provides the colors used in the application.
 struct ColorScheme {
 	
 	static let Title = UIColor(red: 27/255, green: 108/255, blue: 255/255, alpha: 1.0)

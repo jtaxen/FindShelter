@@ -130,6 +130,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		A03550671ECD89DE007C5C29 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A0B6439C1ECB20E10037B438 /* ShelterAnnotationView.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		A0763EC91EC5FD0F0074E77C /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -216,7 +224,7 @@
 		A0DB16B11EC31470005660F9 /* FindShelter */ = {
 			isa = PBXGroup;
 			children = (
-				A0B6439C1ECB20E10037B438 /* ShelterAnnotationView.swift */,
+				A03550671ECD89DE007C5C29 /* View */,
 				A0763EC91EC5FD0F0074E77C /* Protocols */,
 				A078CB6F1EC9CFF80050F37C /* Controller */,
 				A0DB16D41EC31941005660F9 /* Model */,
@@ -240,15 +248,15 @@
 		A0DB16D41EC31941005660F9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A0D4311E1ECC628E00E024D6 /* SpatialService.swift */,
 				A0763EC11EC5BF220074E77C /* ArcGISClient.swift */,
-				A0763EC71EC5FCC70074E77C /* ResponseHandler.swift */,
-				A0B6439E1ECB3D790037B438 /* ResultsMapper.swift */,
+				A078CB5C1EC9C3CF0050F37C /* DataModel */,
 				A0763EC51EC5F3070074E77C /* Errors.swift */,
 				A0763EB91EC5B7340074E77C /* GISParameters.swift */,
 				A0763EBA1EC5B7340074E77C /* GISParametersConstants.swift */,
 				A0B94B581ECAEE1D00F68F8B /* LocationDelegate.swift */,
-				A078CB5C1EC9C3CF0050F37C /* DataModel */,
+				A0763EC71EC5FCC70074E77C /* ResponseHandler.swift */,
+				A0B6439E1ECB3D790037B438 /* ResultsMapper.swift */,
+				A0D4311E1ECC628E00E024D6 /* SpatialService.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";

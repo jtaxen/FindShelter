@@ -11,8 +11,23 @@ import Alamofire
 import SwiftyJSON
 import AlamofireObjectMapper
 
-class ArcGISClient {
+/// ArcGISClient contains the methods for making requests
+/// to the server where the information about the shelters
+/// is stored.
+public class ArcGISClient {
 	
+	/**
+	The main function which, given parameters that conform to the ArcGIS 
+	searchText method, sends a request to the server. The response is
+	assumed to be parsable as an ArcGISResult object. Documentation
+	on how to make requests and which parameters to use can be found here:
+	[msb/InspireMSB_Skyddsrum (MapServer)](https://gis-services.metria.se/arcgis/rest/services/msb/InspireMSB_Skyddsrum/MapServer)
+	
+	- Parameter url: The URL to the server.
+	- Parameter parameters: Dictionary containing query key strings and respective value.
+	- Parameter completionHandler: Handles the results.
+	- Parameter json: The request results in a list of ShelterObject objects.
+	*/
 	func makeAPIRequest(url: URL, parameters: [String: AnyObject], completionHandler: @escaping (_ json: [ShelterObject]?) -> Void) {
 		print("Sending request")
 		request(url.absoluteString, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseObject { ( response: DataResponse<ArcGISResults>) in
