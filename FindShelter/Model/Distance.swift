@@ -19,6 +19,10 @@ class Distance {
 	}
 	
 	func findNearest(toElement element: CLLocationCoordinate2D) -> CLLocationCoordinate2D {
+		guard tree.elements.count > 0 else {
+			fatalError("Ond bråd död!")
+		}
+		
 		return tree.nearest(toElement: element)!
 	}
 	

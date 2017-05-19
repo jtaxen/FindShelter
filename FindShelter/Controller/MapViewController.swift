@@ -40,6 +40,7 @@ class MapViewController: UIViewController {
 			}
 			
 			self.coordinateList = coordinates
+			self.distanceTool.appendToTree(elements: coordinates)
 			
 			for cord in self.coordinateList {
 				let annotation = MKPointAnnotation()

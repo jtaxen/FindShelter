@@ -16,11 +16,17 @@ extension MapViewController: MKMapViewDelegate {
 	}
 	
 	func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+		mapView.centerCoordinate = userLocation.coordinate
 		if startUpdating {
 			let closestPoint = distanceTool.findNearest(toElement: userLocation.coordinate)
 			let endpoints = [userLocation.coordinate, closestPoint]
 			let geodesicPolyline = MKGeodesicPolyline(coordinates: UnsafeMutablePointer(mutating: endpoints), count: 2)
-			self.map.add(geodesicPolyline)
+			
+			if mapView.overlays.count > 0 {
+				mapView.remove(mapView.overlays.last!)
+			}
+			
+			mapView.add(geodesicPolyline)
 		}
 	}
 	
@@ -38,13 +44,14 @@ extension MapViewController: MKMapViewDelegate {
 	}
 	
 	func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-		guard let polyline = overlay as? MKPolyline else {
+		guard let polyline = overlay as? MKGeodesicPolyline else {
 			return MKOverlayRenderer()
 		}
 		
 		let renderer = MKPolylineRenderer(polyline: polyline)
 		renderer.lineWidth = 2.0
 		renderer.strokeColor = UIColor.blue
+		renderer.alpha = 0.5
 		return renderer
 	}
 	

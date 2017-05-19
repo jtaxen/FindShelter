@@ -13,5 +13,9 @@ import CoreLocation
 internal extension MapViewController {
 	
 	func setUpMap() {
+		
+		map.userTrackingMode = .follow
+		map.centerCoordinate = map.userLocation.coordinate
+		
 	}
 }
