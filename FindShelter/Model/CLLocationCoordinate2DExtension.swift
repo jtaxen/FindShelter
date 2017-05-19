@@ -10,13 +10,19 @@ import Foundation
 import KDTree
 import MapKit
 
-extension CLLocationCoordinate2D: KDTreePoint {
+extension CLLocationCoordinate2D: KDTreePoint, Hashable {
 	
 	// To conform to Equatable protocol
 	public static func ==(lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> Bool {
 		return lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude
 	}
 	
+	// To conform to Hashable protocol
+	public var hashValue: Int {
+		return self.latitude.hashValue ^ self.longitude.hashValue
+	}
+	
+	// To conform to KFTreePoint protocol
 	public static var dimensions: Int = 2
 	
 	public func kdDimension(_ dimension: Int) -> Double {

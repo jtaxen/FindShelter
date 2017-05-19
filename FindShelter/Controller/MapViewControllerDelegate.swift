@@ -29,7 +29,14 @@ extension MapViewController: MKMapViewDelegate {
 	
 	func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
 		if let annotation = view.annotation as? ShelterPointAnnotation {
-			print(annotation.shelter.value ?? "Nope")
+			let storyboard = UIStoryboard(name: "Main", bundle: nil)
+			let controller = storyboard.instantiateViewController(withIdentifier: "shelterTable") as! ShelterInfoTableViewController
+			controller.shelter = annotation.shelter
+			present(controller, animated: true) {
+				mapView.deselectAnnotation(annotation, animated: false)
+			}
+			
+			
 		}
 	}
 	

@@ -15,7 +15,7 @@ class MapViewController: UIViewController {
 	@IBOutlet weak var map: MKMapView!
 	
 	var coordinateList: [CLLocationCoordinate2D] = []
-	var shelterList: [ShelterObject] = []
+	var shelterList: [CLLocationCoordinate2D: ShelterObject] = [:]
 	var distanceTool: Distance!
 	var startUpdating: Bool = false
 	
@@ -30,24 +30,23 @@ class MapViewController: UIViewController {
 		
 		let client = ArcGISClient()
 		
-		client.makeAPIRequest(url: GISParameters.URL!, parameters: GISParameters.shared.makeParameters(search: "Skogsmyragatan")) { shelters in
+		client.makeAPIRequest(url: GISParameters.URL!, parameters: GISParameters.shared.makeParameters(search: "Stockholm")) { shelters in
 			
 			guard shelters != nil else {
 				return
 			}
 			
-			self.shelterList = shelters!
-			
-			guard let coordinates = ResponseHandler.shared.coordinates(for: shelters!) else {
-				return
+			for shelter in shelters! {
+				if let coordinates = ResponseHandler.shared.coordinates(for: shelter) {
+					self.shelterList[coordinates] = shelter
+					self.coordinateList.append(coordinates)
+				}
 			}
+			self.distanceTool.appendToTree(elements: self.coordinateList)
 			
-			self.coordinateList = coordinates
-			self.distanceTool.appendToTree(elements: coordinates)
-			
-			for cord in self.coordinateList {
-				let annotation = MKPointAnnotation()
-				annotation.coordinate = cord
+			for (coord, shl) in self.shelterList {
+				let annotation = ShelterPointAnnotation(shelter: shl)
+				annotation.coordinate = coord
 				self.map.addAnnotation(annotation)
 			}
 			
