@@ -14,6 +14,10 @@ class MapViewController: UIViewController {
 	
 	@IBOutlet weak var map: MKMapView!
 	
+	var coordinateList: [CLLocationCoordinate2D] = []
+	var distanceTool: Distance!
+	var startUpdating: Bool = false
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -21,6 +25,7 @@ class MapViewController: UIViewController {
 		map.userTrackingMode = .follow
 		
 		setUpMap()
+		distanceTool = Distance(coordinateList)
 		
 		let client = ArcGISClient()
 		
@@ -30,13 +35,20 @@ class MapViewController: UIViewController {
 				return
 			}
 			
-			let coords = ResponseHandler.shared.coordinates(for: shelters!)
+			guard let coordinates = ResponseHandler.shared.coordinates(for: shelters!) else {
+				return
+			}
 			
-			for cord in coords! {
+			self.coordinateList = coordinates
+			
+			for cord in self.coordinateList {
 				let annotation = MKPointAnnotation()
 				annotation.coordinate = cord
 				self.map.addAnnotation(annotation)
 			}
+			
+			self.startUpdating = true
+			
 		}
 	}
 }
