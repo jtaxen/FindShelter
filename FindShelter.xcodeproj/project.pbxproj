@@ -40,6 +40,8 @@
 		A0DB16BD1EC31470005660F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0DB16BB1EC31470005660F9 /* LaunchScreen.storyboard */; };
 		A0DB16C81EC31470005660F9 /* FindShelterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DB16C71EC31470005660F9 /* FindShelterTests.swift */; };
 		A0DB16D31EC3193C005660F9 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DB16D21EC3193C005660F9 /* CoreDataStack.swift */; };
+		A0DF266E1ECECF8F004939CC /* SpatialService.c in Sources */ = {isa = PBXBuildFile; fileRef = A0DF266C1ECECF8F004939CC /* SpatialService.c */; };
+		A0DF26701ECEE111004939CC /* CLLocationCoordinate2DExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DF266F1ECEE111004939CC /* CLLocationCoordinate2DExtension.swift */; };
 		B10F1C67541BAC3E096368D9 /* Pods_FindShelter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FF3B43206AE55F947AF1A /* Pods_FindShelter.framework */; };
 /* End PBXBuildFile section */
 
@@ -93,6 +95,10 @@
 		A0DB16C71EC31470005660F9 /* FindShelterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindShelterTests.swift; sourceTree = "<group>"; };
 		A0DB16C91EC31470005660F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0DB16D21EC3193C005660F9 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = Model/CoreDataStack.swift; sourceTree = "<group>"; };
+		A0DF266B1ECECF8F004939CC /* FindShelter-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FindShelter-Bridging-Header.h"; sourceTree = "<group>"; };
+		A0DF266C1ECECF8F004939CC /* SpatialService.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = SpatialService.c; path = Model/SpatialService.c; sourceTree = "<group>"; };
+		A0DF266D1ECECF8F004939CC /* SpatialService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpatialService.h; path = Model/SpatialService.h; sourceTree = "<group>"; };
+		A0DF266F1ECEE111004939CC /* CLLocationCoordinate2DExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CLLocationCoordinate2DExtension.swift; path = Model/CLLocationCoordinate2DExtension.swift; sourceTree = "<group>"; };
 		E25FF3B43206AE55F947AF1A /* Pods_FindShelter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FindShelter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7CB64E2B69864A25F669456 /* Pods_FindShelterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FindShelterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -253,6 +259,8 @@
 		A0DB16D41EC31941005660F9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A0DF266C1ECECF8F004939CC /* SpatialService.c */,
+				A0DF266D1ECECF8F004939CC /* SpatialService.h */,
 				A0763EC11EC5BF220074E77C /* ArcGISClient.swift */,
 				A078CB5C1EC9C3CF0050F37C /* DataModel */,
 				A0763EC51EC5F3070074E77C /* Errors.swift */,
@@ -261,8 +269,10 @@
 				A0B94B581ECAEE1D00F68F8B /* LocationDelegate.swift */,
 				A0763EC71EC5FCC70074E77C /* ResponseHandler.swift */,
 				A03550681ECDF0CE007C5C29 /* Distance.swift */,
+				A0DF266F1ECEE111004939CC /* CLLocationCoordinate2DExtension.swift */,
 				A0B6439E1ECB3D790037B438 /* ResultsMapper.swift */,
 				A0D4311E1ECC628E00E024D6 /* SpatialService.swift */,
+				A0DF266B1ECECF8F004939CC /* FindShelter-Bridging-Header.h */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -321,6 +331,7 @@
 					A0DB16AE1EC31470005660F9 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = VNBXFFL597;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 					A0DB16C21EC31470005660F9 = {
@@ -436,10 +447,12 @@
 				A0763EC41EC5D14B0074E77C /* Parameters.swift in Sources */,
 				A0763EC61EC5F3070074E77C /* Errors.swift in Sources */,
 				A0D4311D1ECC5F5D00E024D6 /* SpatialServiceProtocol.swift in Sources */,
+				A0DF266E1ECECF8F004939CC /* SpatialService.c in Sources */,
 				A03550691ECDF0CE007C5C29 /* Distance.swift in Sources */,
 				A0B94B5F1ECAF7F700F68F8B /* MapViewControllerDelegate.swift in Sources */,
 				A078CB741EC9E2F30050F37C /* ChooseLanguageController.swift in Sources */,
 				A0D4311B1ECC331D00E024D6 /* ResponseHandlerProtocol.swift in Sources */,
+				A0DF26701ECEE111004939CC /* CLLocationCoordinate2DExtension.swift in Sources */,
 				A0763EBC1EC5B7340074E77C /* GISParametersConstants.swift in Sources */,
 				A0B94B591ECAEE1D00F68F8B /* LocationDelegate.swift in Sources */,
 				A078CB721EC9DF140050F37C /* ColorScheme.swift in Sources */,
@@ -593,11 +606,14 @@
 			baseConfigurationReference = 7B0A42C8F41D8D330F2EDAEF /* Pods-FindShelter.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = VNBXFFL597;
 				INFOPLIST_FILE = FindShelter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jtaxen.FindShelter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FindShelter/FindShelter-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -607,11 +623,13 @@
 			baseConfigurationReference = 5F8EE0E802DDEE6D284D25B9 /* Pods-FindShelter.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = VNBXFFL597;
 				INFOPLIST_FILE = FindShelter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jtaxen.FindShelter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FindShelter/FindShelter-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

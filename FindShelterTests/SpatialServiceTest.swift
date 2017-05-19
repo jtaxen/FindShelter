@@ -54,9 +54,40 @@ class SpatialServiceTest: XCTestCase {
 			coordinates = self.service.convertUTMToLatLon(north: 6541771.139, east: 614893.671)
 		}
 		
-		XCTAssertEqualWithAccuracy(coordinates.latitude, 59.0, accuracy: 0.1)
+		XCTAssertEqualWithAccuracy(coordinates.latitude, 59.0, accuracy: 0.00001)
 		print("Latitude accuracy is \(abs( coordinates.latitude - 59.0)) degrees")
-		XCTAssertEqualWithAccuracy(coordinates.longitude, 17.0, accuracy: 0.01)
+		XCTAssertEqualWithAccuracy(coordinates.longitude, 17.0, accuracy: 0.00001)
 		print("Longitude accuracy is \(abs( coordinates.longitude - 17.0)) degrees")
+	}
+	
+	func testNearestElement() {
+		
+		let stockholm = CLLocationCoordinate2D(latitude: 59.329323, longitude: 18.068581)
+		let tallinn   = CLLocationCoordinate2D(latitude: 59.436961, longitude: 24.753575)
+		let helsinki  = CLLocationCoordinate2D(latitude: 60.169856, longitude: 24.938379)
+		
+		let elements = [
+			CLLocationCoordinate2D(latitude: 52.520007, longitude: 13.404954), // Berlin
+			CLLocationCoordinate2D(latitude: 55.676097, longitude: 12.568337), // Copenhagen
+			CLLocationCoordinate2D(latitude: 60.169856, longitude: 24.938379), // Helsinki
+			CLLocationCoordinate2D(latitude: 53.904540, longitude: 27.561524), // Minsk
+			CLLocationCoordinate2D(latitude: 59.913869, longitude: 10.752245), // Oslo
+			CLLocationCoordinate2D(latitude: 50.075538, longitude: 14.437800), // Prague
+			CLLocationCoordinate2D(latitude: 56.949649, longitude: 24.105186), // Riga
+			CLLocationCoordinate2D(latitude: 59.436961, longitude: 24.753575), // Tallinn
+			CLLocationCoordinate2D(latitude: 54.687156, longitude: 25.279651), // Vilnius
+			CLLocationCoordinate2D(latitude: 52.229676, longitude: 21.012229)  // Warsaw
+		]
+
+		let distance = Distance(elements)
+		
+		let closest = distance.findNearest(toElement: stockholm)
+		
+		XCTAssertEqual(closest.latitude, tallinn.latitude)
+		XCTAssertEqual(closest.longitude, tallinn.longitude)
+		
+		let twoClosest = distance.findNearest(2, toElement: stockholm)
+		XCTAssertEqual(twoClosest[0].latitude, tallinn.latitude)
+		XCTAssertEqual(twoClosest[1].latitude, helsinki.latitude)
 	}
 }

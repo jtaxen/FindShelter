@@ -6,6 +6,7 @@
 //  Copyright © 2017 Jacob Taxén. All rights reserved.
 //
 
+import Foundation
 import UIKit
 import MapKit
 
@@ -22,6 +23,8 @@ class MapViewController: UIViewController {
 		setUpMap()
 		
 		let client = ArcGISClient()
+		
+		
 		
 		client.makeAPIRequest(url: GISParameters.URL!, parameters: GISParameters.shared.makeParameters(search: "Malmö")) { shelters in
 			
