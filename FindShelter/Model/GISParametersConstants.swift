@@ -7,9 +7,10 @@
 //
 
 import Foundation
-
+/// 
 extension GISParameters {
 	
+	/// Constants for creating an URL to the server.
 	public struct Constants {
 		
 		static let Scheme = "https"
@@ -17,6 +18,7 @@ extension GISParameters {
 		static let Path   = "/arcgis/rest/services/msb/InspireMSB_Skyddsrum/MapServer/find"
 	}
 	
+	/// Returns an URL created from GISParameters.Constants
 	static var URL: URL? {
 		get {
 			var urlC = URLComponents()
@@ -32,6 +34,7 @@ extension GISParameters {
 		}
 	}
 	
+	/// Keys for making search requests.
 	public struct ParameterKeys {
 		
 		static let SearchText       = "searchText"
@@ -42,6 +45,7 @@ extension GISParameters {
 		static let SpatialReference = "spatialReference"
 	}
 	
+	/// Static values for the search requests.
 	public struct ParameterValues {
 		
 		static let Contains         = true

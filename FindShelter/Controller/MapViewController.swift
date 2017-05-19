@@ -6,6 +6,7 @@
 //  Copyright © 2017 Jacob Taxén. All rights reserved.
 //
 
+import Foundation
 import UIKit
 import MapKit
 
@@ -13,29 +14,43 @@ class MapViewController: UIViewController {
 	
 	@IBOutlet weak var map: MKMapView!
 	
-    override func viewDidLoad() {
-        super.viewDidLoad()
+	var coordinateList: [CLLocationCoordinate2D] = []
+	var shelterList: [CLLocationCoordinate2D: ShelterObject] = [:]
+	var distanceTool: Distance!
+	var startUpdating: Bool = false
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
 		
 		map.delegate = self
-        map.userTrackingMode = .follow
+		map.userTrackingMode = .follow
+		
+		setUpMap()
+		distanceTool = Distance(coordinateList)
 		
 		let client = ArcGISClient()
 		
-		client.makeAPIRequest(url: GISParameters.URL!, parameters: GISParameters.shared.makeParameters(search: "Skogsmyragatan")) { shelters in
+		client.makeAPIRequest(url: GISParameters.URL!, parameters: GISParameters.shared.makeParameters(search: "Stockholm")) { shelters in
 			
 			guard shelters != nil else {
 				return
 			}
 			
 			for shelter in shelters! {
-				
-				print(shelter.attributes!.address!)
+				if let coordinates = ResponseHandler.shared.coordinates(for: shelter) {
+					self.shelterList[coordinates] = shelter
+					self.coordinateList.append(coordinates)
+				}
+			}
+			self.distanceTool.appendToTree(elements: self.coordinateList)
+			
+			for (coord, shl) in self.shelterList {
+				let annotation = ShelterPointAnnotation(shelter: shl)
+				annotation.coordinate = coord
+				self.map.addAnnotation(annotation)
 			}
 			
+			self.startUpdating = true
 		}
 	}
-	
-	
-	
-	
 }

@@ -11,6 +11,7 @@ import UIKit
 
 extension ChooseLanguageController: UIPickerViewDelegate, UIPickerViewDataSource {
 	
+	/// Number of components should always be one.
 	func numberOfComponents(in pickerView: UIPickerView) -> Int {
 		return 1
 	}
