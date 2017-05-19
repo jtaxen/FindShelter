@@ -15,6 +15,7 @@ class MapViewController: UIViewController {
 	@IBOutlet weak var map: MKMapView!
 	
 	var coordinateList: [CLLocationCoordinate2D] = []
+	var shelterList: [ShelterObject] = []
 	var distanceTool: Distance!
 	var startUpdating: Bool = false
 	
@@ -29,11 +30,13 @@ class MapViewController: UIViewController {
 		
 		let client = ArcGISClient()
 		
-		client.makeAPIRequest(url: GISParameters.URL!, parameters: GISParameters.shared.makeParameters(search: "Stockholm")) { shelters in
+		client.makeAPIRequest(url: GISParameters.URL!, parameters: GISParameters.shared.makeParameters(search: "Skogsmyragatan")) { shelters in
 			
 			guard shelters != nil else {
 				return
 			}
+			
+			self.shelterList = shelters!
 			
 			guard let coordinates = ResponseHandler.shared.coordinates(for: shelters!) else {
 				return
@@ -49,7 +52,6 @@ class MapViewController: UIViewController {
 			}
 			
 			self.startUpdating = true
-			
 		}
 	}
 }

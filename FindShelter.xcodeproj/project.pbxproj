@@ -42,6 +42,7 @@
 		A0DB16D31EC3193C005660F9 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DB16D21EC3193C005660F9 /* CoreDataStack.swift */; };
 		A0DF26701ECEE111004939CC /* CLLocationCoordinate2DExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DF266F1ECEE111004939CC /* CLLocationCoordinate2DExtension.swift */; };
 		A0DF26721ECF1332004939CC /* LocationTest.gpx in Resources */ = {isa = PBXBuildFile; fileRef = A0DF26711ECF1332004939CC /* LocationTest.gpx */; };
+		A0DF26771ECF2998004939CC /* ShelterPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DF26761ECF2998004939CC /* ShelterPointAnnotation.swift */; };
 		B10F1C67541BAC3E096368D9 /* Pods_FindShelter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FF3B43206AE55F947AF1A /* Pods_FindShelter.framework */; };
 /* End PBXBuildFile section */
 
@@ -97,6 +98,7 @@
 		A0DB16D21EC3193C005660F9 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = Model/CoreDataStack.swift; sourceTree = "<group>"; };
 		A0DF266F1ECEE111004939CC /* CLLocationCoordinate2DExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CLLocationCoordinate2DExtension.swift; path = Model/CLLocationCoordinate2DExtension.swift; sourceTree = "<group>"; };
 		A0DF26711ECF1332004939CC /* LocationTest.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LocationTest.gpx; sourceTree = "<group>"; };
+		A0DF26761ECF2998004939CC /* ShelterPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShelterPointAnnotation.swift; path = Controller/ShelterPointAnnotation.swift; sourceTree = "<group>"; };
 		E25FF3B43206AE55F947AF1A /* Pods_FindShelter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FindShelter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7CB64E2B69864A25F669456 /* Pods_FindShelterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FindShelterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -205,6 +207,7 @@
 				A0B94B5C1ECAF7E400F68F8B /* MapViewControllerUI.swift */,
 				A0B94B5E1ECAF7F700F68F8B /* MapViewControllerDelegate.swift */,
 				A0B94B5A1ECAF5F000F68F8B /* MapViewController.swift */,
+				A0DF26761ECF2998004939CC /* ShelterPointAnnotation.swift */,
 			);
 			name = Map;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 				A078CB741EC9E2F30050F37C /* ChooseLanguageController.swift in Sources */,
 				A0D4311B1ECC331D00E024D6 /* ResponseHandlerProtocol.swift in Sources */,
 				A0DF26701ECEE111004939CC /* CLLocationCoordinate2DExtension.swift in Sources */,
+				A0DF26771ECF2998004939CC /* ShelterPointAnnotation.swift in Sources */,
 				A0763EBC1EC5B7340074E77C /* GISParametersConstants.swift in Sources */,
 				A0B94B591ECAEE1D00F68F8B /* LocationDelegate.swift in Sources */,
 				A078CB721EC9DF140050F37C /* ColorScheme.swift in Sources */,

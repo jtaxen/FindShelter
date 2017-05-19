@@ -20,10 +20,11 @@ class Distance {
 	
 	func findNearest(toElement element: CLLocationCoordinate2D) -> CLLocationCoordinate2D {
 		guard tree.elements.count > 0 else {
-			fatalError("Ond bråd död!")
+			return element
 		}
-		
-		return tree.nearest(toElement: element)!
+		let nearest = tree.nearest(toElement: element)!
+		print("Distance to nearest shelter is \(Int(sqrt(element.squaredDistance(to: nearest)))) m")
+		return nearest
 	}
 	
 	func findNearest(_ number: Int, toElement element: CLLocationCoordinate2D) -> [CLLocationCoordinate2D] {

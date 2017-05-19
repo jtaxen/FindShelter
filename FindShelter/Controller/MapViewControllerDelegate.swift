@@ -11,26 +11,26 @@ import MapKit
 
 extension MapViewController: MKMapViewDelegate {
 	
-	func mapViewWillStartLocatingUser(_ mapView: MKMapView) {
-		// YES
-	}
-	
 	func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
 		mapView.centerCoordinate = userLocation.coordinate
+		
 		if startUpdating {
 			let closestPoint = distanceTool.findNearest(toElement: userLocation.coordinate)
 			let endpoints = [userLocation.coordinate, closestPoint]
-			let geodesicPolyline = MKGeodesicPolyline(coordinates: UnsafeMutablePointer(mutating: endpoints), count: 2)
+			let coordinates = UnsafeMutablePointer(mutating: endpoints)
+			let geodesicPolyline = MKGeodesicPolyline(coordinates: coordinates, count: 2)
 			
 			if mapView.overlays.count > 0 {
 				mapView.remove(mapView.overlays.last!)
 			}
-			
 			mapView.add(geodesicPolyline)
 		}
 	}
 	
 	func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+		if let annotation = view.annotation as? ShelterPointAnnotation {
+			print(annotation.shelter.value ?? "Nope")
+		}
 	}
 	
 	func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -54,5 +54,4 @@ extension MapViewController: MKMapViewDelegate {
 		renderer.alpha = 0.5
 		return renderer
 	}
-	
 }
