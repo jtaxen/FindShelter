@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import CoreLocation
 
 class ShelterInfoTableViewController: UITableViewController {
 
 	var shelter: ShelterObject!
+	var thisPosition: CLLocationCoordinate2D!
 	
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -32,6 +32,7 @@ extension MapViewController: MKMapViewDelegate {
 			let storyboard = UIStoryboard(name: "Main", bundle: nil)
 			let controller = storyboard.instantiateViewController(withIdentifier: "shelterTable") as! ShelterInfoTableViewController
 			controller.shelter = annotation.shelter
+			controller.thisPosition = annotation.coordinate
 			present(controller, animated: true) {
 				mapView.deselectAnnotation(annotation, animated: false)
 			}

@@ -62,6 +62,23 @@ class Attributes: Mappable {
 	var coverId           : String?
 	var objectId          : Int?
 	
+	// New keywords
+	var inspireId             : String?
+	var beginLifespan         : String?
+	var endLifespan           : String?
+	var typeOfOccupants       : String?
+	var resourceFilter        : String?
+	var serviceLevel          : String?
+	var serviceType           : String?
+	var pointOfContact        : String?
+	var relatedPartner        : String?
+	var additional            : String?
+	var name                  : String?
+	var serviceLBAddress      : String?
+	var serviceLBCity         : String?
+	var serviceLBMunicipality : String?
+	var numberOfOccupants     : Int?
+	
 	required init?(map: Map) {}
 	
 	func mapping(map: Map) {
@@ -73,11 +90,31 @@ class Attributes: Mappable {
 		town              <- map["Ortsnamn"]
 		filterType        <- map["Filtertyp"]
 		capacity          <- map["AntalPlatser"]
-		estateDesignation <- map ["Fastighetsbeteckning"]
+		estateDesignation <- map["Fastighetsbeteckning"]
 		shelterNumber     <- map["Skyddsrumsnr"]
 		airCleanerId      <- map["LuftrenareID"]
 		coverId           <- map["coverID"]
 		objectId          <- map["OBJECTID"]
+		
+		// Apparently they've changed these keys while I was working on the app
+		// No wonder everything stopped working...
+		// These are the new keys
+		inspireId             <- map["InspireID"]
+		beginLifespan         <- map["beginLifes"]
+		endLifespan           <- map["endLifeSpa"]
+		typeOfOccupants       <- map["typeOfOccu"]
+		resourceFilter        <- map["resourceFi"]
+		serviceLevel          <- map["serviceLev"]
+		serviceType           <- map["serviceTyp"]
+		pointOfContact        <- map["pointOfCon"]
+		relatedPartner        <- map["relatedPar"]
+		additional            <- map["additional"]
+		name                  <- map["name"]
+		serviceLBAddress      <- map["serviceLBA"]
+		serviceLBCity         <- map["serviceLBC"]
+		serviceLBMunicipality <- map["serviceLBM"]
+		numberOfOccupants     <- map["numberOfOc"]
+		
 	}
 }
 
