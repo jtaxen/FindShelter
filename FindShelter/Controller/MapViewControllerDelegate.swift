@@ -24,6 +24,8 @@ extension MapViewController: MKMapViewDelegate {
 				mapView.remove(mapView.overlays.last!)
 			}
 			mapView.add(geodesicPolyline)
+			let dist = sqrt(userLocation.coordinate.squaredDistance(to: closestPoint))
+			infoLabel.text = NSLocalizedString("The distance to the nearest shelter is \(Int(dist)) m", comment: "Distance to the nearest shelter is () m")
 		}
 	}
 	

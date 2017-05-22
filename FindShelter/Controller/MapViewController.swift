@@ -13,6 +13,7 @@ import MapKit
 class MapViewController: UIViewController {
 	
 	@IBOutlet weak var map: MKMapView!
+	@IBOutlet weak var infoLabel: UILabel!
 	
 	var coordinateList: [CLLocationCoordinate2D] = []
 	var shelterList: [CLLocationCoordinate2D: ShelterObject] = [:]
@@ -26,6 +27,7 @@ class MapViewController: UIViewController {
 		map.userTrackingMode = .follow
 		
 		setUpMap()
+		setUpInfoBar()
 		distanceTool = Distance(coordinateList)
 		
 		let client = ArcGISClient()
