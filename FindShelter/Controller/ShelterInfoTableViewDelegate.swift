@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreLocation
 
 extension ShelterInfoTableViewController {
 	
@@ -30,11 +31,10 @@ extension ShelterInfoTableViewController {
 			cell.detailTextLabel?.text = "Stad"
 		case 4: cell.textLabel?.text = shelter.attributes?.municipality ?? "No municipality"
 			cell.detailTextLabel?.text = "Kommun"
-		case 5: cell.textLabel?.text = String(describing: shelter.attributes?.numberOfOccupants)
+		case 5: cell.textLabel?.text = shelter.attributes?.numberOfOccupants ?? "none"
 			cell.detailTextLabel?.text = "Kapacitet"
 		case 6:
-			let controller = presentingViewController as! MapViewController
-			let squaredDistance = controller.map.userLocation.coordinate.squaredDistance(to: thisPosition)
+			let squaredDistance = locationManager.location!.coordinate.squaredDistance(to: thisPosition)
 			cell.textLabel?.text = "\(Int(sqrt(squaredDistance))) m"
 			cell.detailTextLabel?.text = "Avstånd"
 			
@@ -44,4 +44,15 @@ extension ShelterInfoTableViewController {
 		return cell
 	}
 	
+}
+
+extension ShelterInfoTableViewController: CLLocationManagerDelegate {
+	
+	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+		let coordinate = locations.last?.coordinate
+		let cell = tableView.cellForRow(at: IndexPath(row: 6, section: 0))
+		let squaredDistance = coordinate!.squaredDistance(to: thisPosition)
+		cell?.textLabel?.text = "\(Int(sqrt(squaredDistance)))"
+		
+	}
 }

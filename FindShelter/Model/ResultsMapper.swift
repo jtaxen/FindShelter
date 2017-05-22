@@ -77,7 +77,7 @@ class Attributes: Mappable {
 	var serviceLBAddress      : String?
 	var serviceLBCity         : String?
 	var serviceLBMunicipality : String?
-	var numberOfOccupants     : Int?
+	var numberOfOccupants     : String?
 	
 	required init?(map: Map) {}
 	
@@ -89,7 +89,7 @@ class Attributes: Mappable {
 		municipality      <- map["Kommunnamn"]
 		town              <- map["Ortsnamn"]
 		filterType        <- map["Filtertyp"]
-		capacity          <- map["AntalPlatser"]
+		numberOfOccupants <- map["AntalPlatser"]
 		estateDesignation <- map["Fastighetsbeteckning"]
 		shelterNumber     <- map["Skyddsrumsnr"]
 		airCleanerId      <- map["LuftrenareID"]

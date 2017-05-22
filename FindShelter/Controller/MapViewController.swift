@@ -33,6 +33,9 @@ class MapViewController: UIViewController {
 		
 		setUpMap()
 		setUpInfoBar()
+		setUpBackButton()
+		print(navigationController == nil)
+		
 		distanceTool = Distance(coordinateList)
 		
 		let client = ArcGISClient()
@@ -60,6 +63,7 @@ class MapViewController: UIViewController {
 				annotationArray.append(annotation)
 			}
 			self.clusterManager.addAnnotations(annotationArray)
+			self.startUpdating = true
 			
 		}
 	}

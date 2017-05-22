@@ -24,4 +24,16 @@ internal extension MapViewController {
 		infoLabel.text = NSLocalizedString("Waiting for position...", comment: "Waiting for position")
 		infoLabel.font = UIFont(name: "Futura", size: 17)
 	}
+	
+	func setUpBackButton() {
+		
+		let backButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(popView(_:)))
+		navigationItem.backBarButtonItem = backButton
+		
+	}
+	
+	@objc func popView(_ sender: UIBarButtonItem) {
+		
+		popView(sender)
+	}
 }

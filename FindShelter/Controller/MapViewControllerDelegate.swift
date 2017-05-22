@@ -44,9 +44,8 @@ extension MapViewController: MKMapViewDelegate {
 			let controller = storyboard.instantiateViewController(withIdentifier: "shelterTable") as! ShelterInfoTableViewController
 			controller.shelter = annotation.shelter
 			controller.thisPosition = annotation.coordinate
-			present(controller, animated: true) {
-				mapView.deselectAnnotation(annotation, animated: false)
-			}
+			navigationController?.pushViewController(controller, animated: true)
+			mapView.deselectAnnotation(view.annotation, animated: false)
 		}
 	}
 	
@@ -109,5 +108,12 @@ extension MapViewController: FBClusteringManagerDelegate {
 	
 	func cellSizeFactorForCoordinator(_ coordinator: FBClusteringManager) -> CGFloat {
 		return 1.0
+	}
+}
+
+extension MapViewController: UINavigationBarDelegate {
+	
+	func navigationBar(_ navigationBar: UINavigationBar, shouldPush item: UINavigationItem) -> Bool {
+		return true
 	}
 }
