@@ -23,7 +23,7 @@ class MapViewController: UIViewController {
 	var following: Bool = false
 	
 	let clusterManager = FBClusteringManager()
-	let configuration = FBAnnotationClusterViewOptions(smallClusterImage: "clusterSmall", mediumClusterImage: "clusterMedium", largeClusterImage: "clusterLarge")
+	let configuration = FBAnnotationClusterViewOptions(smallClusterImage: "smallCluster", mediumClusterImage: "mediumCluster", largeClusterImage: "largeCluster")
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
