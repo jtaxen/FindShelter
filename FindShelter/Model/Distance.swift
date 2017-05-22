@@ -29,6 +29,7 @@ class Distance {
 		}
 		 
 		let nearest = tree.nearest(toElement: element)!
+		/**
 		let output = "\(sqrt(element.squaredDistance(to: nearest))) \nq:"
 		
 		do {
@@ -39,6 +40,7 @@ class Distance {
 		} catch {
 			debugPrint(error)
 		}
+		*/
 		return nearest
 	}
 	func findNearest(_ number: Int, toElement element: CLLocationCoordinate2D) -> [CLLocationCoordinate2D] {

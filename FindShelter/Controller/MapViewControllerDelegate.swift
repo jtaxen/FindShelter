@@ -8,6 +8,7 @@
 
 import Foundation
 import MapKit
+import FBAnnotationClusteringSwift
 
 extension MapViewController: MKMapViewDelegate {
 	
@@ -49,6 +50,19 @@ extension MapViewController: MKMapViewDelegate {
 			return nil
 		}
 		
+		var reuseId: String
+		
+		if annotation.isMember(of: FBAnnotationCluster.self) {
+			reuseId = "Cluster"
+			var clusterView = map.dequeueReusableAnnotationView(withIdentifier: reuseId)
+			if clusterView == nil {
+				clusterView = FBAnnotationClusterView(annotation: annotation, reuseIdentifier: reuseId, options: FBAnnotationClusterViewOptions(smallClusterImage: "clusterSmall", mediumClusterImage: "clusterMedium", largeClusterImage: "clusterLarge"))
+				
+			} else {
+				clusterView?.annotation = annotation
+			}
+			return clusterView
+		}
 		let shelter = ShelterAnnotationView(annotation: annotation, reuseIdentifier: nil)
 		return shelter
 	}
@@ -63,5 +77,18 @@ extension MapViewController: MKMapViewDelegate {
 		renderer.strokeColor = UIColor.blue
 		renderer.alpha = 0.5
 		return renderer
+	}
+	
+	func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+		DispatchQueue.global(qos: .userInitiated).async {
+			let mapBoundsWidth = Double(self.map.bounds.size.width)
+			let mapRectWidth = self.map.visibleMapRect.size.width
+			let scale = mapBoundsWidth / mapRectWidth
+			
+			let annotationArray = self.clusterHandle.clusteredAnnotationsWithinMapRect(self.map.visibleMapRect, withZoomScale: scale)
+			DispatchQueue.main.async {
+				self.clusterHandle.displayAnnotations(annotationArray, onMapView: self.map)
+			}
+		}
 	}
 }

@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import MapKit
+import FBAnnotationClusteringSwift
 
 class MapViewController: UIViewController {
 	
@@ -19,6 +20,7 @@ class MapViewController: UIViewController {
 	var shelterList: [CLLocationCoordinate2D: ShelterObject] = [:]
 	var distanceTool: Distance!
 	var startUpdating: Bool = false
+	var clusterHandle: FBClusteringManager!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -31,6 +33,9 @@ class MapViewController: UIViewController {
 		distanceTool = Distance(coordinateList)
 		
 		let client = ArcGISClient()
+		
+		clusterHandle = FBClusteringManager()
+//		map.delegate?.mapView!(map, regionDidChangeAnimated: true)
 		
 		client.makeAPIRequest(url: GISParameters.URL!, parameters: GISParameters.shared.makeParameters(search: "Stockholm")) { shelters in
 			
@@ -51,7 +56,7 @@ class MapViewController: UIViewController {
 				annotation.coordinate = coord
 				self.map.addAnnotation(annotation)
 			}
-			
+			self.clusterHandle.addAnnotations(self.map.annotations)
 			self.startUpdating = true
 		}
 	}
