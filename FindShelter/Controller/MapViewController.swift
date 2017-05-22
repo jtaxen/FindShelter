@@ -20,7 +20,10 @@ class MapViewController: UIViewController {
 	var shelterList: [CLLocationCoordinate2D: ShelterObject] = [:]
 	var distanceTool: Distance!
 	var startUpdating: Bool = false
-	var clusterHandle: FBClusteringManager!
+	var following: Bool = false
+	
+	let clusterManager = FBClusteringManager()
+	let configuration = FBAnnotationClusterViewOptions(smallClusterImage: "clusterSmall", mediumClusterImage: "clusterMedium", largeClusterImage: "clusterLarge")
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -34,8 +37,7 @@ class MapViewController: UIViewController {
 		
 		let client = ArcGISClient()
 		
-		clusterHandle = FBClusteringManager()
-//		map.delegate?.mapView!(map, regionDidChangeAnimated: true)
+		clusterManager.delegate = self
 		
 		client.makeAPIRequest(url: GISParameters.URL!, parameters: GISParameters.shared.makeParameters(search: "Stockholm")) { shelters in
 			
@@ -51,13 +53,14 @@ class MapViewController: UIViewController {
 			}
 			self.distanceTool.appendToTree(elements: self.coordinateList)
 			
+			var annotationArray: [FBAnnotation] = []
 			for (coord, shl) in self.shelterList {
 				let annotation = ShelterPointAnnotation(shelter: shl)
 				annotation.coordinate = coord
-				self.map.addAnnotation(annotation)
+				annotationArray.append(annotation)
 			}
-			self.clusterHandle.addAnnotations(self.map.annotations)
-			self.startUpdating = true
+			self.clusterManager.addAnnotations(annotationArray)
+			
 		}
 	}
 }
