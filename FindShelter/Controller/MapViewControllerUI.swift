@@ -27,9 +27,17 @@ internal extension MapViewController {
 	
 	func setUpBackButton() {
 		
-		let backButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(popView(_:)))
+		let backString = NSLocalizedString("Back", comment: "Back")
+		let backButton = UIBarButtonItem(title: backString, style: .done, target: self, action: #selector(popView(_:)))
+		backButton.tintColor = ColorScheme.Title
+		let attributes = [NSFontAttributeName: UIFont(name: "Futura", size: 17) as Any,
+		                  NSForegroundColorAttributeName: ColorScheme.Title as Any]
+			
+		backButton.setTitleTextAttributes(attributes, for: .normal)
+		navigationItem.backBarButtonItem?.tintColor = ColorScheme.Title
 		navigationItem.backBarButtonItem = backButton
 		
+		navigationController?.navigationBar.titleTextAttributes = attributes
 	}
 	
 	@objc func popView(_ sender: UIBarButtonItem) {

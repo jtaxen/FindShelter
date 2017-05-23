@@ -15,6 +15,7 @@ struct ColorScheme {
 	
 	static let Title = UIColor(red: 5/255, green: 56/255, blue: 126/255, alpha: 1.0)
 	static let Background = UIColor(red: 253/255, green: 169/255, blue: 41/255, alpha: 1.0)
+	static let LightBackground = UIColor(red: 252/255, green: 239/255, blue: 239/255, alpha: 1.0)
 	
 }
 

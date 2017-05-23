@@ -10,6 +10,8 @@
 		2DE92B5B1ECE355900A43B25 /* DistanceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE92B5A1ECE355900A43B25 /* DistanceTest.swift */; };
 		A0172A961EC9944600A9235A /* ArcGISClientTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0172A951EC9944600A9235A /* ArcGISClientTest.swift */; };
 		A03550691ECDF0CE007C5C29 /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03550681ECDF0CE007C5C29 /* Distance.swift */; };
+		A038143F1ED42EA000956633 /* ShelterCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A038143E1ED42EA000956633 /* ShelterCellTableViewCell.swift */; };
+		A03814411ED430D700956633 /* ShelterInfoTableViewControllerUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03814401ED430D700956633 /* ShelterInfoTableViewControllerUI.swift */; };
 		A06DC64E1ECA010500BC4590 /* Language.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A06DC64D1ECA010500BC4590 /* Language.storyboard */; };
 		A0763EBB1EC5B7340074E77C /* GISParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0763EB91EC5B7340074E77C /* GISParameters.swift */; };
 		A0763EBC1EC5B7340074E77C /* GISParametersConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0763EBA1EC5B7340074E77C /* GISParametersConstants.swift */; };
@@ -64,6 +66,8 @@
 		7B0A42C8F41D8D330F2EDAEF /* Pods-FindShelter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindShelter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FindShelter/Pods-FindShelter.debug.xcconfig"; sourceTree = "<group>"; };
 		A0172A951EC9944600A9235A /* ArcGISClientTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArcGISClientTest.swift; sourceTree = "<group>"; };
 		A03550681ECDF0CE007C5C29 /* Distance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Distance.swift; path = Model/Distance.swift; sourceTree = "<group>"; };
+		A038143E1ED42EA000956633 /* ShelterCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShelterCellTableViewCell.swift; path = View/ShelterCellTableViewCell.swift; sourceTree = "<group>"; };
+		A03814401ED430D700956633 /* ShelterInfoTableViewControllerUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShelterInfoTableViewControllerUI.swift; path = Controller/ShelterInfoTableViewControllerUI.swift; sourceTree = "<group>"; };
 		A06DC64D1ECA010500BC4590 /* Language.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Language.storyboard; sourceTree = "<group>"; };
 		A0763EB91EC5B7340074E77C /* GISParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GISParameters.swift; path = Model/GISParameters.swift; sourceTree = "<group>"; };
 		A0763EBA1EC5B7340074E77C /* GISParametersConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GISParametersConstants.swift; path = Model/GISParametersConstants.swift; sourceTree = "<group>"; };
@@ -147,6 +151,7 @@
 		A03550671ECD89DE007C5C29 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A038143E1ED42EA000956633 /* ShelterCellTableViewCell.swift */,
 				A0B6439C1ECB20E10037B438 /* ShelterAnnotationView.swift */,
 			);
 			name = View;
@@ -286,6 +291,7 @@
 			children = (
 				A0DF26781ECF326F004939CC /* ShelterInfoTableViewController.swift */,
 				A0DF267B1ECF32DD004939CC /* ShelterInfoTableViewDelegate.swift */,
+				A03814401ED430D700956633 /* ShelterInfoTableViewControllerUI.swift */,
 			);
 			name = Tableview;
 			sourceTree = "<group>";
@@ -456,11 +462,13 @@
 				A078CB761EC9E4FE0050F37C /* LanguagePickerDelegate.swift in Sources */,
 				A0763EC81EC5FCC70074E77C /* ResponseHandler.swift in Sources */,
 				A0D4311F1ECC628E00E024D6 /* SpatialService.swift in Sources */,
+				A038143F1ED42EA000956633 /* ShelterCellTableViewCell.swift in Sources */,
 				A0B6439D1ECB20E10037B438 /* ShelterAnnotationView.swift in Sources */,
 				A078CB671EC9CBC60050F37C /* Shelter+CoreDataClass.swift in Sources */,
 				A0763EC41EC5D14B0074E77C /* Parameters.swift in Sources */,
 				A0763EC61EC5F3070074E77C /* Errors.swift in Sources */,
 				A0D4311D1ECC5F5D00E024D6 /* SpatialServiceProtocol.swift in Sources */,
+				A03814411ED430D700956633 /* ShelterInfoTableViewControllerUI.swift in Sources */,
 				A03550691ECDF0CE007C5C29 /* Distance.swift in Sources */,
 				A0B94B5F1ECAF7F700F68F8B /* MapViewControllerDelegate.swift in Sources */,
 				A078CB741EC9E2F30050F37C /* ChooseLanguageController.swift in Sources */,

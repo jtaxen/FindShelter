@@ -42,7 +42,7 @@ class MapViewController: UIViewController {
 		
 		clusterManager.delegate = self
 		
-		client.makeAPIRequest(url: GISParameters.URL!, parameters: GISParameters.shared.makeParameters(search: "Stockholm")) { shelters in
+		client.makeAPIRequest(url: GISParameters.URL!, parameters: GISParameters.shared.makeParameters(search: "Enköping")) { shelters in
 			
 			guard shelters != nil else {
 				return

@@ -97,7 +97,7 @@
                             </items>
                         </navigationBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="y6h-kZ-fCY" detailTextLabel="AAz-55-Cwg" style="IBUITableViewCellStyleSubtitle" id="1d3-WQ-i54">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="y6h-kZ-fCY" detailTextLabel="AAz-55-Cwg" style="IBUITableViewCellStyleSubtitle" id="1d3-WQ-i54" customClass="ShelterCellTableViewCell" customModule="FindShelter" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1d3-WQ-i54" id="suL-8Q-Y3g">

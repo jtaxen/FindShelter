@@ -10,18 +10,18 @@ import Foundation
 import UIKit
 import CoreLocation
 
-extension ShelterInfoTableViewController {
+internal extension ShelterInfoTableViewController {
 	
 	override func numberOfSections(in tableView: UITableView) -> Int {
 		return 1
 	}
 	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return 7
+		return 8
 	}
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+		let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ShelterCellTableViewCell
 		
 		switch indexPath.row {
 		case 0: cell.textLabel?.text = shelter.layerName ?? "No name"
@@ -42,6 +42,30 @@ extension ShelterInfoTableViewController {
 		}
 		
 		return cell
+	}
+	
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		
+		switch indexPath.row {
+		case 7: break // save to favorites
+		default: break // do nothing
+		}
+	}
+	
+	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		if indexPath.row <= 7 {
+			return 60
+		} else {
+			return 0
+		}
+	}
+	
+	override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+		if indexPath.row <= 7 {
+			return 60
+		} else {
+			return 0
+		}
 	}
 	
 }
