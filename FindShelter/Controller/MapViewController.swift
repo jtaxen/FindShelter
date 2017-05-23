@@ -42,7 +42,7 @@ class MapViewController: UIViewController {
 		
 		clusterManager.delegate = self
 		
-		client.makeAPIRequest(url: GISParameters.URL!, parameters: GISParameters.shared.makeParameters(search: "Enköping")) { shelters in
+		client.makeAPIRequest(url: GISParameters.URL!, parameters: GISParameters.shared.makeParameters(search: "Stockholm")) { shelters in
 			
 			guard shelters != nil else {
 				return
@@ -64,6 +64,10 @@ class MapViewController: UIViewController {
 			}
 			self.clusterManager.addAnnotations(annotationArray)
 			self.startUpdating = true
+			
+			DispatchQueue.main.async {
+				self.mapView(self.map, didUpdate: self.map.userLocation)
+			}
 			
 		}
 	}

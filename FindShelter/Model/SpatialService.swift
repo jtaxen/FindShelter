@@ -31,6 +31,7 @@ class SpatialService: SpatialServiceProtocol {
 	var n        : Double { get { return f / ( 2 - f ) } }
 	var B0       : Double { get { return b * ( 1 + n + 5 * (n**2) / 4 + 5 * (n**3) / 4 ) }}
 	var mp       : Double { get { return Double.pi * B0 / 2 } }
+	var A0       : Double { get { return 1 + e2 * ( 3/4 + e2 * ( 45/64 + e2 * ( 175/256 + e2 * ( 11025/16384 + e2 * ( 43659/65536 + e2 * 693693/1048576))))) } }
 	
 	let falseEasting: Double = 500000.0
 	let falseNorthing: Double = 0.0
@@ -109,7 +110,7 @@ extension SpatialService {
 		return (x, y, z)
 	}
 	
-	func convertUTMToLatLon(north x: Double, east y: Double) -> CLLocationCoordinate2D {
+	func deprecatedConvertUTMToLatLon(north x: Double, east y: Double) -> CLLocationCoordinate2D {
 		
 		let xi = ( x - falseNorthing ) / ( k0 * aHat )
 		let eta = ( y - falseEasting) / ( k0 * aHat )
@@ -135,10 +136,5 @@ extension SpatialService {
 		let latitude = phistar + sin(phistar) * cos(phistar) * ( Astar + Bstar * ((sin(phistar))**2) + Cstar * ((sin(phistar))**4) + Dstar * ((sin(phistar))**6))
 		
 		return CLLocationCoordinate2D(latitude: degree(latitude), longitude: degree(longitude))
-	}
-	
-	func convertUTMToLatLong(north x: Double, east y: Double) -> CLLocationCoordinate2D {
-		
-		return CLLocationCoordinate2D(latitude: 0, longitude: 0)
 	}
 }

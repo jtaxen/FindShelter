@@ -126,4 +126,10 @@ class SpatialServiceTest: XCTestCase {
 		XCTAssertEqual(twoClosest[0].latitude, tallinn.latitude)
 		XCTAssertEqual(twoClosest[1].latitude, helsinki.latitude)
 	}
+	
+	func testFootpointLatitude() {
+		
+		let phi = service.footpointLatitude(4720432.972188876, accuracy: 1e-2)
+		XCTAssertEqualWithAccuracy(phi, 0.7438815543289126, accuracy: 1e-2)
+	}
 }

@@ -12,6 +12,7 @@
 		A03550691ECDF0CE007C5C29 /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03550681ECDF0CE007C5C29 /* Distance.swift */; };
 		A038143F1ED42EA000956633 /* ShelterCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A038143E1ED42EA000956633 /* ShelterCellTableViewCell.swift */; };
 		A03814411ED430D700956633 /* ShelterInfoTableViewControllerUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03814401ED430D700956633 /* ShelterInfoTableViewControllerUI.swift */; };
+		A03814431ED46B4000956633 /* SpatialServiceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03814421ED46B4000956633 /* SpatialServiceExtension.swift */; };
 		A06DC64E1ECA010500BC4590 /* Language.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A06DC64D1ECA010500BC4590 /* Language.storyboard */; };
 		A0763EBB1EC5B7340074E77C /* GISParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0763EB91EC5B7340074E77C /* GISParameters.swift */; };
 		A0763EBC1EC5B7340074E77C /* GISParametersConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0763EBA1EC5B7340074E77C /* GISParametersConstants.swift */; };
@@ -68,6 +69,7 @@
 		A03550681ECDF0CE007C5C29 /* Distance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Distance.swift; path = Model/Distance.swift; sourceTree = "<group>"; };
 		A038143E1ED42EA000956633 /* ShelterCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShelterCellTableViewCell.swift; path = View/ShelterCellTableViewCell.swift; sourceTree = "<group>"; };
 		A03814401ED430D700956633 /* ShelterInfoTableViewControllerUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShelterInfoTableViewControllerUI.swift; path = Controller/ShelterInfoTableViewControllerUI.swift; sourceTree = "<group>"; };
+		A03814421ED46B4000956633 /* SpatialServiceExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpatialServiceExtension.swift; path = Model/SpatialServiceExtension.swift; sourceTree = "<group>"; };
 		A06DC64D1ECA010500BC4590 /* Language.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Language.storyboard; sourceTree = "<group>"; };
 		A0763EB91EC5B7340074E77C /* GISParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GISParameters.swift; path = Model/GISParameters.swift; sourceTree = "<group>"; };
 		A0763EBA1EC5B7340074E77C /* GISParametersConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GISParametersConstants.swift; path = Model/GISParametersConstants.swift; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 				A0DF266F1ECEE111004939CC /* CLLocationCoordinate2DExtension.swift */,
 				A0B6439E1ECB3D790037B438 /* ResultsMapper.swift */,
 				A0D4311E1ECC628E00E024D6 /* SpatialService.swift */,
+				A03814421ED46B4000956633 /* SpatialServiceExtension.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -471,6 +474,7 @@
 				A03814411ED430D700956633 /* ShelterInfoTableViewControllerUI.swift in Sources */,
 				A03550691ECDF0CE007C5C29 /* Distance.swift in Sources */,
 				A0B94B5F1ECAF7F700F68F8B /* MapViewControllerDelegate.swift in Sources */,
+				A03814431ED46B4000956633 /* SpatialServiceExtension.swift in Sources */,
 				A078CB741EC9E2F30050F37C /* ChooseLanguageController.swift in Sources */,
 				A0D4311B1ECC331D00E024D6 /* ResponseHandlerProtocol.swift in Sources */,
 				A0DF26701ECEE111004939CC /* CLLocationCoordinate2DExtension.swift in Sources */,
