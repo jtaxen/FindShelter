@@ -136,4 +136,9 @@ extension SpatialService {
 		
 		return CLLocationCoordinate2D(latitude: degree(latitude), longitude: degree(longitude))
 	}
+	
+	func convertUTMToLatLong(north x: Double, east y: Double) -> CLLocationCoordinate2D {
+		
+		return CLLocationCoordinate2D(latitude: 0, longitude: 0)
+	}
 }
