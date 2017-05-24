@@ -100,7 +100,7 @@ internal extension SpatialService {
 		let D = (35 * (n**3) * a / 48 ) * ( 1 + n * ( -1 + 11 * n / 16))
 		let E = (315 * (n**4) * a / 512) * (1 - n)
 		
-		return  k0 * ((A * phi - B * sin(2*phi) + C * sin(4*phi) - D * sin(6*phi) + E * sin(8*phi)))
+		return  (A * phi - B * sin(2*phi) + C * sin(4*phi) - D * sin(6*phi) + E * sin(8*phi))
 	}
 	
 	func footpointLatitude(_ y: Double, accuracy: Double = 1e-8) -> Double {
@@ -108,12 +108,12 @@ internal extension SpatialService {
 		let c   = b / ( a * a * A0 )
 		
 		var phi = c * y
-		var M   = meridionalArc(phi)
+		var M   = meridionalArc(phi) * k0
 		
 		while abs( M - y ) > accuracy {
 			
 			phi += c * ( y - M )
-			M = meridionalArc(phi)
+			M = meridionalArc(phi) * k0
 		}
 		
 		return phi

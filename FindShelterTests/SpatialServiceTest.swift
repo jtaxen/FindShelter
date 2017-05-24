@@ -98,7 +98,7 @@ class SpatialServiceTest: XCTestCase {
 	
 	func testLatLonToUTM() {
 		
-		let accuracy: Double = 1
+		let accuracy: Double = 30
 		
 		_ = service.convertLatLonToUTM(point: CLLocationCoordinate2D(latitude: 43.18111111, longitude: -80.38250000))
 		
