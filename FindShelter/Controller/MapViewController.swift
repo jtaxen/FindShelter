@@ -22,6 +22,8 @@ class MapViewController: UIViewController {
 	var startUpdating: Bool = false
 	var following: Bool = false
 	
+	let client = ArcGISClient()
+	
 	let clusterManager = FBClusteringManager()
 	let configuration = FBAnnotationClusterViewOptions(smallClusterImage: "smallCluster", mediumClusterImage: "mediumCluster", largeClusterImage: "largeCluster")
 	
@@ -38,11 +40,9 @@ class MapViewController: UIViewController {
 		
 		distanceTool = Distance(coordinateList)
 		
-		let client = ArcGISClient()
-		
 		clusterManager.delegate = self
 		
-		client.makeAPIRequest(url: GISParameters.URL!, parameters: GISParameters.shared.makeParameters(search: "Stockholm")) { shelters in
+		client.makeAPIRequest(url: GISParameters.URL(.find)!, parameters: GISParameters.shared.makeParameters(find: "Malmö")) { shelters in
 			
 			guard shelters != nil else {
 				return

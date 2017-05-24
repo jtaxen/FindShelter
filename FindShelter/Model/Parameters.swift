@@ -7,13 +7,14 @@
 //
 
 import Foundation
+import CoreLocation
 
 protocol Parameters {
 	
 	func makeParameters() -> [String: AnyObject]
 	
-	func makeParameters(search: String) -> [String: AnyObject]
+	func makeParameters(find searchText: String) -> [String: AnyObject]
 	
-	
+	func makeParameters(identify point: CLLocationCoordinate2D, inRadius radius: Int) -> [String: AnyObject]
 	
 }

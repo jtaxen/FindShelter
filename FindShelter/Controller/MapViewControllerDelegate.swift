@@ -101,6 +101,36 @@ extension MapViewController: MKMapViewDelegate {
 			}
 		}
 	}
+	
+	func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
+		
+		client.makeAPIRequest(url: GISParameters.URL(.identify)! , parameters: GISParameters.shared.makeParameters(identify: map.centerCoordinate)) { shelters in
+			
+			guard shelters != nil else {
+				return
+			}
+			
+			var newCoordinates: [CLLocationCoordinate2D] = []
+			
+			for shelter in shelters! {
+				if let coordinates = ResponseHandler.shared.coordinates(for: shelter) {
+					self.shelterList[coordinates] = shelter
+					newCoordinates.append(coordinates)
+				}
+			}
+			self.coordinateList.append(contentsOf: newCoordinates)
+			self.distanceTool.appendToTree(elements: newCoordinates)
+			
+			/*
+			var annotationArray: [FBAnnotation] = []
+			for (coord, shl) in self.shelterList {
+				let annotation = ShelterPointAnnotation(shelter: shl)
+				annotation.coordinate = coord
+				annotationArray.append(annotation)
+			}
+self.clusterManager.addAnnotations(annotationArray)*/
+		}
+	}
 }
 
 // MARK: - Clustering manager delegate
