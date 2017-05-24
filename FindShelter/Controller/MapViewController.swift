@@ -36,7 +36,6 @@ class MapViewController: UIViewController {
 		setUpMap()
 		setUpInfoBar()
 		setUpBackButton()
-		print(navigationController == nil)
 		
 		distanceTool = Distance(coordinateList)
 		

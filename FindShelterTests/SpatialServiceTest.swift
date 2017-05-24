@@ -98,15 +98,17 @@ class SpatialServiceTest: XCTestCase {
 	
 	func testLatLonToUTM() {
 		
-		let accuracy: Double = 1.0
+		let accuracy: Double = 1
+		
+		_ = service.convertLatLonToUTM(point: CLLocationCoordinate2D(latitude: 43.18111111, longitude: -80.38250000))
 		
 		measure {
 			for (key, value) in self.testPoints {
 				
 				let testResults = self.service.convertLatLonToUTM(point: key)
 				
-				XCTAssertEqualWithAccuracy(testResults.0, value.0, accuracy: accuracy, "\(abs(testResults.0 - value.0))")
-				XCTAssertEqualWithAccuracy(testResults.1, value.1, accuracy: accuracy, "\(abs(testResults.1 - value.1))")
+				XCTAssertEqualWithAccuracy(testResults.0, value.0, accuracy: accuracy, "\(abs(testResults.0 - value.0)) for latitude \(value)")
+				XCTAssertEqualWithAccuracy(testResults.1, value.1, accuracy: accuracy, "\(abs(testResults.1 - value.1)) for longitude \(value)")
 			}
 		}
 	}

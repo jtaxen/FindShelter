@@ -51,39 +51,39 @@ extension SpatialService {
 	
 	func convertLatLonToUTM(point: CLLocationCoordinate2D) -> (Double, Double) {
 		
-		let phi = radian(point.latitude)
-		let lambda = radian(point.longitude)
+		let phi         = radian(point.latitude)
+		let lambda      = radian(point.longitude)
 		
-		let nu   = a / sqrt( 1 - e2 * ( 1 - cos(2 * phi) ) / 2 )
-		let t    = tan(phi)
-		let s = sin(phi)
-		let c = cos(phi)
-		let eta2 = ( a - b ) * ( a + b ) / ( b * b ) * ( 1 + cos(2 * phi) ) / 2
+		let nu          = a / sqrt( 1 - e2 * ( 1 - cos(2 * phi) ) / 2 )
+		let t           = tan(phi)
+		let s           = sin(phi)
+		let c           = cos(phi)
+		let eta2        = (a**2) * ( 1 + cos(2*phi) ) * e2 / ( 2 * (b**2) )
 		
-		let A = nu * c
-		let B = ( nu/6 ) * (c**3) * ( 1 - (t**2) + eta2)
-		let c1 = ( 5 - 18 * (t**2) + (t**4) )
-		let c2 = ( 14 * eta2 + 13 * (eta2**2) + 4 * (eta2**3) )
-		let c3 = ( 58 * (t**2) * eta2 + 64 * (t**2) * (eta2**2) + 24 * (t**2) * (eta2**3) )
-		let C = ( nu/120 ) * (c**5) * ( c1 + c2 - c3 )
-		let D = ( nu/5040 ) * (c**7) * ( 61 - 479 * (t**2) + 179 * (t**4) - (t**6) )
+		let A           = nu * c
+		let B           = ( nu/6 ) * (c**3) * ( 1 - (t**2) + eta2)
+		let c1          = ( 5 -  18 * (t**2) + (t**4) )
+		let c2          = ( 14 * eta2 + 13 * (eta2**2) + 4 * (eta2**3) )
+		let c3          = ( 58 * (t**2) * eta2 + 64 * (t**2) * (eta2**2) + 24 * (t**2) * (eta2**3) )
+		let C           = ( nu/120 ) * (c**5) * ( c1 + c2 - c3 )
+		let D           = ( nu/5040 ) * (c**7) * ( 61 - 479 * (t**2) + 179 * (t**4) - (t**6) )
 		
-		let F = ( nu/2 ) * s * c
-		let G = ( nu/24 ) * s * (c**3) * ( ( 5 - (t**2) ) + ( 9 * eta2 + 4 * (eta2**2) ) )
-		let h1 = ( 61 - 58 * (t**2) + (t**4) )
-		let h2 = ( 270 * eta2 + 445 * (eta2**2) + 324 * (eta2**3) + 88 * (eta2**4) )
-		let h3 = ( 330 * (t**2) + 680 * (t**2) * (eta2**2) + 660 * (t**2) * (eta2**3) )
-		let H = ( nu/720 ) * s * (c**5) * ( h1 + h2 - h3 )
-		let I = ( nu/40320 ) * s * (c**7) * ( 1385 - 3111 * (t**2) + 543 * (t**4) - (t**6) )
+		let F           = ( nu/2 ) * s * c
+		let G           = ( nu/24 ) * s * (c**3) * ( ( 5 - (t**2) ) + ( 9 * eta2 + 4 * (eta2**2) ) )
+		let h1          = ( 61 - 58 * (t**2) + (t**4) )
+		let h2          = ( 270 * eta2 + 445 * (eta2**2) + 324 * (eta2**3) + 88 * (eta2**4) )
+		let h3          = ( 330 * (t**2) * (eta2) + 680 * (t**2) * (eta2**2) + 600 * (t**2) * (eta2**3) + 192 * (t**2) * (eta2**4) )
+		let H           = ( nu/720 ) * s * (c**5) * ( h1 + h2 - h3 )
+		let I           = ( nu/40320 ) * s * (c**7) * ( 1385 - 3111 * (t**2) + 543 * (t**4) - (t**6) )
 		
-		let deltaLambda = deltaLambdaFromLongitude(lambda, Double(midmeridian))
-		let M = meridionalArc(phi)
+		let deltaLambda = deltaLambdaFromLongitude(lambda, radian(Double(midmeridian)))
+		let M           = meridionalArc(phi)
 		
-		let X = A * (deltaLambda) + B * (deltaLambda**3) + C * (deltaLambda)**5 + D * (deltaLambda**7)
-		let Y = M + F * (deltaLambda**2) + G * (deltaLambda**4) + H * (deltaLambda**6) + I * (deltaLambda**8)
+		let X           = A * (deltaLambda) + B * (deltaLambda**3) + C * (deltaLambda)**5 + D * (deltaLambda**7)
+		let Y           = M + F * (deltaLambda**2) + G * (deltaLambda**4) + H * (deltaLambda**6) + I * (deltaLambda**8)
 		
-		let E = eastUTM(fromTM: X, lambda, midmeridian)
-		let N = Y * k0
+		let E           = eastUTM(fromTM : X, lambda, radian(midmeridian))
+		let N           = Y * k0
 		
 		return (N,E)
 	}
@@ -139,10 +139,10 @@ internal extension SpatialService {
 	
 	func eastUTM(fromTM x: Double, _ longitude: Double, _ midmeridian: Double) -> Double {
 		
-		if longitude < midmeridian {
-			return falseEasting + abs( k0 * x)
+		if longitude > midmeridian {
+			return falseEasting + abs( k0 * x )
 		} else {
-			return falseEasting - abs( k0 * x)
+			return falseEasting - abs( k0 * x )
 		}
 	}
 }
