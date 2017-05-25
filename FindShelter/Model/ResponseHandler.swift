@@ -40,7 +40,7 @@ public class ResponseHandler: ResponseHandlerProtocol {
 		
 		let north = shelter.geometry!.yGeometry
 		let east = shelter.geometry!.xGeometry
-		locationCoordinate = SpatialService.shared.convertUTMToLatLon(north: Double(north! + 11000), east: Double(east!))
+		locationCoordinate = SpatialService.shared.convertUTMToLatLon(north: Double(north!), east: Double(east!))
 		return locationCoordinate
 	}
 	

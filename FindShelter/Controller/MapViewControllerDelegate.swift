@@ -8,11 +8,14 @@
 
 import Foundation
 import MapKit
+import FBAnnotationClusteringSwift
 
 extension MapViewController: MKMapViewDelegate {
 	
 	func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-		mapView.centerCoordinate = userLocation.coordinate
+		if following {
+			mapView.centerCoordinate = userLocation.coordinate
+		}
 		
 		if startUpdating {
 			let closestPoint = distanceTool.findNearest(toElement: userLocation.coordinate)
@@ -24,31 +27,53 @@ extension MapViewController: MKMapViewDelegate {
 				mapView.remove(mapView.overlays.last!)
 			}
 			mapView.add(geodesicPolyline)
+			let dist = sqrt(userLocation.coordinate.squaredDistance(to: closestPoint))
+			infoLabel.text = NSLocalizedString("The distance to the nearest shelter is \(Int(dist)) m", comment: "Distance to the nearest shelter is () m")
 		}
 	}
 	
 	func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+		
+		if (view.annotation?.isEqual(mapView.userLocation))! {
+			following = !following
+			mapView.deselectAnnotation(view.annotation, animated: false)
+		}
+		
 		if let annotation = view.annotation as? ShelterPointAnnotation {
 			let storyboard = UIStoryboard(name: "Main", bundle: nil)
 			let controller = storyboard.instantiateViewController(withIdentifier: "shelterTable") as! ShelterInfoTableViewController
 			controller.shelter = annotation.shelter
 			controller.thisPosition = annotation.coordinate
-			present(controller, animated: true) {
-				mapView.deselectAnnotation(annotation, animated: false)
-			}
-			
-			
+			navigationController?.pushViewController(controller, animated: true)
+			mapView.deselectAnnotation(view.annotation, animated: false)
 		}
 	}
 	
 	func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
 		
-		if annotation.isEqual(map.userLocation) {
-			return nil
-		}
+		if annotation.isEqual(map.userLocation) { return nil }
 		
-		let shelter = ShelterAnnotationView(annotation: annotation, reuseIdentifier: nil)
-		return shelter
+		var reuseId: String!
+		
+		if annotation is FBAnnotationCluster {
+			reuseId = "Cluster"
+			var clusterView = map.dequeueReusableAnnotationView(withIdentifier: reuseId)
+			if clusterView == nil {
+				clusterView = FBAnnotationClusterView(annotation: annotation, reuseIdentifier: reuseId, options: self.configuration)
+			} else {
+				clusterView?.annotation = annotation
+			}
+			return clusterView
+		} else {
+			reuseId = "Shelter"
+			var shelterView = map.dequeueReusableAnnotationView(withIdentifier: "Shelter")
+			if shelterView == nil {
+				shelterView = ShelterAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+			} else {
+				shelterView?.annotation = annotation
+			}
+			return shelterView
+		}
 	}
 	
 	func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
@@ -61,5 +86,64 @@ extension MapViewController: MKMapViewDelegate {
 		renderer.strokeColor = UIColor.blue
 		renderer.alpha = 0.5
 		return renderer
+	}
+	
+	func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+		DispatchQueue.global(qos: .userInitiated).async {
+			let mapBoundsWidth = Double(self.map.bounds.size.width)
+			let mapRectWidth = self.map.visibleMapRect.size.width
+			let scale = mapBoundsWidth /  mapRectWidth
+			
+			let annotationArray = self.clusterManager.clusteredAnnotationsWithinMapRect(self.map.visibleMapRect, withZoomScale: scale)
+			
+			DispatchQueue.main.async {
+				self.clusterManager.displayAnnotations(annotationArray, onMapView: self.map)
+			}
+		}
+	}
+	
+	func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
+		
+		client.makeAPIRequest(url: GISParameters.URL(.identify)! , parameters: GISParameters.shared.makeParameters(identify: map.centerCoordinate)) { shelters in
+			
+			guard shelters != nil else {
+				return
+			}
+			
+			var newCoordinates: [CLLocationCoordinate2D] = []
+			
+			for shelter in shelters! {
+				if let coordinates = ResponseHandler.shared.coordinates(for: shelter) {
+					self.shelterList[coordinates] = shelter
+					newCoordinates.append(coordinates)
+				}
+			}
+			self.coordinateList.append(contentsOf: newCoordinates)
+			self.distanceTool.appendToTree(elements: newCoordinates)
+			
+			/*
+			var annotationArray: [FBAnnotation] = []
+			for (coord, shl) in self.shelterList {
+				let annotation = ShelterPointAnnotation(shelter: shl)
+				annotation.coordinate = coord
+				annotationArray.append(annotation)
+			}
+self.clusterManager.addAnnotations(annotationArray)*/
+		}
+	}
+}
+
+// MARK: - Clustering manager delegate
+extension MapViewController: FBClusteringManagerDelegate {
+	
+	func cellSizeFactorForCoordinator(_ coordinator: FBClusteringManager) -> CGFloat {
+		return 1.0
+	}
+}
+
+extension MapViewController: UINavigationBarDelegate {
+	
+	func navigationBar(_ navigationBar: UINavigationBar, shouldPush item: UINavigationItem) -> Bool {
+		return true
 	}
 }

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 public class GISParameters: Parameters {
 
@@ -22,11 +23,9 @@ public class GISParameters: Parameters {
 	*/
 	public func makeParameters() -> [String: AnyObject] {
 		let parameters = [
-			ParameterKeys.Contains         : ParameterValues.Contains as AnyObject,
-			ParameterKeys.Layers           : ParameterValues.Layers as AnyObject,
-			ParameterKeys.ReturnGeometry   : ParameterValues.ReturnGeometry as AnyObject,
 			ParameterKeys.F                : ParameterValues.F as AnyObject,
-			ParameterKeys.SpatialReference : ParameterValues.SpatialReference as AnyObject
+			ParameterKeys.SpatialReference : ParameterValues.SpatialReference as AnyObject,
+			ParameterKeys.ReturnGeometry   : ParameterValues.ReturnGeometry as AnyObject
 		]
 		return parameters
 	}
@@ -38,10 +37,31 @@ public class GISParameters: Parameters {
 	district or city name.
 	- Returns: A dictionary with query key strings and their respective value.
 	*/
-	public func makeParameters(search: String) -> [String: AnyObject] {
+	public func makeParameters(find searchText: String) -> [String: AnyObject] {
 	
 		var parameters = makeParameters()
-		parameters[ParameterKeys.SearchText] = search as AnyObject
+		
+		parameters[ParameterKeys.SearchText] = searchText as AnyObject
+		parameters[ParameterKeys.Contains]   = ParameterValues.Contains as AnyObject
+		parameters[ParameterKeys.Layers]     = ParameterValues.Layers as AnyObject
+		
+		return parameters
+	}
+	
+	public func makeParameters(identify point: CLLocationCoordinate2D, inRadius radius: Int = 100) -> [String : AnyObject] {
+		
+		let utmPoint = SpatialService.shared.convertLatLonToUTM(point: point)
+		let geometryString = "\(utmPoint.0),\(utmPoint.1)"
+		let mapExtentString = "\(utmPoint.0 - 1),\(utmPoint.1 - 1),\(utmPoint.0 + 1),\(utmPoint.1 + 1)"
+		
+		var parameters = makeParameters()
+		
+		parameters[ParameterKeys.Geometry]     = geometryString as AnyObject
+		parameters[ParameterKeys.GeometryType] = ParameterValues.GeometryType as AnyObject
+		parameters[ParameterKeys.Tolerance]    = radius as AnyObject
+		parameters[ParameterKeys.MapExtent]    = mapExtentString as AnyObject
+		parameters[ParameterKeys.ImageDisplay] = ParameterValues.ImageDisplay as AnyObject
+		
 		return parameters
 	}
 }

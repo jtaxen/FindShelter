@@ -8,13 +8,22 @@
 
 import Foundation
 import MapKit
+import FBAnnotationClusteringSwift
 
-class ShelterPointAnnotation: MKPointAnnotation {
+class ShelterPointAnnotation: FBAnnotation {
 	
-	var shelter: ShelterObject
+	var shelter: ShelterObject?
 	
 	init(shelter: ShelterObject) {
 		self.shelter = shelter
 		super.init()
 	}
+	
+	override init() {
+		super.init()
+	}
+	
+	public func set(shelter: ShelterObject) {
+		self.shelter = shelter
+	}	
 }

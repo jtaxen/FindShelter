@@ -13,11 +13,16 @@ class ShelterInfoTableViewController: UITableViewController {
 
 	var shelter: ShelterObject!
 	var thisPosition: CLLocationCoordinate2D!
+	var locationManager = CLLocationManager()
 	
     override func viewDidLoad() {
         super.viewDidLoad()
 		tableView.delegate = self
 		tableView.dataSource = self
+		tableView.isScrollEnabled = false
+		tableView.tableFooterView = UIView()
+		
+		setUpNavigationBar()
     }
 
     override func didReceiveMemoryWarning() {

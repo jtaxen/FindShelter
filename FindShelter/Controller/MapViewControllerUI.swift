@@ -9,13 +9,39 @@
 import Foundation
 import MapKit
 import CoreLocation
+import UIKit
 
 internal extension MapViewController {
 	
 	func setUpMap() {
 		
 		map.userTrackingMode = .follow
-		map.centerCoordinate = map.userLocation.coordinate
+		map.region = MKCoordinateRegion(center: map.userLocation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+	}
+	
+	func setUpInfoBar() {
 		
+		infoLabel.text = NSLocalizedString("Waiting for position...", comment: "Waiting for position")
+		infoLabel.font = UIFont(name: "Futura", size: 17)
+	}
+	
+	func setUpBackButton() {
+		
+		let backString = NSLocalizedString("Back", comment: "Back")
+		let backButton = UIBarButtonItem(title: backString, style: .done, target: self, action: #selector(popView(_:)))
+		backButton.tintColor = ColorScheme.Title
+		let attributes = [NSFontAttributeName: UIFont(name: "Futura", size: 17) as Any,
+		                  NSForegroundColorAttributeName: ColorScheme.Title as Any]
+			
+		backButton.setTitleTextAttributes(attributes, for: .normal)
+		navigationItem.backBarButtonItem?.tintColor = ColorScheme.Title
+		navigationItem.backBarButtonItem = backButton
+		
+		navigationController?.navigationBar.titleTextAttributes = attributes
+	}
+	
+	@objc func popView(_ sender: UIBarButtonItem) {
+		
+		popView(sender)
 	}
 }

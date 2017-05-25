@@ -9,15 +9,23 @@
 import Foundation
 import UIKit
 import MapKit
+import FBAnnotationClusteringSwift
 
 class MapViewController: UIViewController {
 	
 	@IBOutlet weak var map: MKMapView!
+	@IBOutlet weak var infoLabel: UILabel!
 	
 	var coordinateList: [CLLocationCoordinate2D] = []
 	var shelterList: [CLLocationCoordinate2D: ShelterObject] = [:]
 	var distanceTool: Distance!
 	var startUpdating: Bool = false
+	var following: Bool = false
+	
+	let client = ArcGISClient()
+	
+	let clusterManager = FBClusteringManager()
+	let configuration = FBAnnotationClusterViewOptions(smallClusterImage: "smallCluster", mediumClusterImage: "mediumCluster", largeClusterImage: "largeCluster")
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -26,11 +34,14 @@ class MapViewController: UIViewController {
 		map.userTrackingMode = .follow
 		
 		setUpMap()
+		setUpInfoBar()
+		setUpBackButton()
+		
 		distanceTool = Distance(coordinateList)
 		
-		let client = ArcGISClient()
+		clusterManager.delegate = self
 		
-		client.makeAPIRequest(url: GISParameters.URL!, parameters: GISParameters.shared.makeParameters(search: "Stockholm")) { shelters in
+		client.makeAPIRequest(url: GISParameters.URL(.find)!, parameters: GISParameters.shared.makeParameters(find: "Malmö")) { shelters in
 			
 			guard shelters != nil else {
 				return
@@ -44,13 +55,19 @@ class MapViewController: UIViewController {
 			}
 			self.distanceTool.appendToTree(elements: self.coordinateList)
 			
+			var annotationArray: [FBAnnotation] = []
 			for (coord, shl) in self.shelterList {
 				let annotation = ShelterPointAnnotation(shelter: shl)
 				annotation.coordinate = coord
-				self.map.addAnnotation(annotation)
+				annotationArray.append(annotation)
+			}
+			self.clusterManager.addAnnotations(annotationArray)
+			self.startUpdating = true
+			
+			DispatchQueue.main.async {
+				self.mapView(self.map, didUpdate: self.map.userLocation)
 			}
 			
-			self.startUpdating = true
 		}
 	}
 }
