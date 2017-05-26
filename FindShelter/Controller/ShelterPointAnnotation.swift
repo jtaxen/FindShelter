@@ -10,6 +10,9 @@ import Foundation
 import MapKit
 import FBAnnotationClusteringSwift
 
+/**
+Annotation for shelters
+*/
 class ShelterPointAnnotation: FBAnnotation {
 	
 	var shelter: ShelterObject?

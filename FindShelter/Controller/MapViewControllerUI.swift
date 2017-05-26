@@ -11,6 +11,8 @@ import MapKit
 import CoreLocation
 import UIKit
 
+// MARK: - UI
+/// Convenienve functions for setting up the subviews.
 internal extension MapViewController {
 	
 	func setUpMap() {

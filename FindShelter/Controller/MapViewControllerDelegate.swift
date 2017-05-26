@@ -10,6 +10,7 @@ import Foundation
 import MapKit
 import FBAnnotationClusteringSwift
 
+// MARK: - Map view delegate methods
 extension MapViewController: MKMapViewDelegate {
 	
 	func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
@@ -54,7 +55,7 @@ extension MapViewController: MKMapViewDelegate {
 		if annotation.isEqual(map.userLocation) { return nil }
 		
 		var reuseId: String!
-		
+		/**
 		if annotation is FBAnnotationCluster {
 			reuseId = "Cluster"
 			var clusterView = map.dequeueReusableAnnotationView(withIdentifier: reuseId)
@@ -64,7 +65,7 @@ extension MapViewController: MKMapViewDelegate {
 				clusterView?.annotation = annotation
 			}
 			return clusterView
-		} else {
+		} else {*/
 			reuseId = "Shelter"
 			var shelterView = map.dequeueReusableAnnotationView(withIdentifier: "Shelter")
 			if shelterView == nil {
@@ -73,7 +74,7 @@ extension MapViewController: MKMapViewDelegate {
 				shelterView?.annotation = annotation
 			}
 			return shelterView
-		}
+//		}
 	}
 	
 	func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
@@ -90,6 +91,11 @@ extension MapViewController: MKMapViewDelegate {
 	
 	func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
 		
+		
+	}
+	
+	func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
+		/**
 		DispatchQueue.global(qos: .userInitiated).async {
 			let mapBoundsWidth = Double(self.map.bounds.size.width)
 			let mapRectWidth = self.map.visibleMapRect.size.width
@@ -100,41 +106,9 @@ extension MapViewController: MKMapViewDelegate {
 			DispatchQueue.main.async {
 				self.clusterManager.displayAnnotations(annotationArray, onMapView: self.map)
 			}
-		}
-	}
-	
-	func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
+		}*/
 		
-		client.makeAPIRequest(url: GISParameters.URL(.identify)! , parameters: GISParameters.shared.makeParameters(identify: map.centerCoordinate)) { shelters in
-			
-			guard shelters != nil else {
-				return
-			}
-			
-			print("Found \(shelters!.count) new shelters")
-			
-			var newCoordinates: [CLLocationCoordinate2D] = []
-			
-			
-			for shelter in shelters! {
-				if let coordinates = ResponseHandler.shared.coordinates(for: shelter) {
-					self.shelterList[coordinates] = shelter
-					newCoordinates.append(coordinates)
-					
-					let annotation = ShelterPointAnnotation(shelter: shelter)
-					DispatchQueue.main.async {
-						
-						
-						mapView.addAnnotation(annotation)
-						print(mapView.annotations.count)
-					}
-					
-				}
-			}
-			self.coordinateList.append(contentsOf: newCoordinates)
-			self.distanceTool.appendToTree(elements: newCoordinates)
-			
-		}
+		client.makeAPIRequest(url: GISParameters.URL(.identify)! , parameters: GISParameters.shared.makeParameters(identify: map.centerCoordinate), completionHandler: completionHandlerForAPIRequest(_:))
 	}
 }
 
@@ -146,6 +120,7 @@ extension MapViewController: FBClusteringManagerDelegate {
 	}
 }
 
+// TODO: - Remove this
 extension MapViewController: UINavigationBarDelegate {
 	
 	func navigationBar(_ navigationBar: UINavigationBar, shouldPush item: UINavigationItem) -> Bool {

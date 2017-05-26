@@ -14,11 +14,6 @@ class Distance {
 	
 	var tree: KDTree<CLLocationCoordinate2D>
 	
-	// ===
-	let dir = URL(fileURLWithPath: "/Users/af/Udacity/HittaSkyddsrum/FindShelter/distancometer.data")
-	
-	
-	
 	init(_ dataPoints: [CLLocationCoordinate2D]) {
 		tree = KDTree(values: dataPoints)
 	}
@@ -29,18 +24,6 @@ class Distance {
 		}
 		 
 		let nearest = tree.nearest(toElement: element)!
-		/**
-		let output = "\(sqrt(element.squaredDistance(to: nearest))) \nq:"
-		
-		do {
-			let fileHandle = try FileHandle(forWritingTo: dir)
-			fileHandle.seekToEndOfFile()
-			fileHandle.write(output.data(using: .utf8)!)
-			fileHandle.closeFile()
-		} catch {
-			debugPrint(error)
-		}
-		*/
 		return nearest
 	}
 	func findNearest(_ number: Int, toElement element: CLLocationCoordinate2D) -> [CLLocationCoordinate2D] {
@@ -52,4 +35,11 @@ class Distance {
 			tree = tree.inserting(element)
 		}
 	}
+	
+	func emptyTree() {
+		for element in tree.elements {
+			tree = tree.removing(element)
+		}
+	}
+	
 }
