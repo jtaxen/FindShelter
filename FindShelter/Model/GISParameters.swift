@@ -48,11 +48,11 @@ public class GISParameters: Parameters {
 		return parameters
 	}
 	
-	public func makeParameters(identify point: CLLocationCoordinate2D, inRadius radius: Int = 100) -> [String : AnyObject] {
+	public func makeParameters(identify point: CLLocationCoordinate2D, inRadius radius: Int = 1000) -> [String : AnyObject] {
 		
 		let utmPoint = SpatialService.shared.convertLatLonToUTM(point: point)
-		let geometryString = "\(utmPoint.0),\(utmPoint.1)"
-		let mapExtentString = "\(utmPoint.0 - 1),\(utmPoint.1 - 1),\(utmPoint.0 + 1),\(utmPoint.1 + 1)"
+		let geometryString = "\(utmPoint.1),\(utmPoint.0)"
+		let mapExtentString = "0,0,0,0"
 		
 		var parameters = makeParameters()
 		

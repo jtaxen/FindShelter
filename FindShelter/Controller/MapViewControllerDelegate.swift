@@ -89,6 +89,7 @@ extension MapViewController: MKMapViewDelegate {
 	}
 	
 	func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+		
 		DispatchQueue.global(qos: .userInitiated).async {
 			let mapBoundsWidth = Double(self.map.bounds.size.width)
 			let mapRectWidth = self.map.visibleMapRect.size.width
@@ -110,25 +111,29 @@ extension MapViewController: MKMapViewDelegate {
 				return
 			}
 			
+			print("Found \(shelters!.count) new shelters")
+			
 			var newCoordinates: [CLLocationCoordinate2D] = []
+			
 			
 			for shelter in shelters! {
 				if let coordinates = ResponseHandler.shared.coordinates(for: shelter) {
 					self.shelterList[coordinates] = shelter
 					newCoordinates.append(coordinates)
+					
+					let annotation = ShelterPointAnnotation(shelter: shelter)
+					DispatchQueue.main.async {
+						
+						
+						mapView.addAnnotation(annotation)
+						print(mapView.annotations.count)
+					}
+					
 				}
 			}
 			self.coordinateList.append(contentsOf: newCoordinates)
 			self.distanceTool.appendToTree(elements: newCoordinates)
 			
-			/*
-			var annotationArray: [FBAnnotation] = []
-			for (coord, shl) in self.shelterList {
-				let annotation = ShelterPointAnnotation(shelter: shl)
-				annotation.coordinate = coord
-				annotationArray.append(annotation)
-			}
-self.clusterManager.addAnnotations(annotationArray)*/
 		}
 	}
 }
