@@ -25,11 +25,11 @@ internal extension ShelterInfoTableViewController {
 		
 		switch indexPath.row {
 		case 0: cell.textLabel?.text = shelter.layerName ?? "No name"
-		case 1: cell.textLabel?.text = shelter.attributes?.address ?? "No address"
+		case 1: cell.textLabel?.text = shelter.attributes?.serviceLBAddress ?? "No address"
 		case 2: cell.textLabel?.text = shelter.attributes?.typeOfOccupants ?? "No occupants"
 		case 3: cell.textLabel?.text = shelter.attributes?.serviceLBCity ?? "No city"
 			cell.detailTextLabel?.text = "Stad"
-		case 4: cell.textLabel?.text = shelter.attributes?.municipality ?? "No municipality"
+		case 4: cell.textLabel?.text = shelter.attributes?.serviceLBMunicipality ?? "No municipality"
 			cell.detailTextLabel?.text = "Kommun"
 		case 5: cell.textLabel?.text = shelter.attributes?.numberOfOccupants ?? "none"
 			cell.detailTextLabel?.text = "Kapacitet"

@@ -47,7 +47,7 @@
 		A0DF26771ECF2998004939CC /* ShelterPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DF26761ECF2998004939CC /* ShelterPointAnnotation.swift */; };
 		A0DF26791ECF326F004939CC /* ShelterInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DF26781ECF326F004939CC /* ShelterInfoTableViewController.swift */; };
 		A0DF267C1ECF32DD004939CC /* ShelterInfoTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DF267B1ECF32DD004939CC /* ShelterInfoTableViewDelegate.swift */; };
-		A0F7E7D91EDC25D7003A6D36 /* FavoritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F7E7D81EDC25D7003A6D36 /* FavoritesTableViewCell.swift */; };
+		A0F7E7D91EDC25D7003A6D36 /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F7E7D81EDC25D7003A6D36 /* FavoritesTableViewController.swift */; };
 		B10F1C67541BAC3E096368D9 /* Pods_FindShelter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FF3B43206AE55F947AF1A /* Pods_FindShelter.framework */; };
 /* End PBXBuildFile section */
 
@@ -108,7 +108,7 @@
 		A0DF26761ECF2998004939CC /* ShelterPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShelterPointAnnotation.swift; path = Controller/ShelterPointAnnotation.swift; sourceTree = "<group>"; };
 		A0DF26781ECF326F004939CC /* ShelterInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShelterInfoTableViewController.swift; path = Controller/ShelterInfoTableViewController.swift; sourceTree = "<group>"; };
 		A0DF267B1ECF32DD004939CC /* ShelterInfoTableViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShelterInfoTableViewDelegate.swift; path = Controller/ShelterInfoTableViewDelegate.swift; sourceTree = "<group>"; };
-		A0F7E7D81EDC25D7003A6D36 /* FavoritesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoritesTableViewCell.swift; path = Controller/FavoritesTableViewCell.swift; sourceTree = "<group>"; };
+		A0F7E7D81EDC25D7003A6D36 /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoritesTableViewController.swift; path = Controller/FavoritesTableViewController.swift; sourceTree = "<group>"; };
 		E25FF3B43206AE55F947AF1A /* Pods_FindShelter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FindShelter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7CB64E2B69864A25F669456 /* Pods_FindShelterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FindShelterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -302,7 +302,7 @@
 		A0F7E7DA1EDC25E0003A6D36 /* Favourites */ = {
 			isa = PBXGroup;
 			children = (
-				A0F7E7D81EDC25D7003A6D36 /* FavoritesTableViewCell.swift */,
+				A0F7E7D81EDC25D7003A6D36 /* FavoritesTableViewController.swift */,
 			);
 			name = Favourites;
 			sourceTree = "<group>";
@@ -485,7 +485,7 @@
 				A078CB741EC9E2F30050F37C /* ChooseLanguageController.swift in Sources */,
 				A0D4311B1ECC331D00E024D6 /* ResponseHandlerProtocol.swift in Sources */,
 				A0DF26701ECEE111004939CC /* CLLocationCoordinate2DExtension.swift in Sources */,
-				A0F7E7D91EDC25D7003A6D36 /* FavoritesTableViewCell.swift in Sources */,
+				A0F7E7D91EDC25D7003A6D36 /* FavoritesTableViewController.swift in Sources */,
 				A0DF26771ECF2998004939CC /* ShelterPointAnnotation.swift in Sources */,
 				A0763EBC1EC5B7340074E77C /* GISParametersConstants.swift in Sources */,
 				A0B94B591ECAEE1D00F68F8B /* LocationDelegate.swift in Sources */,

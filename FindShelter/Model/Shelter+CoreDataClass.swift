@@ -34,5 +34,4 @@ public class Shelter: NSManagedObject {
 		self.shelterNumber     = item.attributes?.shelterNumber
 		self.coverId           = item.attributes?.coverId
 	}
-
 }

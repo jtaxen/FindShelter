@@ -132,10 +132,10 @@
             </objects>
             <point key="canvasLocation" x="889" y="304"/>
         </scene>
-        <!--Favorites Table View Cell-->
+        <!--Favorites Table View Controller-->
         <scene sceneID="tLE-SY-ybr">
             <objects>
-                <tableViewController storyboardIdentifier="favorites" id="oVX-cf-Rn9" customClass="FavoritesTableViewCell" customModule="FindShelter" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="favorites" id="oVX-cf-Rn9" customClass="FavoritesTableViewController" customModule="FindShelter" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="utV-lr-cVB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

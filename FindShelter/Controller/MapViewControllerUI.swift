@@ -10,6 +10,7 @@ import Foundation
 import MapKit
 import CoreLocation
 import UIKit
+import CoreData
 
 // MARK: - UI
 /// Convenienve functions for setting up the subviews.
@@ -56,8 +57,22 @@ internal extension MapViewController {
 	
 	@objc func presentFavorites(_ sender: UIBarButtonItem) {
 		
-		let storyboard = UIStoryboard(name: "Main", bundle: nil)
-		let controller = storyboard.instantiateViewController(withIdentifier: "favorites")
-		navigationController?.pushViewController(controller, animated: true)
+		CoreDataStack.shared?.persistingContext.performAndWait {
+			let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Shelter")
+			fetchRequest.sortDescriptors = [NSSortDescriptor(key: "xCoordinate", ascending: true)]
+			let controller = NSFetchedResultsController<NSFetchRequestResult>(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.shared!.persistingContext, sectionNameKeyPath: nil, cacheName: nil)
+			do {
+				try controller.performFetch()
+				DispatchQueue.main.async {
+					let storyboard = UIStoryboard(name: "Main", bundle: nil)
+					let viewController = storyboard.instantiateViewController(withIdentifier: "favorites") as! FavoritesTableViewController
+					viewController.shelters = controller.fetchedObjects as! [Shelter]
+					self.navigationController?.pushViewController(viewController, animated: true)
+				}
+				
+			} catch {
+				debugPrint(error)
+			}
+		}
 	}
 }

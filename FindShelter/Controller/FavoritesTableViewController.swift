@@ -1,5 +1,5 @@
 //
-//  FavoritesTableViewCell.swift
+//  FavoritesTableViewController.swift
 //  FindShelter
 //
 //  Created by ÅF Jacob Taxén on 2017-05-29.
@@ -9,31 +9,19 @@
 import UIKit
 import CoreData
 
-class FavoritesTableViewCell: UITableViewController {
+class FavoritesTableViewController: UITableViewController {
 
-	var shelters = [Shelter]()
+	var shelters: [Shelter]!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
-		CoreDataStack.shared?.persistingContext.performAndWait {
-			let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Shelter")
-			fetchRequest.sortDescriptors = [NSSortDescriptor(key: "xCoordinate", ascending: true)]
-			let controller = NSFetchedResultsController<NSFetchRequestResult>(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.shared!.persistingContext, sectionNameKeyPath: nil, cacheName: nil)
-			do {
-				try controller.performFetch()
-				self.shelters = controller.fetchedObjects as! [Shelter]
-			} catch {
-				debugPrint(error)
-			}
-		}
 		
 		tableView.delegate   = self
 		tableView.dataSource = self
 	}
 }
 
-extension FavoritesTableViewCell {
+extension FavoritesTableViewController {
 	
 	override func numberOfSections(in tableView: UITableView) -> Int {
 		return 1
@@ -48,7 +36,7 @@ extension FavoritesTableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteCell", for: indexPath)
 		let shelter = shelters[indexPath.row]
 		
-		cell.textLabel?.text = shelter.attributes?.address
+		cell.textLabel?.text = shelter.address
 		cell.detailTextLabel?.text = ""
 		return cell
 	}
