@@ -42,8 +42,22 @@ internal extension MapViewController {
 		navigationController?.navigationBar.titleTextAttributes = attributes
 	}
 	
+	func setUpFavoritesButton() {
+		
+		let favoriteButton = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(presentFavorites(_:)))
+		favoriteButton.tintColor = ColorScheme.Title
+		navigationItem.rightBarButtonItem = favoriteButton
+	}
+	
 	@objc func popView(_ sender: UIBarButtonItem) {
 		
 		popView(sender)
+	}
+	
+	@objc func presentFavorites(_ sender: UIBarButtonItem) {
+		
+		let storyboard = UIStoryboard(name: "Main", bundle: nil)
+		let controller = storyboard.instantiateViewController(withIdentifier: "favorites")
+		navigationController?.pushViewController(controller, animated: true)
 	}
 }

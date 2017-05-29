@@ -17,7 +17,7 @@ internal extension ShelterInfoTableViewController {
 	}
 	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return 8
+		return 9
 	}
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -40,8 +40,9 @@ internal extension ShelterInfoTableViewController {
 			
 		case 7: cell.textLabel?.text = shelter.attributes?.pointOfContact
 			cell.detailTextLabel?.text = "Point of contact"
-		default: cell.textLabel?.text = "Save"
+		case 8: cell.textLabel?.text = "Save"
 			cell.detailTextLabel?.text = ""
+		default: break
 		}
 		
 		return cell
@@ -50,13 +51,20 @@ internal extension ShelterInfoTableViewController {
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		
 		switch indexPath.row {
-		case 8: break
+		case 8:
+			CoreDataStack.shared?.persistingContext.perform {
+				_ = Shelter(self.shelter, context: (CoreDataStack.shared?.persistingContext)!)
+				CoreDataStack.shared?.save()
+				DispatchQueue.main.async {
+					tableView.deselectRow(at: indexPath, animated: false)
+				}
+			}
 		default: tableView.deselectRow(at: indexPath, animated: false)
 		}
 	}
 	
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		if indexPath.row <= 7 {
+		if indexPath.row < 9 {
 			return 60
 		} else {
 			return 0
@@ -64,7 +72,7 @@ internal extension ShelterInfoTableViewController {
 	}
 	
 	override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-		if indexPath.row <= 7 {
+		if indexPath.row < 9 {
 			return 60
 		} else {
 			return 0

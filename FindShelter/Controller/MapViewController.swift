@@ -36,6 +36,7 @@ class MapViewController: UIViewController {
 		setUpMap()
 		setUpInfoBar()
 		setUpBackButton()
+		setUpFavoritesButton()
 		
 		distanceTool = Distance(coordinateList)
 		
