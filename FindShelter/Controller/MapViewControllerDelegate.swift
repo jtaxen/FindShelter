@@ -95,20 +95,10 @@ extension MapViewController: MKMapViewDelegate {
 	}
 	
 	func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
-		/**
-		DispatchQueue.global(qos: .userInitiated).async {
-			let mapBoundsWidth = Double(self.map.bounds.size.width)
-			let mapRectWidth = self.map.visibleMapRect.size.width
-			let scale = mapBoundsWidth /  mapRectWidth
-			
-			let annotationArray = self.clusterManager.clusteredAnnotationsWithinMapRect(self.map.visibleMapRect, withZoomScale: scale)
-			
-			DispatchQueue.main.async {
-				self.clusterManager.displayAnnotations(annotationArray, onMapView: self.map)
-			}
-		}*/
 		
-		client.makeAPIRequest(url: GISParameters.URL(.identify)! , parameters: GISParameters.shared.makeParameters(identify: map.centerCoordinate), completionHandler: completionHandlerForAPIRequest(_:))
+		if mapView.region.span.latitudeDelta < 0.6 {
+			client.makeAPIRequest(url: GISParameters.URL(.identify)! , parameters: GISParameters.shared.makeParameters(identify: mapView.centerCoordinate, inRadius: Int(mapView.region.span.latitudeDelta*50000)), completionHandler: completionHandlerForAPIRequest(_:))
+		}
 	}
 }
 

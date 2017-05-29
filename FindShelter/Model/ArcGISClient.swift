@@ -31,8 +31,6 @@ public class ArcGISClient {
 	func makeAPIRequest(url: URL, parameters: [String: AnyObject], completionHandler: @escaping (_ json: [ShelterObject]?) -> Void) {
 		print("Sending request")
 		request(url.absoluteString, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseObject { ( response: DataResponse<ArcGISResults>) in
-			print(url.absoluteString)
-			print(parameters)
 			let duration = Int(response.timeline.requestDuration * 1000)
 			print("Response returned in \(duration) ms")
 			

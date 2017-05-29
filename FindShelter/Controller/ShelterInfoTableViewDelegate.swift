@@ -38,7 +38,10 @@ internal extension ShelterInfoTableViewController {
 			cell.textLabel?.text = "\(Int(sqrt(squaredDistance))) m"
 			cell.detailTextLabel?.text = "Avstånd"
 			
-		default: cell.textLabel?.text = shelter.attributes?.pointOfContact
+		case 7: cell.textLabel?.text = shelter.attributes?.pointOfContact
+			cell.detailTextLabel?.text = "Point of contact"
+		default: cell.textLabel?.text = "Save"
+			cell.detailTextLabel?.text = ""
 		}
 		
 		return cell
@@ -47,8 +50,8 @@ internal extension ShelterInfoTableViewController {
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		
 		switch indexPath.row {
-		case 7: break // save to favorites
-		default: break // do nothing
+		case 8: break
+		default: tableView.deselectRow(at: indexPath, animated: false)
 		}
 	}
 	
