@@ -8,9 +8,10 @@
 
 import UIKit
 import CoreData
+import CoreLocation
 
 class FavoritesTableViewController: UITableViewController {
-
+	
 	var shelters: [Shelter]!
 	
 	override func viewDidLoad() {
@@ -18,6 +19,8 @@ class FavoritesTableViewController: UITableViewController {
 		
 		tableView.delegate   = self
 		tableView.dataSource = self
+		
+		tableView.backgroundColor = ColorScheme.LightBackground
 	}
 }
 
@@ -36,8 +39,31 @@ extension FavoritesTableViewController {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteCell", for: indexPath)
 		let shelter = shelters[indexPath.row]
 		
-		cell.textLabel?.text = shelter.address
+		CoreDataStack.shared?.persistingContext.performAndWait {
+			cell.textLabel?.text = shelter.address
+		}
 		cell.detailTextLabel?.text = ""
 		return cell
+	}
+	
+	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		if indexPath.row < 9 {
+			return 60
+		} else {
+			return 0
+		}
+	}
+	
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		
+		let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+		let controller = storyboard.instantiateViewController(withIdentifier: "shelterTable") as! ShelterInfoTableViewController
+		let thisShelter = shelters[indexPath.row]
+		controller.shelterCoreData = thisShelter
+		CoreDataStack.shared?.persistingContext.performAndWait{
+			controller.thisPosition = SpatialService.shared.convertUTMToLatLon(north: Double(thisShelter.yCoordinate), east: Double(thisShelter.xCoordinate))
+		}
+		navigationController?.pushViewController(controller, animated: true)
+		tableView.deselectRow(at: indexPath, animated: false)
 	}
 }

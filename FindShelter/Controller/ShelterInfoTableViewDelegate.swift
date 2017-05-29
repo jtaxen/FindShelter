@@ -23,26 +23,48 @@ internal extension ShelterInfoTableViewController {
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ShelterCellTableViewCell
 		
-		switch indexPath.row {
-		case 0: cell.textLabel?.text = shelter.layerName ?? "No name"
-		case 1: cell.textLabel?.text = shelter.attributes?.serviceLBAddress ?? "No address"
-		case 2: cell.textLabel?.text = shelter.attributes?.typeOfOccupants ?? "No occupants"
-		case 3: cell.textLabel?.text = shelter.attributes?.serviceLBCity ?? "No city"
+		if shelterObject != nil {
+			switch indexPath.row {
+			case 0: cell.textLabel?.text = shelterObject!.layerName ?? "No name"
+			case 1: cell.textLabel?.text = shelterObject!.attributes?.serviceLBAddress ?? "No address"
+			case 2: cell.textLabel?.text = shelterObject!.attributes?.typeOfOccupants ?? "No occupants"
+			case 3: cell.textLabel?.text = shelterObject!.attributes?.serviceLBCity ?? "No city"
 			cell.detailTextLabel?.text = "Stad"
-		case 4: cell.textLabel?.text = shelter.attributes?.serviceLBMunicipality ?? "No municipality"
+			case 4: cell.textLabel?.text = shelterObject!.attributes?.serviceLBMunicipality ?? "No municipality"
 			cell.detailTextLabel?.text = "Kommun"
-		case 5: cell.textLabel?.text = shelter.attributes?.numberOfOccupants ?? "none"
+			case 5: cell.textLabel?.text = shelterObject!.attributes?.numberOfOccupants ?? "none"
 			cell.detailTextLabel?.text = "Kapacitet"
-		case 6:
-			let squaredDistance = locationManager.location!.coordinate.squaredDistance(to: thisPosition)
-			cell.textLabel?.text = "\(Int(sqrt(squaredDistance))) m"
-			cell.detailTextLabel?.text = "Avstånd"
-			
-		case 7: cell.textLabel?.text = shelter.attributes?.pointOfContact
+			case 6:
+				let squaredDistance = locationManager.location!.coordinate.squaredDistance(to: thisPosition)
+				cell.textLabel?.text = "\(Int(sqrt(squaredDistance))) m"
+				cell.detailTextLabel?.text = "Avstånd"
+				
+			case 7: cell.textLabel?.text = shelterObject!.attributes?.pointOfContact
 			cell.detailTextLabel?.text = "Point of contact"
-		case 8: cell.textLabel?.text = "Save"
+			case 8: cell.textLabel?.text = "Save"
 			cell.detailTextLabel?.text = ""
-		default: break
+			default: break
+			}
+		} else if shelterCoreData != nil {
+			CoreDataStack.shared?.persistingContext.performAndWait{
+				switch indexPath.row {
+				case 0: cell.textLabel?.text = self.shelterCoreData!.layerName ?? "No name"
+				case 1: cell.textLabel?.text = self.shelterCoreData!.address ?? "No address"
+				case 2: cell.textLabel?.text = "No occupants"
+				case 3: cell.textLabel?.text = self.shelterCoreData?.town ?? "No city"
+				case 4: cell.textLabel?.text = self.shelterCoreData?.municipality ?? "No municipality"
+				case 5: cell.textLabel?.text = "\(self.shelterCoreData?.capacity ?? 0)"
+				case 6:
+					let squaredDistance = self.locationManager.location?.coordinate.squaredDistance(to: self.thisPosition)
+					cell.textLabel?.text = "\(Int(sqrt(squaredDistance!))) m"
+					cell.detailTextLabel?.text = "Distance"
+					
+				case 7: cell.textLabel?.text = "Point of contact"
+				case 8: cell.textLabel?.text = "Show on map"
+				cell.detailTextLabel?.text = ""
+				default: break
+				}
+			}
 		}
 		
 		return cell
@@ -52,13 +74,22 @@ internal extension ShelterInfoTableViewController {
 		
 		switch indexPath.row {
 		case 8:
-			CoreDataStack.shared?.persistingContext.perform {
-				_ = Shelter(self.shelter, context: (CoreDataStack.shared?.persistingContext)!)
-				CoreDataStack.shared?.save()
-				DispatchQueue.main.async {
-					tableView.deselectRow(at: indexPath, animated: false)
+			if shelterObject != nil {
+				CoreDataStack.shared?.persistingContext.perform {
+					_ = Shelter(self.shelterObject!, context: (CoreDataStack.shared?.persistingContext)!)
+					CoreDataStack.shared?.save()
+					DispatchQueue.main.async {
+						tableView.deselectRow(at: indexPath, animated: false)
+					}
 				}
+			} else if shelterCoreData != nil {
+				
+				let rootController = navigationController?.viewControllers[0] as! MapViewController
+				rootController.map.centerCoordinate = thisPosition
+				rootController.map.delegate?.mapViewDidFinishLoadingMap!(rootController.map)
+				navigationController?.popToRootViewController(animated: true)
 			}
+			
 		default: tableView.deselectRow(at: indexPath, animated: false)
 		}
 	}
@@ -78,7 +109,6 @@ internal extension ShelterInfoTableViewController {
 			return 0
 		}
 	}
-	
 }
 
 extension ShelterInfoTableViewController: CLLocationManagerDelegate {

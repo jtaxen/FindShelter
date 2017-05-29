@@ -8,8 +8,9 @@
 	 -->
 	<wpt lat="59.330668" lon="18.057932">
 		<name>Stockholms Centralstation</name>
-		<time>2017-05-19T14:02:37Z</time>
+		<time>2017-05-19T14:00:00Z</time>
 	</wpt>
+	<!--
 	<wpt lat="59.344971" lon="18.039722">
 		<name>St. Eriksgatan/Vanadisvägen</name>
 		<time>2017-05-19T14:04:37Z</time>
@@ -17,10 +18,14 @@
 	<wpt lat="59.315204" lon="18.073046">
 		<name>Medborgarplatsen</name>
 		<time>2017-05-19T14:08:37Z</time>
-	</wpt>
+	</wpt>-->
 	
-	<wpt lat="58.0" lon="17">
+	<wpt lat="82.5" lon="62.3">
 		<name>En bit bort </name>
-		<time>2017-05-19T14:20:37Z</time>
+		<time>2017-05-19T14:15:00Z</time>
 		</wpt>
+	<wpt lat="-55.0" lon= "-67.5">
+		<time>2017-05-19T14:30:00Z</time>
+		</wpt>
+		
 </gpx>

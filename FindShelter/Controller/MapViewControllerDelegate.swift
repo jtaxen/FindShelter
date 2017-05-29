@@ -43,7 +43,7 @@ extension MapViewController: MKMapViewDelegate {
 		if let annotation = view.annotation as? ShelterPointAnnotation {
 			let storyboard = UIStoryboard(name: "Main", bundle: nil)
 			let controller = storyboard.instantiateViewController(withIdentifier: "shelterTable") as! ShelterInfoTableViewController
-			controller.shelter = annotation.shelter
+			controller.shelterObject = annotation.shelter
 			controller.thisPosition = annotation.coordinate
 			navigationController?.pushViewController(controller, animated: true)
 			mapView.deselectAnnotation(view.annotation, animated: false)

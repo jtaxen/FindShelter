@@ -11,7 +11,8 @@ import CoreLocation
 
 class ShelterInfoTableViewController: UITableViewController {
 
-	var shelter: ShelterObject!
+	var shelterObject: ShelterObject?
+	var shelterCoreData: Shelter?
 	var thisPosition: CLLocationCoordinate2D!
 	var locationManager = CLLocationManager()
 	
