@@ -33,12 +33,15 @@ class ChooseLanguageController: UIViewController {
 		
 		label.font = UIFont(name: "Futura", size: 17)
 		label.textColor = ColorScheme.Title
+		label.text = NSLocalizedString("Please choose language", comment: "Choose language")
 		
 		button.titleLabel?.font = UIFont(name: "Futura", size: 17)
 		button.titleLabel?.textColor = ColorScheme.Title
+		button.titleLabel?.text = NSLocalizedString("OK", comment: "OK")
 		
 		picker.dataSource = self
 		picker.delegate = self
+
 		
 		button.addTarget(self, action: #selector(selectLanguage), for: .touchUpInside)
 	}
