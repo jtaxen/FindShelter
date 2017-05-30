@@ -20,6 +20,7 @@ extension MapViewController: MKMapViewDelegate {
 		
 		if startUpdating {
 			let closestPoint = distanceTool.findNearest(toElement: userLocation.coordinate)
+
 			let endpoints = [userLocation.coordinate, closestPoint]
 			let coordinates = UnsafeMutablePointer(mutating: endpoints)
 			let geodesicPolyline = MKGeodesicPolyline(coordinates: coordinates, count: 2)
