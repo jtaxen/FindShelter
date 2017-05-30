@@ -30,6 +30,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			initialController = storyboard.instantiateViewController(withIdentifier: "language") as! ChooseLanguageController
 		}
 		
+		if let language = UserDefaults.standard.string(forKey: "language") {
+			
+			
+		}
+		
 		window?.rootViewController = initialController
 		window?.makeKeyAndVisible()
 		

@@ -20,6 +20,8 @@ class LocationDelegate: CLLocationManager {
 		super.init()
 		delegate = self
 		desiredAccuracy = kCLLocationAccuracyBest
+		pausesLocationUpdatesAutomatically = false
+		allowsBackgroundLocationUpdates = true
 		
 	}
 	
