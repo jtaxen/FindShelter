@@ -23,6 +23,7 @@ class MapViewController: UIViewController {
 	var following: Bool = false
 	
 	let client = ArcGISClient()
+	let locationManager = LocationDelegate()
 	
 //	let clusterManager = FBClusteringManager()
 //	let configuration = FBAnnotationClusterViewOptions(smallClusterImage: "smallCluster", mediumClusterImage: "mediumCluster", largeClusterImage: "largeCluster")
@@ -32,6 +33,11 @@ class MapViewController: UIViewController {
 		
 		map.delegate = self
 		map.userTrackingMode = .follow
+		
+		
+		locationManager.requestAlwaysAuthorization()
+		locationManager.requestWhenInUseAuthorization()
+		
 		
 		setUpMap()
 		setUpInfoBar()

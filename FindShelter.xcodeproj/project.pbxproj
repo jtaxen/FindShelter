@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2DE92B5B1ECE355900A43B25 /* DistanceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE92B5A1ECE355900A43B25 /* DistanceTest.swift */; };
 		A0172A961EC9944600A9235A /* ArcGISClientTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0172A951EC9944600A9235A /* ArcGISClientTest.swift */; };
+		A033BE6A1EDD897C00831E22 /* LocationTest.gpx in Resources */ = {isa = PBXBuildFile; fileRef = A033BE691EDD897C00831E22 /* LocationTest.gpx */; };
+		A033BE6B1EDD897C00831E22 /* LocationTest.gpx in Resources */ = {isa = PBXBuildFile; fileRef = A033BE691EDD897C00831E22 /* LocationTest.gpx */; };
 		A03550691ECDF0CE007C5C29 /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03550681ECDF0CE007C5C29 /* Distance.swift */; };
 		A038143F1ED42EA000956633 /* ShelterCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A038143E1ED42EA000956633 /* ShelterCellTableViewCell.swift */; };
 		A03814411ED430D700956633 /* ShelterInfoTableViewControllerUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03814401ED430D700956633 /* ShelterInfoTableViewControllerUI.swift */; };
@@ -43,7 +45,6 @@
 		A0DB16C81EC31470005660F9 /* FindShelterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DB16C71EC31470005660F9 /* FindShelterTests.swift */; };
 		A0DB16D31EC3193C005660F9 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DB16D21EC3193C005660F9 /* CoreDataStack.swift */; };
 		A0DF26701ECEE111004939CC /* CLLocationCoordinate2DExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DF266F1ECEE111004939CC /* CLLocationCoordinate2DExtension.swift */; };
-		A0DF26721ECF1332004939CC /* LocationTest.gpx in Resources */ = {isa = PBXBuildFile; fileRef = A0DF26711ECF1332004939CC /* LocationTest.gpx */; };
 		A0DF26771ECF2998004939CC /* ShelterPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DF26761ECF2998004939CC /* ShelterPointAnnotation.swift */; };
 		A0DF26791ECF326F004939CC /* ShelterInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DF26781ECF326F004939CC /* ShelterInfoTableViewController.swift */; };
 		A0DF267C1ECF32DD004939CC /* ShelterInfoTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DF267B1ECF32DD004939CC /* ShelterInfoTableViewDelegate.swift */; };
@@ -66,6 +67,7 @@
 		5F8EE0E802DDEE6D284D25B9 /* Pods-FindShelter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindShelter.release.xcconfig"; path = "Pods/Target Support Files/Pods-FindShelter/Pods-FindShelter.release.xcconfig"; sourceTree = "<group>"; };
 		7B0A42C8F41D8D330F2EDAEF /* Pods-FindShelter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindShelter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FindShelter/Pods-FindShelter.debug.xcconfig"; sourceTree = "<group>"; };
 		A0172A951EC9944600A9235A /* ArcGISClientTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArcGISClientTest.swift; sourceTree = "<group>"; };
+		A033BE691EDD897C00831E22 /* LocationTest.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LocationTest.gpx; sourceTree = "<group>"; };
 		A03550681ECDF0CE007C5C29 /* Distance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Distance.swift; path = Model/Distance.swift; sourceTree = "<group>"; };
 		A038143E1ED42EA000956633 /* ShelterCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShelterCellTableViewCell.swift; path = View/ShelterCellTableViewCell.swift; sourceTree = "<group>"; };
 		A03814401ED430D700956633 /* ShelterInfoTableViewControllerUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShelterInfoTableViewControllerUI.swift; path = Controller/ShelterInfoTableViewControllerUI.swift; sourceTree = "<group>"; };
@@ -104,7 +106,6 @@
 		A0DB16C91EC31470005660F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0DB16D21EC3193C005660F9 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = Model/CoreDataStack.swift; sourceTree = "<group>"; };
 		A0DF266F1ECEE111004939CC /* CLLocationCoordinate2DExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CLLocationCoordinate2DExtension.swift; path = Model/CLLocationCoordinate2DExtension.swift; sourceTree = "<group>"; };
-		A0DF26711ECF1332004939CC /* LocationTest.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LocationTest.gpx; sourceTree = "<group>"; };
 		A0DF26761ECF2998004939CC /* ShelterPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShelterPointAnnotation.swift; path = Controller/ShelterPointAnnotation.swift; sourceTree = "<group>"; };
 		A0DF26781ECF326F004939CC /* ShelterInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShelterInfoTableViewController.swift; path = Controller/ShelterInfoTableViewController.swift; sourceTree = "<group>"; };
 		A0DF267B1ECF32DD004939CC /* ShelterInfoTableViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShelterInfoTableViewDelegate.swift; path = Controller/ShelterInfoTableViewDelegate.swift; sourceTree = "<group>"; };
@@ -259,7 +260,7 @@
 		A0DB16C61EC31470005660F9 /* FindShelterTests */ = {
 			isa = PBXGroup;
 			children = (
-				A0DF26711ECF1332004939CC /* LocationTest.gpx */,
+				A033BE691EDD897C00831E22 /* LocationTest.gpx */,
 				A0B4BB5D1ECC7782003928AE /* SpatialServiceTest.swift */,
 				2DE92B5A1ECE355900A43B25 /* DistanceTest.swift */,
 				A0DB16C71EC31470005660F9 /* FindShelterTests.swift */,
@@ -398,6 +399,7 @@
 			files = (
 				A0DB16BD1EC31470005660F9 /* LaunchScreen.storyboard in Resources */,
 				A0DB16BA1EC31470005660F9 /* Assets.xcassets in Resources */,
+				A033BE6A1EDD897C00831E22 /* LocationTest.gpx in Resources */,
 				A06DC64E1ECA010500BC4590 /* Language.storyboard in Resources */,
 				A0DB16B81EC31470005660F9 /* Main.storyboard in Resources */,
 			);
@@ -407,7 +409,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A0DF26721ECF1332004939CC /* LocationTest.gpx in Resources */,
+				A033BE6B1EDD897C00831E22 /* LocationTest.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -22,6 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		var initialController: UIViewController!
 		
 		if UserDefaults.standard.value(forKey: "firstTimeOpened") as? Bool == false {
+			
+			
 			storyboard = UIStoryboard(name: "Main", bundle: nil)
 			initialController = storyboard.instantiateViewController(withIdentifier: "mainNavigation") as! UINavigationController
 		} else {
