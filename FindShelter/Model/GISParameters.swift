@@ -8,17 +8,21 @@
 
 import Foundation
 import CoreLocation
+import MapKit
 
 /**
 The ArcGIS REST API has two methods which are being used in this application:
-**find** and **identify**. This class generates arrays of parameters to 
+**find** and **identify**. This class generates arrays of parameters to
 make requests to both these method.
 */
 public class GISParameters: Parameters {
-
-	static let shared = GISParameters()
 	
-	private init() {}
+	static let shared = GISParameters()
+	internal static var imageDisplay: String!
+	
+	private init() {
+		GISParameters.imageDisplay = deviceScreenProperties
+	}
 	
 	/**
 	Creates a parameter dictionary to be used with ArcGISClient.makeAPIRequest()
@@ -46,7 +50,7 @@ public class GISParameters: Parameters {
 	to the API.
 	*/
 	public func makeParameters(find searchText: String) -> [String: AnyObject] {
-	
+		
 		var parameters = makeParameters()
 		
 		parameters[ParameterKeys.SearchText] = searchText as AnyObject
@@ -57,7 +61,7 @@ public class GISParameters: Parameters {
 	}
 	
 	/**
-	Creates a dictionary of key-value pairs for an **identify** request. The two 
+	Creates a dictionary of key-value pairs for an **identify** request. The two
 	arguments are the geographical location in the vicinity of which the search
 	should be performed, and the tolerance, e.g. how far away from this point
 	items should be returned.
@@ -68,20 +72,44 @@ public class GISParameters: Parameters {
 	
 	Returns: A dictionary with the parameters needed to perform the request to the
 	*/
-	public func makeParameters(identify point: CLLocationCoordinate2D, inRadius radius: Int = 1000) -> [String : AnyObject] {
+	public func makeParameters(identify point: CLLocationCoordinate2D, inRadius radius: Int = 1000, mapExtent: MKCoordinateRegion) -> [String : AnyObject] {
 		
 		let utmPoint = SpatialService.shared.convertLatLonToUTM(point: point)
 		let geometryString = "\(utmPoint.1),\(utmPoint.0)"
-		let mapExtentString = "0,0,0,0"
 		
 		var parameters = makeParameters()
 		
 		parameters[ParameterKeys.Geometry]     = geometryString as AnyObject
 		parameters[ParameterKeys.GeometryType] = ParameterValues.GeometryType as AnyObject
 		parameters[ParameterKeys.Tolerance]    = radius as AnyObject
-		parameters[ParameterKeys.MapExtent]    = mapExtentString as AnyObject
+		parameters[ParameterKeys.MapExtent]    = mapExtentParameter(from: mapExtent) as AnyObject
 		parameters[ParameterKeys.ImageDisplay] = ParameterValues.ImageDisplay as AnyObject
 		
 		return parameters
+	}
+	
+	private func mapExtentParameter(from region: MKCoordinateRegion) -> String {
+		
+		let xMin = region.center.latitude - region.span.latitudeDelta / 2
+		let xMax = region.center.latitude + region.span.latitudeDelta / 2
+		let yMin = region.center.longitude - region.span.longitudeDelta / 2
+		let yMax = region.center.longitude + region.span.longitudeDelta / 2
+		
+		let southWest = SpatialService.shared.convertLatLonToUTM(point: CLLocationCoordinate2D(latitude: xMin, longitude: yMin))
+		let northEast = SpatialService.shared.convertLatLonToUTM(point: CLLocationCoordinate2D(latitude: xMax, longitude: yMax))
+		
+		let string = "\(southWest.0),\(southWest.1),\(northEast.0),\(northEast.1)"
+		return string
+	}
+	
+	internal var deviceScreenProperties: String {
+			let bounds = UIScreen.main.bounds
+			let height = bounds.height
+			let width = bounds.width
+			// This value is different for different devices, but setting it to the highest number still ensures that the radius of the search area is large enough to have all its borders outside the screen
+			let dpi = 401
+			
+			let string = "\(width),\(height),\(dpi)"
+			return string
 	}
 }

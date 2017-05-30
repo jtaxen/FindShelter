@@ -55,26 +55,15 @@ extension MapViewController: MKMapViewDelegate {
 		if annotation.isEqual(map.userLocation) { return nil }
 		
 		var reuseId: String!
-		/**
-		if annotation is FBAnnotationCluster {
-			reuseId = "Cluster"
-			var clusterView = map.dequeueReusableAnnotationView(withIdentifier: reuseId)
-			if clusterView == nil {
-				clusterView = FBAnnotationClusterView(annotation: annotation, reuseIdentifier: reuseId, options: self.configuration)
-			} else {
-				clusterView?.annotation = annotation
-			}
-			return clusterView
-		} else {*/
-			reuseId = "Shelter"
-			var shelterView = map.dequeueReusableAnnotationView(withIdentifier: "Shelter")
-			if shelterView == nil {
-				shelterView = ShelterAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-			} else {
-				shelterView?.annotation = annotation
-			}
-			return shelterView
-//		}
+		
+		reuseId = "Shelter"
+		var shelterView = map.dequeueReusableAnnotationView(withIdentifier: "Shelter")
+		if shelterView == nil {
+			shelterView = ShelterAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+		} else {
+			shelterView?.annotation = annotation
+		}
+		return shelterView
 	}
 	
 	func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
@@ -97,7 +86,9 @@ extension MapViewController: MKMapViewDelegate {
 	func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
 		
 		if mapView.region.span.latitudeDelta < 0.6 {
-			client.makeAPIRequest(url: GISParameters.URL(.identify)! , parameters: GISParameters.shared.makeParameters(identify: mapView.centerCoordinate, inRadius: Int(mapView.region.span.latitudeDelta*50000)), completionHandler: completionHandlerForAPIRequest(_:))
+			
+			
+			client.makeAPIRequest(url: GISParameters.URL(.identify)! , parameters: GISParameters.shared.makeParameters(identify: mapView.centerCoordinate, inRadius: toleranceRadius(), mapExtent: mapView.region), completionHandler: completionHandlerForAPIRequest(_:))
 		}
 	}
 }

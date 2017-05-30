@@ -42,7 +42,7 @@ class MapViewController: UIViewController {
 		
 //		clusterManager.delegate = self
 		
-		client.makeAPIRequest(url: GISParameters.URL(.identify)!, parameters: GISParameters.shared.makeParameters(identify: map.userLocation.coordinate), completionHandler: completionHandlerForAPIRequest(_:))
+		client.makeAPIRequest(url: GISParameters.URL(.identify)!, parameters: GISParameters.shared.makeParameters(identify: map.userLocation.coordinate, inRadius: toleranceRadius(), mapExtent: map.region), completionHandler: completionHandlerForAPIRequest(_:))
 	}
 	
 	internal func completionHandlerForAPIRequest(_ shelters: [ShelterObject]?) {
@@ -75,5 +75,18 @@ class MapViewController: UIViewController {
 		DispatchQueue.main.async {
 			self.mapView(self.map, didUpdate: self.map.userLocation)
 		}
+	}
+}
+
+extension MapViewController {
+	
+	internal func toleranceRadius() -> Int {
+		
+		let width = UIScreen.main.bounds.width
+		let height = UIScreen.main.bounds.height
+		
+		let r2 = ((width.multiplied(by: width)) + (height.multiplied(by: height))) / 4
+		// + 1 so that the radius is strictly larger than the screen radius after truncation
+		return Int(sqrt(r2) + 1)
 	}
 }

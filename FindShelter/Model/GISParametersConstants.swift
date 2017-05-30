@@ -8,6 +8,7 @@
 
 import Foundation
 import JavaScriptCore
+import UIKit
 
 ///
 extension GISParameters {
@@ -79,6 +80,6 @@ extension GISParameters {
 		
 		/// Static values for the identify requests.
 		static let GeometryType     = "esriGeometryPoint"
-		static let ImageDisplay     = "600,550,96"
+		static let ImageDisplay     = GISParameters.imageDisplay
 	}
 }
