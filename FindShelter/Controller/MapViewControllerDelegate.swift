@@ -115,7 +115,9 @@ extension MapViewController: MKMapViewDelegate {
 	
 	func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
 		
-
+		if !userAnnotationIsVisible() {
+			client.makeAPIRequest(url: GISParameters.URL(.identify)! , parameters: GISParameters.shared.makeParameters(identify: mapView.centerCoordinate, inRadius: toleranceRadius(), mapExtent: mapView.region), completionHandler: completionHandlerForAPIRequest(_:))
+		}
 	}
 }
 

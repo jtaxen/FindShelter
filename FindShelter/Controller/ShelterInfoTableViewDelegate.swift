@@ -14,14 +14,18 @@ import CoreLocation
 
 internal extension ShelterInfoTableViewController {
 	
+	/// Only one section needed.
 	override func numberOfSections(in tableView: UITableView) -> Int {
 		return 1
 	}
 	
+	/// There are eight attributes which are useful to the user, and one row for favorite button.
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return 9
 	}
 	
+	/// The information for downloaded and saved items is stored slightly different, so unfortunately
+	/// different keywords are needed for each case.
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ShelterCellTableViewCell
 		
@@ -37,8 +41,11 @@ internal extension ShelterInfoTableViewController {
 			case 5: cell.textLabel?.text = shelterObject!.attributes?.numberOfOccupants ?? "none"
 			cell.detailTextLabel?.text = "Kapacitet"
 			case 6:
-				let squaredDistance = locationManager.location!.coordinate.squaredDistance(to: thisPosition)
-				cell.textLabel?.text = "\(Int(sqrt(squaredDistance))) m"
+				if let squaredDistance = locationManager.location?.coordinate.squaredDistance(to: thisPosition) {
+					cell.textLabel?.text = "\(Int(sqrt(squaredDistance))) m"
+				} else {
+					cell.textLabel?.text = NSLocalizedString("Does not have access to current position", comment: "User has not shared the position")
+				}
 				cell.detailTextLabel?.text = "Avstånd"
 				
 			case 7: cell.textLabel?.text = shelterObject!.attributes?.pointOfContact
@@ -47,6 +54,7 @@ internal extension ShelterInfoTableViewController {
 			cell.detailTextLabel?.text = ""
 			default: break
 			}
+			
 		} else if shelterCoreData != nil {
 			CoreDataStack.shared?.persistingContext.performAndWait{
 				switch indexPath.row {

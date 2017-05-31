@@ -31,9 +31,9 @@ class MapViewController: UIViewController {
 		
 		map.delegate = self
 		map.userTrackingMode = .follow
+		// If the app can not find a user location, the map starts by showing the demographical midpoint.
+		map.centerCoordinate = CLLocationCoordinate2D(latitude: 58.89555556, longitude: 15.43138889)
 		
-		
-		locationManager.requestAlwaysAuthorization()
 		locationManager.requestWhenInUseAuthorization()
 		
 		setUpMap()
