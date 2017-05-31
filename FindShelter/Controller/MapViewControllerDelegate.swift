@@ -13,9 +13,28 @@ import FBAnnotationClusteringSwift
 // MARK: - Map view delegate methods
 extension MapViewController: MKMapViewDelegate {
 	
+	/**
+	When the user location changes, several things happens:
+	#1, If the map is set to track the position, the map centers around the user location.
+	#2, If the distance between the user location and the point where the last update 
+	    was made is greater than half the distance of the last search's tolerance radius,
+        a new update is made, to load new shelters before the user sees the empty area
+	    on the screen (the units that are compared are meters to points, so it is rather
+	    arbitrarily implemented as of now).
+	#3, If the first request has been made (that is, if startUpdating == true), it is 
+	    decided which shelter is the closest, and a line between it and the user is 
+	    overlayed.
+	*/
 	func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
 		if following {
 			mapView.centerCoordinate = userLocation.coordinate
+		}
+		
+		if locationOfLatestUpdate != nil {
+			
+			if sqrt(userLocation.coordinate.squaredDistance(to: locationOfLatestUpdate!)) > Double(toleranceRadius()) / 2 && toleranceRadius() > 0 {
+				client.makeAPIRequest(url: GISParameters.URL(.identify)! , parameters: GISParameters.shared.makeParameters(identify: mapView.centerCoordinate, inRadius: toleranceRadius(), mapExtent: mapView.region), completionHandler: completionHandlerForAPIRequest(_:))
+			}
 		}
 		
 		if startUpdating {
@@ -44,6 +63,10 @@ extension MapViewController: MKMapViewDelegate {
 		}
 	}
 	
+	/**
+	Selecting an annotation takes the user to a table view with detailed
+	information about the shelter.
+	*/
 	func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
 		
 		if (view.annotation?.isEqual(mapView.userLocation))! {
@@ -60,6 +83,7 @@ extension MapViewController: MKMapViewDelegate {
 			mapView.deselectAnnotation(view.annotation, animated: false)
 		}
 	}
+	
 	
 	func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
 		
@@ -89,18 +113,9 @@ extension MapViewController: MKMapViewDelegate {
 		return renderer
 	}
 	
-	func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-		
-		
-	}
-	
 	func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
 		
-		if mapView.region.span.latitudeDelta < 0.6 {
-			
-			
-			client.makeAPIRequest(url: GISParameters.URL(.identify)! , parameters: GISParameters.shared.makeParameters(identify: mapView.centerCoordinate, inRadius: toleranceRadius(), mapExtent: mapView.region), completionHandler: completionHandlerForAPIRequest(_:))
-		}
+
 	}
 }
 

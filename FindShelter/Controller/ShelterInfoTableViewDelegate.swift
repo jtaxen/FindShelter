@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 import CoreLocation
 
+
+
 internal extension ShelterInfoTableViewController {
 	
 	override func numberOfSections(in tableView: UITableView) -> Int {
