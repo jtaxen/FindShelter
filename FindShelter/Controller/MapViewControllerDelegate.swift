@@ -19,18 +19,28 @@ extension MapViewController: MKMapViewDelegate {
 		}
 		
 		if startUpdating {
-			let closestPoint = distanceTool.findNearest(toElement: userLocation.coordinate)
-
-			let endpoints = [userLocation.coordinate, closestPoint]
-			let coordinates = UnsafeMutablePointer(mutating: endpoints)
-			let geodesicPolyline = MKGeodesicPolyline(coordinates: coordinates, count: 2)
-			
-			if mapView.overlays.count > 0 {
-				mapView.remove(mapView.overlays.last!)
+			if userAnnotationIsVisible() {
+				let closestPoint = distanceTool.findNearest(toElement: userLocation.coordinate)
+				
+				let endpoints = [userLocation.coordinate, closestPoint]
+				let coordinates = UnsafeMutablePointer(mutating: endpoints)
+				let geodesicPolyline = MKGeodesicPolyline(coordinates: coordinates, count: 2)
+				
+				if mapView.overlays.count > 0 {
+					mapView.remove(mapView.overlays.last!)
+				}
+				mapView.add(geodesicPolyline)
+				let dist = sqrt(userLocation.coordinate.squaredDistance(to: closestPoint))
+				if dist < 5000 {
+					infoLabel.text = NSLocalizedString("The distance to the nearest shelter is \(Int(dist)) m", comment: "Distance to the nearest shelter is () m")
+				}
+			} else {
+				
+				if mapView.overlays.count > 0 {
+					mapView.remove(mapView.overlays.last!)
+				}
+				infoLabel.text = ""
 			}
-			mapView.add(geodesicPolyline)
-			let dist = sqrt(userLocation.coordinate.squaredDistance(to: closestPoint))
-			infoLabel.text = NSLocalizedString("The distance to the nearest shelter is \(Int(dist)) m", comment: "Distance to the nearest shelter is () m")
 		}
 	}
 	

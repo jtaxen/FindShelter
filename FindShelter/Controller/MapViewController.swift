@@ -58,6 +58,11 @@ class MapViewController: UIViewController {
 			return
 		}
 		
+		// Remove earlier shelters for better prestanda
+		shelterList.removeAll()
+		coordinateList.removeAll()
+		map.removeAnnotations(map.annotations)
+		
 		for shelter in shelters! {
 			if let coordinates = ResponseHandler.shared.coordinates(for: shelter) {
 				self.shelterList[coordinates] = shelter
@@ -94,5 +99,22 @@ extension MapViewController {
 		let r2 = ((width.multiplied(by: width)) + (height.multiplied(by: height))) / 4
 		// + 1 so that the radius is strictly larger than the screen radius after truncation
 		return Int(sqrt(r2) + 1)
+	}
+	
+	internal func userAnnotationIsVisible() -> Bool {
+		
+		let userX = map.userLocation.coordinate.longitude
+		let userY = map.userLocation.coordinate.latitude
+		
+		let south = map.region.center.latitude - map.region.span.latitudeDelta / 2
+		let west  = map.region.center.longitude - map.region.span.longitudeDelta / 2
+		let north = map.region.center.latitude + map.region.span.latitudeDelta / 2
+		let east  = map.region.center.longitude + map.region.span.longitudeDelta / 2
+		
+		if userX < east && userX > west && userY < north && userY > south {
+			return true
+		}
+		
+		return false
 	}
 }
