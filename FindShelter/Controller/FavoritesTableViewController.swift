@@ -52,8 +52,6 @@ extension FavoritesTableViewController {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteCell", for: indexPath)
 		let shelter = shelters[indexPath.row]
 		
-		
-		
 		CoreDataStack.shared?.persistingContext.performAndWait {
 			cell.textLabel?.text = shelter.address
 		}

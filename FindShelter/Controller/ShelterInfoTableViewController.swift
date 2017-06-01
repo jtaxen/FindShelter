@@ -15,6 +15,7 @@ class ShelterInfoTableViewController: UITableViewController {
 	var shelterCoreData: Shelter?
 	var thisPosition: CLLocationCoordinate2D!
 	var locationManager = LocationDelegate()
+	internal var words = Words()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
