@@ -87,6 +87,7 @@ extension MapViewController: MKMapViewDelegate {
 	
 	func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
 		
+		// The user location annotation should be the default one.
 		if annotation.isEqual(map.userLocation) { return nil }
 		
 		var reuseId: String!
@@ -101,6 +102,7 @@ extension MapViewController: MKMapViewDelegate {
 		return shelterView
 	}
 	
+	/// An overlay is added, namely a blue line connecting the user location annotation with the closest shelter annotation.
 	func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
 		guard let polyline = overlay as? MKGeodesicPolyline else {
 			return MKOverlayRenderer()
@@ -113,6 +115,7 @@ extension MapViewController: MKMapViewDelegate {
 		return renderer
 	}
 	
+	/// If the user annotation is not visible on the screen, the shelters are updated every time this method is called.
 	func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
 		
 		if !userAnnotationIsVisible() {

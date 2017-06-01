@@ -16,11 +16,11 @@ import CoreData
 /// Convenienve functions for setting up the subviews.
 internal extension MapViewController {
 	
+	
 	func setUpMap() {
 		
 		map.userTrackingMode = .follow
 		map.region = MKCoordinateRegion(center: map.userLocation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-		print(map.userLocation.coordinate)
 	}
 	
 	func setUpInfoBar() {

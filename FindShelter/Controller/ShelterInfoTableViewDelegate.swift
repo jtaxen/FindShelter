@@ -80,6 +80,7 @@ internal extension ShelterInfoTableViewController {
 		return cell
 	}
 	
+	/// If the user selects row eight, it either saves the shelter to favorites or, if the shelter is already saved, returns to the map view with the shelter centered.
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		
 		switch indexPath.row {
@@ -121,6 +122,7 @@ internal extension ShelterInfoTableViewController {
 	}
 }
 
+// MARK: - Location manager delegate
 extension ShelterInfoTableViewController: CLLocationManagerDelegate {
 	
 	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

@@ -31,7 +31,7 @@ class MapViewController: UIViewController {
 		
 		map.delegate = self
 		map.userTrackingMode = .follow
-		// If the app can not find a user location, the map starts by showing the demographical midpoint.
+		// If the app can not find a user location, the map starts by showing the demographical midpoint of Sweden.
 		map.centerCoordinate = CLLocationCoordinate2D(latitude: 58.89555556, longitude: 15.43138889)
 		
 		locationManager.requestWhenInUseAuthorization()
@@ -46,6 +46,8 @@ class MapViewController: UIViewController {
 		client.makeAPIRequest(url: GISParameters.URL(.identify)!, parameters: GISParameters.shared.makeParameters(identify: map.userLocation.coordinate, inRadius: toleranceRadius(), mapExtent: map.region), completionHandler: completionHandlerForAPIRequest(_:))
 	}
 	
+	/**
+	*/
 	internal func completionHandlerForAPIRequest(_ shelters: [ShelterObject]?) {
 		
 		locationOfLatestUpdate = map.userLocation.coordinate
@@ -65,6 +67,11 @@ class MapViewController: UIViewController {
 				self.shelterList[coordinates] = shelter
 				self.coordinateList.append(coordinates)
 			}
+		}
+		
+		
+		CoreDataStack.shared?.persistingContext.performAndWait {
+			
 		}
 		
 		self.distanceTool.emptyTree()

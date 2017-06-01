@@ -10,6 +10,7 @@ import Foundation
 import CoreLocation
 import KDTree
 
+/// 
 class Distance {
 	
 	var tree: KDTree<CLLocationCoordinate2D>
@@ -41,5 +42,4 @@ class Distance {
 			tree = tree.removing(element)
 		}
 	}
-	
 }
