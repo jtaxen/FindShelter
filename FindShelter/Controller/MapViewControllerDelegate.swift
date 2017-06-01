@@ -99,6 +99,7 @@ extension MapViewController: MKMapViewDelegate {
 		} else {
 			shelterView?.annotation = annotation
 		}
+		
 		return shelterView
 	}
 	

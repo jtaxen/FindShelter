@@ -17,7 +17,6 @@ public class Shelter: NSManagedObject {
 		guard let entity = NSEntityDescription.entity(forEntityName: "Shelter", in: context) else {
 			fatalError("Unable to find entity name")
 		}
-		
 		self.init(entity: entity, insertInto: context)
 		
 		self.layerId           = item.layerId
@@ -33,5 +32,12 @@ public class Shelter: NSManagedObject {
 		self.estateDesignation = item.attributes?.estateDesignation
 		self.shelterNumber     = item.attributes?.shelterNumber
 		self.coverId           = item.attributes?.coverId
+		
+		if item.geometry?.xGeometry != nil && item.geometry?.yGeometry != nil {
+			let coordinates = SpatialService.shared.convertUTMToLatLon(north: Double((item.geometry?.yGeometry)!), east: Double((item.geometry?.xGeometry)!))
+			self.latitude = coordinates.latitude
+			self.longitude = coordinates.longitude
+			
+		}
 	}
 }

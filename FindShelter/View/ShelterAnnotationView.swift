@@ -15,9 +15,19 @@ class ShelterAnnotationView: MKAnnotationView {
 	
 	override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
 		super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
-		image = #imageLiteral(resourceName: "Civil_defence")
-		isFavorite = false
 		
+		guard let annot = annotation as? ShelterPointAnnotation else {
+			isFavorite = false
+			image = #imageLiteral(resourceName: "Civil_defence")
+			return
+		}
+		
+		isFavorite = annot.isFavorite
+		if isFavorite {
+			image = #imageLiteral(resourceName: "favorite")
+		} else {
+			image = #imageLiteral(resourceName: "Civil_defence")
+		}
 	}
 	
 	required init?(coder aDecoder: NSCoder) {

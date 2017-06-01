@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import MapKit
 import FBAnnotationClusteringSwift
+import CoreData
 
 class MapViewController: UIViewController {
 	
@@ -18,6 +19,7 @@ class MapViewController: UIViewController {
 	
 	var coordinateList         : [CLLocationCoordinate2D] = []
 	var shelterList            : [CLLocationCoordinate2D : ShelterObject] = [:]
+	var savedList              : [CLLocationCoordinate2D : Shelter] = [:]
 	var distanceTool           : Distance!
 	var startUpdating          : Bool = false
 	var following              : Bool = false
@@ -89,6 +91,29 @@ class MapViewController: UIViewController {
 		
 		DispatchQueue.main.async {
 			self.mapView(self.map, didUpdate: self.map.userLocation)
+		}
+	}
+	
+	internal func fetchAndDisplaySavedShelters() {
+		
+		CoreDataStack.shared?.persistingContext.performAndWait {
+			let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Shelter")
+			fetchRequest.sortDescriptors = [NSSortDescriptor(key: "xCoordinate", ascending: true)]
+			let controller = NSFetchedResultsController<NSFetchRequestResult>(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.shared!.persistingContext, sectionNameKeyPath: nil, cacheName: nil)
+			
+			do {
+				try controller.performFetch()
+				guard let fetchedObjects = controller.fetchedObjects as? [Shelter] else {
+					debugPrint(Errors.new(code: 600))
+					return
+				}
+				
+				for object in fetchedObjects{
+				}
+				
+			} catch {
+				debugPrint(error)
+			}
 		}
 	}
 }
