@@ -41,18 +41,29 @@ extension MapViewController: MKMapViewDelegate {
 			if userAnnotationIsVisible() {
 				let closestPoint = distanceTool.findNearest(toElement: userLocation.coordinate)
 				
-				let endpoints = [userLocation.coordinate, closestPoint]
-				let coordinates = UnsafeMutablePointer(mutating: endpoints)
-				let geodesicPolyline = MKGeodesicPolyline(coordinates: coordinates, count: 2)
-				
-				if mapView.overlays.count > 0 {
-					mapView.remove(mapView.overlays.last!)
-				}
-				mapView.add(geodesicPolyline)
 				let dist = sqrt(userLocation.coordinate.squaredDistance(to: closestPoint))
 				if dist < 5000 {
 					infoLabel.text = NSLocalizedString("The distance to the nearest shelter is \(Int(dist)) m", comment: "Distance to the nearest shelter is () m")
 				}
+				
+				guard closestPoint != closestShelter else {
+					return
+				}
+				
+				closestShelter = closestPoint
+				let circle = MKCircle(center: closestPoint, radius: 6)
+				
+//				let endpoints = [userLocation.coordinate, closestPoint]
+//				let coordinates = UnsafeMutablePointer(mutating: endpoints)
+//				let geodesicPolyline = MKGeodesicPolyline(coordinates: coordinates, count: 2)
+				
+				if mapView.overlays.count > 0 {
+					mapView.removeOverlays(map.overlays)
+				}
+				mapView.add(circle)
+//				mapView.add(geodesicPolyline)
+				
+
 			} else {
 				
 				if mapView.overlays.count > 0 {
@@ -105,15 +116,27 @@ extension MapViewController: MKMapViewDelegate {
 	
 	/// An overlay is added, namely a blue line connecting the user location annotation with the closest shelter annotation.
 	func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-		guard let polyline = overlay as? MKGeodesicPolyline else {
-			return MKOverlayRenderer()
+		
+		
+		if overlay is MKGeodesicPolyline {
+		
+			let renderer = MKPolylineRenderer(polyline: overlay as! MKPolyline)
+			renderer.lineWidth = 2.0
+			renderer.strokeColor = UIColor.blue
+			renderer.alpha = 0.5
+			return renderer
 		}
 		
-		let renderer = MKPolylineRenderer(polyline: polyline)
-		renderer.lineWidth = 2.0
-		renderer.strokeColor = UIColor.blue
-		renderer.alpha = 0.5
-		return renderer
+		if overlay is MKCircle {
+			
+			let renderer = MKCircleRenderer(circle: overlay as! MKCircle)
+			renderer.lineWidth = 0.0
+			renderer.strokeColor = UIColor.blue
+			renderer.alpha = 1.0
+			return renderer
+		}
+		
+		return MKOverlayRenderer()
 	}
 	
 	/// If the user annotation is not visible on the screen, the shelters are updated every time this method is called.

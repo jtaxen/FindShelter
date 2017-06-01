@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,7 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
 		if UserDefaults.standard.value(forKey: "firstTimeOpened") as? Bool == false {
 			
-			
 			storyboard = UIStoryboard(name: "Main", bundle: nil)
 			initialController = storyboard.instantiateViewController(withIdentifier: "mainNavigation") as! UINavigationController
 		} else {
@@ -34,7 +34,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
 		if let language = UserDefaults.standard.string(forKey: "language") {
 			
-			
+			print(language)
+			NSLocale(localeIdentifier: language)
 		}
 		
 		window?.rootViewController = initialController

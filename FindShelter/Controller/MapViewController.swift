@@ -24,6 +24,7 @@ class MapViewController: UIViewController {
 	var startUpdating          : Bool = false
 	var following              : Bool = false
 	var locationOfLatestUpdate : CLLocationCoordinate2D?
+	var closestShelter         : CLLocationCoordinate2D?
 	
 	let client = ArcGISClient()
 	let locationManager = LocationDelegate()
@@ -38,14 +39,15 @@ class MapViewController: UIViewController {
 		
 		locationManager.requestWhenInUseAuthorization()
 		
+		distanceTool = Distance(coordinateList)
+		
+		client.makeAPIRequest(url: GISParameters.URL(.identify)!, parameters: GISParameters.shared.makeParameters(identify: map.userLocation.coordinate, inRadius: toleranceRadius(), mapExtent: map.region), completionHandler: completionHandlerForAPIRequest(_:))
+		
 		setUpMap()
 		setUpInfoBar()
 		setUpBackButton()
 		setUpFavoritesButton()
-		
-		distanceTool = Distance(coordinateList)
-		
-		client.makeAPIRequest(url: GISParameters.URL(.identify)!, parameters: GISParameters.shared.makeParameters(identify: map.userLocation.coordinate, inRadius: toleranceRadius(), mapExtent: map.region), completionHandler: completionHandlerForAPIRequest(_:))
+		fetchAndDisplaySavedShelters()
 	}
 	
 	/**
@@ -69,11 +71,6 @@ class MapViewController: UIViewController {
 				self.shelterList[coordinates] = shelter
 				self.coordinateList.append(coordinates)
 			}
-		}
-		
-		
-		CoreDataStack.shared?.persistingContext.performAndWait {
-			
 		}
 		
 		self.distanceTool.emptyTree()
@@ -109,6 +106,11 @@ class MapViewController: UIViewController {
 				}
 				
 				for object in fetchedObjects{
+					let coord = CLLocationCoordinate2D(latitude: object.latitude, longitude: object.longitude)
+					self.savedList[coord] = object
+					let annotation = ShelterPointAnnotation(shelter: object)
+					annotation.coordinate = coord
+					self.map.addAnnotation(annotation)
 				}
 				
 			} catch {
