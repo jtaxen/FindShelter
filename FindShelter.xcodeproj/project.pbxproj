@@ -67,6 +67,8 @@
 		5F8EE0E802DDEE6D284D25B9 /* Pods-FindShelter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindShelter.release.xcconfig"; path = "Pods/Target Support Files/Pods-FindShelter/Pods-FindShelter.release.xcconfig"; sourceTree = "<group>"; };
 		7B0A42C8F41D8D330F2EDAEF /* Pods-FindShelter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindShelter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FindShelter/Pods-FindShelter.debug.xcconfig"; sourceTree = "<group>"; };
 		A0172A951EC9944600A9235A /* ArcGISClientTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArcGISClientTest.swift; sourceTree = "<group>"; };
+		A01DA7DB1EE14F380048A0F9 /* Model 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 3.xcdatamodel"; sourceTree = "<group>"; };
+		A01DA7DC1EE15B580048A0F9 /* Model 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 4.xcdatamodel"; sourceTree = "<group>"; };
 		A033BE691EDD897C00831E22 /* LocationTest.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LocationTest.gpx; sourceTree = "<group>"; };
 		A03550681ECDF0CE007C5C29 /* Distance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Distance.swift; path = Model/Distance.swift; sourceTree = "<group>"; };
 		A038143E1ED42EA000956633 /* ShelterCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShelterCellTableViewCell.swift; path = View/ShelterCellTableViewCell.swift; sourceTree = "<group>"; };
@@ -739,10 +741,12 @@
 		A078CB591EC9C3B70050F37C /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				A01DA7DC1EE15B580048A0F9 /* Model 4.xcdatamodel */,
+				A01DA7DB1EE14F380048A0F9 /* Model 3.xcdatamodel */,
 				A038353A1EE00C930079E721 /* Model 2.xcdatamodel */,
 				A078CB5A1EC9C3B70050F37C /* Model.xcdatamodel */,
 			);
-			currentVersion = A038353A1EE00C930079E721 /* Model 2.xcdatamodel */;
+			currentVersion = A01DA7DC1EE15B580048A0F9 /* Model 4.xcdatamodel */;
 			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

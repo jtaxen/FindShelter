@@ -67,12 +67,11 @@ internal extension ShelterInfoTableViewController {
 		} else if shelterCoreData != nil {
 			CoreDataStack.shared?.persistingContext.performAndWait{
 				switch indexPath.row {
-//				case 0: cell.textLabel?.text = self.shelterCoreData!.layerName ?? "No name"
 				case 0:
 					cell.textLabel?.text = self.shelterCoreData!.address ?? self.words.noAddress
 					cell.detailTextLabel?.text = self.words.sAddress
 				case 1:
-					cell.textLabel?.text = ""
+					cell.textLabel?.text = self.shelterCoreData?.occupants ?? self.words.noCapacity
 					cell.detailTextLabel?.text = self.words.sOccupants
 				case 2:
 					cell.textLabel?.text = self.shelterCoreData?.town ?? self.words.noCity
@@ -92,7 +91,7 @@ internal extension ShelterInfoTableViewController {
 					cell.detailTextLabel?.text = self.words.sDistance
 					
 				case 6:
-					cell.textLabel?.text = self.words.noPointOfC
+					cell.textLabel?.text = self.shelterCoreData?.pointOfContact ?? self.words.noPointOfC
 					cell.detailTextLabel?.text = self.words.sPointOfC
 				case 7:
 					cell.textLabel?.text = self.words.sCenter
@@ -108,7 +107,7 @@ internal extension ShelterInfoTableViewController {
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		
 		switch indexPath.row {
-		case 8:
+		case 7:
 			if shelterObject != nil {
 				CoreDataStack.shared?.persistingContext.perform {
 					_ = Shelter(self.shelterObject!, context: (CoreDataStack.shared?.persistingContext)!)
@@ -144,6 +143,18 @@ internal extension ShelterInfoTableViewController {
 			return 0
 		}
 	}
+	
+	/**
+	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+		if shelterObject != nil {
+			return shelterObject?.attributes?.additional ?? ""
+		} else if shelterCoreData != nil {
+			CoreDataStack.shared?.persistingContext.performAndWait {
+				return self.shelterCoreData?.additional ?? ""
+			}
+		}
+		return ""
+	}*/
 }
 
 // MARK: - Location manager delegate
@@ -169,7 +180,7 @@ extension ShelterInfoTableViewController {
 		let sMunicipality  = NSLocalizedString("Municipality",                       comment : "municipality")
 		let sPersons       = NSLocalizedString("people",                             comment : "unit for capacity")
 		let sCapacity      = NSLocalizedString("Capacity",                           comment : "capacity")
-		let sDistance      = NSLocalizedString("m from your position",               comment : "distance from the user")
+		let sDistance      = NSLocalizedString("",               comment : "distance from the user")
 		let sPointOfC      = NSLocalizedString("Point of contact",                   comment : "Point of contact")
 		let sSave          = NSLocalizedString("Save",                               comment : "save button")
 		let sCenter        = NSLocalizedString("Show shelter on map",                comment : "center on map")
