@@ -75,6 +75,7 @@
 		A01DA7EB1EE189DD0048A0F9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A01DA7EC1EE189DE0048A0F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A01DA7ED1EE18A020048A0F9 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A01DA7EF1EE18F5D0048A0F9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		A033BE691EDD897C00831E22 /* LocationTest.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LocationTest.gpx; sourceTree = "<group>"; };
 		A03550681ECDF0CE007C5C29 /* Distance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Distance.swift; path = Model/Distance.swift; sourceTree = "<group>"; };
 		A038143E1ED42EA000956633 /* ShelterCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShelterCellTableViewCell.swift; path = View/ShelterCellTableViewCell.swift; sourceTree = "<group>"; };
@@ -561,6 +562,7 @@
 			children = (
 				A0DB16BC1EC31470005660F9 /* Base */,
 				A01DA7E31EE16ED00048A0F9 /* sv */,
+				A01DA7EF1EE18F5D0048A0F9 /* en */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

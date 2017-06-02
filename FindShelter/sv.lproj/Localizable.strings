@@ -29,5 +29,6 @@ Capacity_unknown = "Kapacitet okänd";
 Cannot_find_your_current_position = "Din nuvarande position kan inte hittas";
 
 distance_to_user = "Det närmaste skyddsrummet är %d m bort";
+waiting_for_position = "Väntar på position...";
 
-back = "Tillbaks";
+back = "Tillbaka";

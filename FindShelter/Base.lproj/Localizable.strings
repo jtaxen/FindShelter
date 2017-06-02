@@ -29,5 +29,6 @@ Capacity_unknown = "Capacity unkown";
 Cannot_find_your_current_position = "Cannot find your current position";
 
 distance_to_user = "The closest shelter is %d m away";
+waiting_for_position = "Waiting for position...";
 
 back = "Back";

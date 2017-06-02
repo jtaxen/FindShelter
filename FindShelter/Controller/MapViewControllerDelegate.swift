@@ -53,16 +53,10 @@ extension MapViewController: MKMapViewDelegate {
 				closestShelter = closestPoint
 				let circle = MKCircle(center: closestPoint, radius: 6)
 				
-//				let endpoints = [userLocation.coordinate, closestPoint]
-//				let coordinates = UnsafeMutablePointer(mutating: endpoints)
-//				let geodesicPolyline = MKGeodesicPolyline(coordinates: coordinates, count: 2)
-				
 				if mapView.overlays.count > 0 {
 					mapView.removeOverlays(map.overlays)
 				}
 				mapView.add(circle)
-//				mapView.add(geodesicPolyline)
-				
 
 			} else {
 				
