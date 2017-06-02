@@ -43,7 +43,7 @@ extension MapViewController: MKMapViewDelegate {
 				
 				let dist = sqrt(userLocation.coordinate.squaredDistance(to: closestPoint))
 				if dist < 5000 {
-					infoLabel.text = NSLocalizedString("The distance to the nearest shelter is \(Int(dist)) m", comment: "Distance to the nearest shelter is () m")
+					infoLabel.text = String(format: NSLocalizedString("distance_to_user", comment: "distance"), Int(dist))
 				}
 				
 				guard closestPoint != closestShelter else {
