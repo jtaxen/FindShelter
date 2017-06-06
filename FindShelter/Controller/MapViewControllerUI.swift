@@ -25,13 +25,13 @@ internal extension MapViewController {
 	
 	func setUpInfoBar() {
 		
-		infoLabel.text = NSLocalizedString("Waiting for position...", comment: "Waiting for position")
+		infoLabel.text = NSLocalizedString("waiting_for_position", comment: "Waiting for position")
 		infoLabel.font = UIFont(name: "Futura", size: 17)
 	}
 	
 	func setUpBackButton() {
 		
-		let backString = NSLocalizedString("Back", comment: "Back")
+		let backString = NSLocalizedString("back", comment: "Back")
 		let backButton = UIBarButtonItem(title: backString, style: .done, target: self, action: #selector(popView(_:)))
 		backButton.tintColor = ColorScheme.Title
 		let attributes = [NSFontAttributeName: UIFont(name: "Futura", size: 17) as Any,
@@ -42,6 +42,7 @@ internal extension MapViewController {
 		navigationItem.backBarButtonItem = backButton
 		
 		navigationController?.navigationBar.titleTextAttributes = attributes
+		navigationController?.navigationBar.tintColor = ColorScheme.Title
 	}
 	
 	func setUpFavoritesButton() {
@@ -49,6 +50,14 @@ internal extension MapViewController {
 		let favoriteButton = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(presentFavorites(_:)))
 		favoriteButton.tintColor = ColorScheme.Title
 		navigationItem.rightBarButtonItem = favoriteButton
+	}
+	
+	func setUpCenterUserButton() {
+		
+		let centerButton = UIBarButtonItem(barButtonSystemItem: .reply, target: self, action: #selector(centerUser(_:)))
+		centerButton.tintColor = ColorScheme.Title
+		
+		navigationItem.leftBarButtonItem = centerButton
 	}
 	
 	@objc func popView(_ sender: UIBarButtonItem) {
@@ -75,5 +84,12 @@ internal extension MapViewController {
 				debugPrint(error)
 			}
 		}
+	}
+	
+	@objc func centerUser(_ sender: UIBarButtonItem) {
+		
+		map.centerCoordinate = map.userLocation.coordinate
+		following = !following
+		
 	}
 }

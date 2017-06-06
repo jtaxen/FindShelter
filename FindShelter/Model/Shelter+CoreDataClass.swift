@@ -25,13 +25,16 @@ public class Shelter: NSManagedObject {
 		self.address           = item.attributes?.serviceLBAddress
 		self.xCoordinate       = Int32((item.geometry?.xGeometry)!)
 		self.yCoordinate       = Int32((item.geometry?.yGeometry)!)
-		self.municipality      = item.attributes?.municipality
+		self.municipality      = item.attributes?.serviceLBMunicipality
 		self.town              = item.attributes?.serviceLBCity
 		self.filterType        = item.attributes?.resourceFilter
 		self.capacity          = Int32((item.attributes?.numberOfOccupants)!)!
 		self.estateDesignation = item.attributes?.estateDesignation
 		self.shelterNumber     = item.attributes?.shelterNumber
 		self.coverId           = item.attributes?.coverId
+		self.occupants         = item.attributes?.typeOfOccupants
+		self.pointOfContact    = item.attributes?.pointOfContact
+		self.additional        = item.attributes?.additional
 		
 		if item.geometry?.xGeometry != nil && item.geometry?.yGeometry != nil {
 			let coordinates = SpatialService.shared.convertUTMToLatLon(north: Double((item.geometry?.yGeometry)!), east: Double((item.geometry?.xGeometry)!))

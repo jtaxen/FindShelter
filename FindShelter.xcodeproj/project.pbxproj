@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2DE92B5B1ECE355900A43B25 /* DistanceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE92B5A1ECE355900A43B25 /* DistanceTest.swift */; };
 		A0172A961EC9944600A9235A /* ArcGISClientTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0172A951EC9944600A9235A /* ArcGISClientTest.swift */; };
+		A01DA7E81EE189D40048A0F9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A01DA7EA1EE189D40048A0F9 /* Localizable.strings */; };
 		A033BE6A1EDD897C00831E22 /* LocationTest.gpx in Resources */ = {isa = PBXBuildFile; fileRef = A033BE691EDD897C00831E22 /* LocationTest.gpx */; };
 		A033BE6B1EDD897C00831E22 /* LocationTest.gpx in Resources */ = {isa = PBXBuildFile; fileRef = A033BE691EDD897C00831E22 /* LocationTest.gpx */; };
 		A03550691ECDF0CE007C5C29 /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03550681ECDF0CE007C5C29 /* Distance.swift */; };
@@ -67,6 +68,14 @@
 		5F8EE0E802DDEE6D284D25B9 /* Pods-FindShelter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindShelter.release.xcconfig"; path = "Pods/Target Support Files/Pods-FindShelter/Pods-FindShelter.release.xcconfig"; sourceTree = "<group>"; };
 		7B0A42C8F41D8D330F2EDAEF /* Pods-FindShelter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindShelter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FindShelter/Pods-FindShelter.debug.xcconfig"; sourceTree = "<group>"; };
 		A0172A951EC9944600A9235A /* ArcGISClientTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArcGISClientTest.swift; sourceTree = "<group>"; };
+		A01DA7DB1EE14F380048A0F9 /* Model 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 3.xcdatamodel"; sourceTree = "<group>"; };
+		A01DA7DC1EE15B580048A0F9 /* Model 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 4.xcdatamodel"; sourceTree = "<group>"; };
+		A01DA7E21EE16ED00048A0F9 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Main.strings; sourceTree = "<group>"; };
+		A01DA7E31EE16ED00048A0F9 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		A01DA7EB1EE189DD0048A0F9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A01DA7EC1EE189DE0048A0F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A01DA7ED1EE18A020048A0F9 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A01DA7EF1EE18F5D0048A0F9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		A033BE691EDD897C00831E22 /* LocationTest.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LocationTest.gpx; sourceTree = "<group>"; };
 		A03550681ECDF0CE007C5C29 /* Distance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Distance.swift; path = Model/Distance.swift; sourceTree = "<group>"; };
 		A038143E1ED42EA000956633 /* ShelterCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShelterCellTableViewCell.swift; path = View/ShelterCellTableViewCell.swift; sourceTree = "<group>"; };
@@ -210,6 +219,7 @@
 				A0DB16B91EC31470005660F9 /* Assets.xcassets */,
 				A0DB16BB1EC31470005660F9 /* LaunchScreen.storyboard */,
 				A0DB16BE1EC31470005660F9 /* Info.plist */,
+				A01DA7EA1EE189D40048A0F9 /* Localizable.strings */,
 				A0DB16B21EC31470005660F9 /* AppDelegate.swift */,
 			);
 			name = "Supporting files";
@@ -381,6 +391,7 @@
 			knownRegions = (
 				en,
 				Base,
+				sv,
 			);
 			mainGroup = A0DB16A61EC31470005660F9;
 			productRefGroup = A0DB16B01EC31470005660F9 /* Products */;
@@ -399,6 +410,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0DB16BD1EC31470005660F9 /* LaunchScreen.storyboard in Resources */,
+				A01DA7E81EE189D40048A0F9 /* Localizable.strings in Resources */,
 				A0DB16BA1EC31470005660F9 /* Assets.xcassets in Resources */,
 				A033BE6A1EDD897C00831E22 /* LocationTest.gpx in Resources */,
 				A06DC64E1ECA010500BC4590 /* Language.storyboard in Resources */,
@@ -526,10 +538,21 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		A01DA7EA1EE189D40048A0F9 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A01DA7EB1EE189DD0048A0F9 /* en */,
+				A01DA7EC1EE189DE0048A0F9 /* Base */,
+				A01DA7ED1EE18A020048A0F9 /* sv */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		A0DB16B61EC31470005660F9 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				A0DB16B71EC31470005660F9 /* Base */,
+				A01DA7E21EE16ED00048A0F9 /* sv */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -538,6 +561,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				A0DB16BC1EC31470005660F9 /* Base */,
+				A01DA7E31EE16ED00048A0F9 /* sv */,
+				A01DA7EF1EE18F5D0048A0F9 /* en */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -549,6 +574,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -600,6 +626,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -739,10 +766,12 @@
 		A078CB591EC9C3B70050F37C /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				A01DA7DC1EE15B580048A0F9 /* Model 4.xcdatamodel */,
+				A01DA7DB1EE14F380048A0F9 /* Model 3.xcdatamodel */,
 				A038353A1EE00C930079E721 /* Model 2.xcdatamodel */,
 				A078CB5A1EC9C3B70050F37C /* Model.xcdatamodel */,
 			);
-			currentVersion = A038353A1EE00C930079E721 /* Model 2.xcdatamodel */;
+			currentVersion = A01DA7DC1EE15B580048A0F9 /* Model 4.xcdatamodel */;
 			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

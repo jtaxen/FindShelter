@@ -23,7 +23,30 @@ class ShelterInfoTableViewController: UITableViewController {
 		tableView.dataSource = self
 		tableView.isScrollEnabled = false
 		tableView.tableFooterView = UIView()
+		tableView.tableHeaderView = setUpHeader()
 		
 		setUpNavigationBar()
+	}
+	
+	internal func setUpHeader() -> UIView {
+		
+		let rect = CGRect(x: 0, y: 0, width: tableView.frame.width, height: 60)
+		let label = UILabel(frame: rect)
+		label.textAlignment = NSTextAlignment.center
+		label.textColor = ColorScheme.Title
+		label.font = UIFont(name: "Futura", size: 17)
+		
+		if let title = shelterObject?.attributes?.additional {
+			label.text = title
+			return label
+		}
+		
+		CoreDataStack.shared?.persistingContext.performAndWait {
+			if let title = self.shelterCoreData?.additional {
+				label.text = title
+			}
+		}
+		
+		return (label.text != nil && label.text != "") ? label : UIView()
 	}
 }

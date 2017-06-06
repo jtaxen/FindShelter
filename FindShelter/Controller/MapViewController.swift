@@ -47,6 +47,7 @@ class MapViewController: UIViewController {
 		setUpInfoBar()
 		setUpBackButton()
 		setUpFavoritesButton()
+		setUpCenterUserButton()
 		fetchAndDisplaySavedShelters()
 	}
 	

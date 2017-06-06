@@ -31,5 +31,8 @@ extension Shelter {
     @NSManaged public var coverId           : String?
 	@NSManaged public var latitude          : Double
 	@NSManaged public var longitude         : Double
+	@NSManaged public var occupants         : String?
+	@NSManaged public var pointOfContact    : String?
+	@NSManaged public var additional        : String?
 
 }

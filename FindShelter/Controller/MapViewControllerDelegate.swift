@@ -43,7 +43,7 @@ extension MapViewController: MKMapViewDelegate {
 				
 				let dist = sqrt(userLocation.coordinate.squaredDistance(to: closestPoint))
 				if dist < 5000 {
-					infoLabel.text = NSLocalizedString("The distance to the nearest shelter is \(Int(dist)) m", comment: "Distance to the nearest shelter is () m")
+					infoLabel.text = String(format: NSLocalizedString("distance_to_user", comment: "distance"), Int(dist))
 				}
 				
 				guard closestPoint != closestShelter else {
@@ -53,16 +53,10 @@ extension MapViewController: MKMapViewDelegate {
 				closestShelter = closestPoint
 				let circle = MKCircle(center: closestPoint, radius: 6)
 				
-//				let endpoints = [userLocation.coordinate, closestPoint]
-//				let coordinates = UnsafeMutablePointer(mutating: endpoints)
-//				let geodesicPolyline = MKGeodesicPolyline(coordinates: coordinates, count: 2)
-				
 				if mapView.overlays.count > 0 {
 					mapView.removeOverlays(map.overlays)
 				}
 				mapView.add(circle)
-//				mapView.add(geodesicPolyline)
-				
 
 			} else {
 				
