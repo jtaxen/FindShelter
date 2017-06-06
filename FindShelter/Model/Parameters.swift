@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreLocation
+import MapKit
 
 protocol Parameters {
 	
@@ -15,6 +16,6 @@ protocol Parameters {
 	
 	func makeParameters(find searchText: String) -> [String: AnyObject]
 	
-	func makeParameters(identify point: CLLocationCoordinate2D, inRadius radius: Int) -> [String: AnyObject]
+	func makeParameters(identify point: CLLocationCoordinate2D, inRadius radius: Int, mapExtent: MKCoordinateRegion) -> [String: AnyObject]
 	
 }

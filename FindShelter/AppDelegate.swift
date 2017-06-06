@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import CoreLocation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+	
 	var window: UIWindow?
-
-
+	
+	
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 		
 		window = UIWindow(frame: UIScreen.main.bounds)
@@ -22,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		var initialController: UIViewController!
 		
 		if UserDefaults.standard.value(forKey: "firstTimeOpened") as? Bool == false {
+			
 			storyboard = UIStoryboard(name: "Main", bundle: nil)
 			initialController = storyboard.instantiateViewController(withIdentifier: "mainNavigation") as! UINavigationController
 		} else {
@@ -30,8 +32,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			initialController = storyboard.instantiateViewController(withIdentifier: "language") as! ChooseLanguageController
 		}
 		
+		if let language = UserDefaults.standard.string(forKey: "language") {
+			
+			print(language)
+			NSLocale(localeIdentifier: language)
+		}
+		
 		window?.rootViewController = initialController
 		window?.makeKeyAndVisible()
+		
+		print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true))
 		
 		return true
 	}

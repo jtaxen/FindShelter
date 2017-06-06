@@ -18,7 +18,7 @@ class DistanceTest: XCTestCase {
         let point2 = CLLocationCoordinate2D(latitude: 56.0, longitude: 13.0)
         
         let distance = point1.squaredDistance(to: point2)
-        XCTAssertEqualWithAccuracy(sqrt(distance), 503200 , accuracy: 1)
+        XCTAssertEqualWithAccuracy(sqrt(distance), 503200 , accuracy: 10)
         print("Distance accuracy is \(abs(sqrt(distance) - 480300))")
     }
     

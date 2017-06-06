@@ -10,64 +10,147 @@ import Foundation
 import UIKit
 import MapKit
 import FBAnnotationClusteringSwift
+import CoreData
 
 class MapViewController: UIViewController {
 	
 	@IBOutlet weak var map: MKMapView!
 	@IBOutlet weak var infoLabel: UILabel!
 	
-	var coordinateList: [CLLocationCoordinate2D] = []
-	var shelterList: [CLLocationCoordinate2D: ShelterObject] = [:]
-	var distanceTool: Distance!
-	var startUpdating: Bool = false
-	var following: Bool = false
+	var coordinateList         : [CLLocationCoordinate2D] = []
+	var shelterList            : [CLLocationCoordinate2D : ShelterObject] = [:]
+	var savedList              : [CLLocationCoordinate2D : Shelter] = [:]
+	var distanceTool           : Distance!
+	var startUpdating          : Bool = false
+	var following              : Bool = false
+	var locationOfLatestUpdate : CLLocationCoordinate2D?
+	var closestShelter         : CLLocationCoordinate2D?
 	
 	let client = ArcGISClient()
-	
-	let clusterManager = FBClusteringManager()
-	let configuration = FBAnnotationClusterViewOptions(smallClusterImage: "smallCluster", mediumClusterImage: "mediumCluster", largeClusterImage: "largeCluster")
+	let locationManager = LocationDelegate()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		map.delegate = self
 		map.userTrackingMode = .follow
+		// If the app can not find a user location, the map starts by showing the demographical midpoint of Sweden.
+		map.centerCoordinate = CLLocationCoordinate2D(latitude: 58.89555556, longitude: 15.43138889)
+		
+		locationManager.requestWhenInUseAuthorization()
+		
+		distanceTool = Distance(coordinateList)
+		
+		client.makeAPIRequest(url: GISParameters.URL(.identify)!, parameters: GISParameters.shared.makeParameters(identify: map.userLocation.coordinate, inRadius: toleranceRadius(), mapExtent: map.region), completionHandler: completionHandlerForAPIRequest(_:))
 		
 		setUpMap()
 		setUpInfoBar()
 		setUpBackButton()
+		setUpFavoritesButton()
+		fetchAndDisplaySavedShelters()
+	}
+	
+	/**
+	*/
+	internal func completionHandlerForAPIRequest(_ shelters: [ShelterObject]?) {
 		
-		distanceTool = Distance(coordinateList)
+		locationOfLatestUpdate = map.userLocation.coordinate
 		
-		clusterManager.delegate = self
-		
-		client.makeAPIRequest(url: GISParameters.URL(.find)!, parameters: GISParameters.shared.makeParameters(find: "Malmö")) { shelters in
-			
-			guard shelters != nil else {
-				return
-			}
-			
-			for shelter in shelters! {
-				if let coordinates = ResponseHandler.shared.coordinates(for: shelter) {
-					self.shelterList[coordinates] = shelter
-					self.coordinateList.append(coordinates)
-				}
-			}
-			self.distanceTool.appendToTree(elements: self.coordinateList)
-			
-			var annotationArray: [FBAnnotation] = []
-			for (coord, shl) in self.shelterList {
-				let annotation = ShelterPointAnnotation(shelter: shl)
-				annotation.coordinate = coord
-				annotationArray.append(annotation)
-			}
-			self.clusterManager.addAnnotations(annotationArray)
-			self.startUpdating = true
-			
-			DispatchQueue.main.async {
-				self.mapView(self.map, didUpdate: self.map.userLocation)
-			}
-			
+		guard shelters != nil else {
+			debugPrint(Errors.new(code: 502))
+			return
 		}
+		
+		// Remove earlier shelters for better prestanda
+		shelterList.removeAll()
+		coordinateList.removeAll()
+		map.removeAnnotations(map.annotations)
+		
+		for shelter in shelters! {
+			if let coordinates = ResponseHandler.shared.coordinates(for: shelter) {
+				self.shelterList[coordinates] = shelter
+				self.coordinateList.append(coordinates)
+			}
+		}
+		
+		self.distanceTool.emptyTree()
+		self.distanceTool.appendToTree(elements: self.coordinateList)
+		
+		var annotationArray: [FBAnnotation] = []
+		for (coord, shl) in self.shelterList {
+			let annotation = ShelterPointAnnotation(shelter: shl)
+			annotation.coordinate = coord
+			annotationArray.append(annotation)
+		}
+
+		map.addAnnotations(annotationArray)
+		self.startUpdating = true
+		
+		DispatchQueue.main.async {
+			self.mapView(self.map, didUpdate: self.map.userLocation)
+		}
+	}
+	
+	internal func fetchAndDisplaySavedShelters() {
+		
+		CoreDataStack.shared?.persistingContext.performAndWait {
+			let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Shelter")
+			fetchRequest.sortDescriptors = [NSSortDescriptor(key: "xCoordinate", ascending: true)]
+			let controller = NSFetchedResultsController<NSFetchRequestResult>(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.shared!.persistingContext, sectionNameKeyPath: nil, cacheName: nil)
+			
+			do {
+				try controller.performFetch()
+				guard let fetchedObjects = controller.fetchedObjects as? [Shelter] else {
+					debugPrint(Errors.new(code: 600))
+					return
+				}
+				
+				for object in fetchedObjects{
+					let coord = CLLocationCoordinate2D(latitude: object.latitude, longitude: object.longitude)
+					self.savedList[coord] = object
+					let annotation = ShelterPointAnnotation(shelter: object)
+					annotation.coordinate = coord
+					self.map.addAnnotation(annotation)
+				}
+				
+			} catch {
+				debugPrint(error)
+			}
+		}
+	}
+}
+
+extension MapViewController {
+	
+	internal func toleranceRadius() -> Int {
+		
+		// If the user has zoomed out to far, no new annotations should appear
+		if map.region.span.latitudeDelta > 0.6 {
+			return -1
+		}
+		
+		let width = UIScreen.main.bounds.width
+		let height = UIScreen.main.bounds.height
+		
+		let r2 = ((width.multiplied(by: width)) + (height.multiplied(by: height))) / 4
+		// + 1 so that the radius is strictly larger than the screen radius after truncation
+		return Int(sqrt(r2) + 1)
+	}
+	
+	internal func userAnnotationIsVisible() -> Bool {
+		
+		let userX = map.userLocation.coordinate.longitude
+		let userY = map.userLocation.coordinate.latitude
+		
+		let south = map.region.center.latitude - map.region.span.latitudeDelta / 2
+		let west  = map.region.center.longitude - map.region.span.longitudeDelta / 2
+		let north = map.region.center.latitude + map.region.span.latitudeDelta / 2
+		let east  = map.region.center.longitude + map.region.span.longitudeDelta / 2
+		
+		if userX < east && userX > west && userY < north && userY > south {
+			return true
+		}
+		
+		return false
 	}
 }

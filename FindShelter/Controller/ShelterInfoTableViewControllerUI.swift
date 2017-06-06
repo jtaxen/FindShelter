@@ -13,6 +13,6 @@ internal extension ShelterInfoTableViewController {
 	
 	func setUpNavigationBar() {
 		
-		navigationItem.title = shelter.attributes?.serviceLBAddress ?? ""
+//		navigationItem.title = shelter.attributes?.serviceLBAddress ?? ""
 	}
 }

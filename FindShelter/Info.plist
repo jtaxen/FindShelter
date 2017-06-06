@@ -6,6 +6,12 @@
 	<string>en</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Please enable localization.</string>
+	<key>NSLocationUsageDescription</key>
+	<string>Please enable</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Please</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>

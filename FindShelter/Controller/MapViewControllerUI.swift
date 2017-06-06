@@ -10,8 +10,12 @@ import Foundation
 import MapKit
 import CoreLocation
 import UIKit
+import CoreData
 
+// MARK: - UI
+/// Convenienve functions for setting up the subviews.
 internal extension MapViewController {
+	
 	
 	func setUpMap() {
 		
@@ -40,8 +44,36 @@ internal extension MapViewController {
 		navigationController?.navigationBar.titleTextAttributes = attributes
 	}
 	
+	func setUpFavoritesButton() {
+		
+		let favoriteButton = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(presentFavorites(_:)))
+		favoriteButton.tintColor = ColorScheme.Title
+		navigationItem.rightBarButtonItem = favoriteButton
+	}
+	
 	@objc func popView(_ sender: UIBarButtonItem) {
 		
 		popView(sender)
+	}
+	
+	@objc func presentFavorites(_ sender: UIBarButtonItem) {
+		
+		CoreDataStack.shared?.persistingContext.performAndWait {
+			let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Shelter")
+			fetchRequest.sortDescriptors = [NSSortDescriptor(key: "xCoordinate", ascending: true)]
+			let controller = NSFetchedResultsController<NSFetchRequestResult>(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.shared!.persistingContext, sectionNameKeyPath: nil, cacheName: nil)
+			do {
+				try controller.performFetch()
+				DispatchQueue.main.async {
+					let storyboard = UIStoryboard(name: "Main", bundle: nil)
+					let viewController = storyboard.instantiateViewController(withIdentifier: "favorites") as! FavoritesTableViewController
+					viewController.shelters = controller.fetchedObjects as! [Shelter]
+					self.navigationController?.pushViewController(viewController, animated: true)
+				}
+				
+			} catch {
+				debugPrint(error)
+			}
+		}
 	}
 }

@@ -17,7 +17,6 @@ class GISParametersTests: XCTestCase {
 	
 		let parameters = GISParams.makeParameters()
 		
-		XCTAssertEqual(parameters[GISParameters.ParameterKeys.Contains] as! Bool, true)
 		XCTAssertEqual(parameters[GISParameters.ParameterKeys.F] as! String, "json")
 	}
 	

@@ -31,15 +31,29 @@ class ChooseLanguageController: UIViewController {
 		locationManager.requestAlwaysAuthorization()
 		UserDefaults.standard.set(CLLocationManager.locationServicesEnabled() , forKey: "locationServicesEnabled")
 		
+		label.font = UIFont(name: "Futura", size: 17)
+		label.textColor = ColorScheme.Title
+		label.text = NSLocalizedString("Please choose language", comment: "Choose language")
+		
+		button.titleLabel?.font = UIFont(name: "Futura", size: 17)
+		button.titleLabel?.textColor = ColorScheme.Title
+		button.titleLabel?.text = NSLocalizedString("OK", comment: "OK")
+		
 		picker.dataSource = self
 		picker.delegate = self
+
 		
 		button.addTarget(self, action: #selector(selectLanguage), for: .touchUpInside)
 	}
 	
 	@objc func selectLanguage() {
-	
 		
+		let language = languages[picker.selectedRow(inComponent: 0)]
+		UserDefaults.standard.set(language, forKey: "language")
+		
+		let storyboard = UIStoryboard(name: "Main", bundle: nil)
+		let controller = storyboard.instantiateViewController(withIdentifier: "mainNavigation")
+		show(controller, sender: nil)
 		
 	}
 }

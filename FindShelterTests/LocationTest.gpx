@@ -6,10 +6,11 @@
 	 waypoint, Xcode will simulate that specific location. If you provide multiple waypoints,
 	 Xcode will simulate a route visiting each waypoint.
 	 -->
-	<!--
+	
+	<!-- Stockholm City
 	<wpt lat="59.330668" lon="18.057932">
 		<name>Stockholms Centralstation</name>
-		<time>2017-05-19T14:02:37Z</time>
+		<time>2017-05-19T14:00:00Z</time>
 	</wpt>
 	<wpt lat="59.344971" lon="18.039722">
 		<name>St. Eriksgatan/Vanadisvägen</name>
@@ -21,7 +22,27 @@
 	</wpt>
 	 -->
 	
-	<wpt lat="59.624820" lon="17.844549">
-		<name>Stockholmsvägen 49C, Märsta</name>
+	<!-- Malmös höjdpunkter -->
+	<wpt lat="55.61331" lon="12.98832">
+		<name>ÅF Malmö</name>
+		<time>2017-05-29T16:00:00Z</time>
 		</wpt>
+	<wpt lat="55.596085" lon="12.996376">
+		<name>Malmöoperan</name>
+		<time>2017-05-29T16:02:00Z</time>
+		</wpt>
+	<wpt lat="55.595558" lon="13.013306">
+		<name>Folkets Park</name>
+		<time>2017-05-29T16:10:00Z</time>
+		</wpt>
+	<wpt lat="55.605563" lon="13.022854">
+		<name>Värnhem</name>
+		<time>2017-05-29T16:15:00Z</time>
+		</wpt>
+	<wpt lat="55.613315" lon="12.988329">
+		<name>ÅF Malmö</name>
+		<time>2017-05-29T16:20:00Z</time>
+	</wpt>
+	
+	 
 </gpx>
