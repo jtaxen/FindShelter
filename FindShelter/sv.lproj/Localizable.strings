@@ -1,0 +1,34 @@
+/* 
+  Localizable.strings
+  
+
+  Created by ÅF Jacob Taxén on 2017-06-02.
+
+*/
+
+// Shelter info table view details
+Name = "Namn";
+Address = "Adress";
+Intended_for = "Avsedd för";
+City = "Stad";
+Municipality = "Kommun";
+people = "personer";
+Capacity = "Kapacitet";
+Distance = "Avstånd";
+Point_of_contact = "Kontaktpunkt";
+Save = "Spara";
+Show_shelter_on_map = "Visa skyddsrum på kartan";
+
+// Shelter info table view info is missing
+Name_is_missing = "Namn saknas";
+Address_is_missing = "Adress saknas";
+No_information = "Information saknas";
+City_is_missing = "Stad saknas";
+Municipality_is_missing = "Kommun saknas";
+Capacity_unknown = "Kapacitet okänd";
+Cannot_find_your_current_position = "Din nuvarande position kan inte hittas";
+
+distance_to_user = "Det närmaste skyddsrummet är %d m bort";
+waiting_for_position = "Väntar på position...";
+
+back = "Tillbaka";
