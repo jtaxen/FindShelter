@@ -32,3 +32,4 @@ distance_to_user = "Det närmaste skyddsrummet är %d m bort";
 waiting_for_position = "Väntar på position...";
 
 back = "Tillbaka";
+OK = "OK";

@@ -31,7 +31,6 @@ internal extension ShelterInfoTableViewController {
 		
 		if shelterObject != nil {
 			switch indexPath.row {
-//			case 0: cell.textLabel?.text = shelterObject!.layerName ?? words.noName
 			case 0:
 				cell.textLabel?.text = shelterObject!.attributes?.serviceLBAddress ?? words.noName
 				cell.detailTextLabel?.text = words.sName
@@ -143,18 +142,6 @@ internal extension ShelterInfoTableViewController {
 			return 0
 		}
 	}
-	
-	/**
-	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-		if shelterObject != nil {
-			return shelterObject?.attributes?.additional ?? ""
-		} else if shelterCoreData != nil {
-			CoreDataStack.shared?.persistingContext.performAndWait {
-				return self.shelterCoreData?.additional ?? ""
-			}
-		}
-		return ""
-	}*/
 }
 
 // MARK: - Location manager delegate
@@ -180,7 +167,7 @@ extension ShelterInfoTableViewController {
 		let sMunicipality  = NSLocalizedString("Municipality",                       comment : "municipality")
 		let sPersons       = NSLocalizedString("people",                             comment : "unit for capacity")
 		let sCapacity      = NSLocalizedString("Capacity",                           comment : "capacity")
-		let sDistance      = NSLocalizedString("Distance",               comment : "distance from the user")
+		let sDistance      = NSLocalizedString("Distance",                           comment : "distance from the user")
 		let sPointOfC      = NSLocalizedString("Point_of_contact",                   comment : "Point of contact")
 		let sSave          = NSLocalizedString("Save",                               comment : "save button")
 		let sCenter        = NSLocalizedString("Show_shelter_on_map",                comment : "center on map")
@@ -191,7 +178,7 @@ extension ShelterInfoTableViewController {
 		let noCity         = NSLocalizedString("City_is_missing",                    comment : "city is missing")
 		let noMunicipality = NSLocalizedString("Municipality_is_missing",            comment : "no municip")
 		let noCapacity     = NSLocalizedString("Capacity_unknown",                   comment : "capacity unknown")
-		let noDistance     = NSLocalizedString("Cannot_find_your_current_position", comment : "user position is lacking")
+		let noDistance     = NSLocalizedString("Cannot_find_your_current_position",  comment : "user position is lacking")
 		let noPointOfC     = NSLocalizedString("No_information",                     comment : "pointofc is missing")
 	}
 }

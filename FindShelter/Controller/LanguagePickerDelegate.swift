@@ -19,15 +19,20 @@ extension ChooseLanguageController: UIPickerViewDelegate, UIPickerViewDataSource
 	func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
 		return languages.count
 	}
-	
-	func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-		
-		let attributes = [
-			NSFontAttributeName: UIFont(name: "Futura", size: 17) as AnyObject,
-			NSForegroundColorAttributeName: ColorScheme.Title as AnyObject
-		]
-		
-		let string = NSAttributedString(string: languages[row], attributes: attributes)
-		return string
-	}
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        var label: UILabel
+        
+        if let view = view as? UILabel {
+            label = view
+        } else {
+            label = UILabel()
+        }
+        
+        label.textColor = ColorScheme.Title
+        label.font = UIFont(name: "Futura", size: 17)
+        label.text = languages[row]
+        
+        return label
+    }
 }

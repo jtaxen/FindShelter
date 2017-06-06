@@ -16,6 +16,8 @@ class FavoritesTableViewController: UITableViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+        
+        setUpNavigationBar()
 		
 		tableView.delegate   = self
 		tableView.dataSource = self
@@ -51,6 +53,9 @@ extension FavoritesTableViewController {
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteCell", for: indexPath)
 		let shelter = shelters[indexPath.row]
+        
+        cell.textLabel?.font = UIFont(name: "Futura", size: 17)
+        cell.textLabel?.tintColor = ColorScheme.Title
 		
 		CoreDataStack.shared?.persistingContext.performAndWait {
 			cell.textLabel?.text = shelter.address
@@ -129,4 +134,14 @@ extension FavoritesTableViewController {
 		alert.addAction(cancelAction)
 		present(alert, animated: true, completion: nil)
 	}
+    
+    func setUpNavigationBar() {
+        
+        navigationItem.backBarButtonItem?.tintColor = ColorScheme.Title
+        let attributes = [NSFontAttributeName: UIFont(name: "Futura", size: 17) as Any,
+                          NSForegroundColorAttributeName: ColorScheme.Title as Any]
+        
+        navigationItem.backBarButtonItem?.setTitleTextAttributes(attributes, for: .normal)
+        navigationController?.navigationBar.tintColor = ColorScheme.Title
+    }
 }

@@ -51,7 +51,7 @@ extension MapViewController: MKMapViewDelegate {
 				}
 				
 				closestShelter = closestPoint
-				let circle = MKCircle(center: closestPoint, radius: 6)
+				let circle = MKCircle(center: closestPoint, radius: 10)
 				
 				if mapView.overlays.count > 0 {
 					mapView.removeOverlays(map.overlays)

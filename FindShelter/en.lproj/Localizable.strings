@@ -32,3 +32,4 @@ distance_to_user = "The closest shelter is %d m away";
 waiting_for_position = "Waiting for position...";
 
 back = "Back";
+OK = "OK";

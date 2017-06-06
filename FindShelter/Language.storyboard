@@ -30,7 +30,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jHA-Da-orE">
                                 <rect key="frame" x="20" y="433.5" width="335" height="133.5"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="OK"/>
                             </button>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8C4-Vk-6ai">
                                 <rect key="frame" x="47" y="224" width="281" height="220"/>

@@ -14,46 +14,56 @@ import CoreLocation
 /// language when the application starts for the first
 /// time.
 class ChooseLanguageController: UIViewController {
-	
-	@IBOutlet weak var label  : UILabel!
-	@IBOutlet weak var picker : UIPickerView!
-	@IBOutlet weak var button : UIButton!
-	
-	/// List of the available languages.
-	/// - TODO: Move this into a property list.
-	internal var languages: [String] = ["Svenska", "English", "Deutsch"]
-	
-	internal var locationManager: CLLocationManager!
-	
-	override func viewDidLoad() {
-		
-		locationManager = CLLocationManager()
-		locationManager.requestAlwaysAuthorization()
-		UserDefaults.standard.set(CLLocationManager.locationServicesEnabled() , forKey: "locationServicesEnabled")
-		
-		label.font = UIFont(name: "Futura", size: 17)
-		label.textColor = ColorScheme.Title
-		label.text = NSLocalizedString("Please choose language", comment: "Choose language")
-		
-		button.titleLabel?.font = UIFont(name: "Futura", size: 17)
-		button.titleLabel?.textColor = ColorScheme.Title
-		button.titleLabel?.text = NSLocalizedString("OK", comment: "OK")
-		
-		picker.dataSource = self
-		picker.delegate = self
-
-		
-		button.addTarget(self, action: #selector(selectLanguage), for: .touchUpInside)
-	}
-	
-	@objc func selectLanguage() {
-		
-		let language = languages[picker.selectedRow(inComponent: 0)]
-		UserDefaults.standard.set(language, forKey: "language")
-		
-		let storyboard = UIStoryboard(name: "Main", bundle: nil)
-		let controller = storyboard.instantiateViewController(withIdentifier: "mainNavigation")
-		show(controller, sender: nil)
-		
-	}
+    
+    @IBOutlet weak var label  : UILabel!
+    @IBOutlet weak var picker : UIPickerView!
+    @IBOutlet weak var button : UIButton!
+    
+    /// List of the available languages.
+    /// - TODO: Move this into a property list.
+    internal var languages: [String] = ["Svenska", "English"]
+    
+    internal var locationManager: CLLocationManager!
+    
+    override func viewDidLoad() {
+        
+        locationManager = CLLocationManager()
+        locationManager.requestAlwaysAuthorization()
+        UserDefaults.standard.set(CLLocationManager.locationServicesEnabled() , forKey: "locationServicesEnabled")
+        
+        label.font = UIFont(name: "Futura", size: 17)
+        label.textColor = ColorScheme.Title
+        label.text = NSLocalizedString("Please choose language", comment: "Choose language")
+        
+        button.tintColor = ColorScheme.Title
+        button.setTitle(NSLocalizedString("OK", comment: "OK"), for: .normal)
+        button.title
+        button.addTarget(self, action: #selector(selectLanguage), for: .touchUpInside)
+        
+        picker.dataSource = self
+        picker.delegate = self
+        
+        
+    }
+    
+    @objc func selectLanguage() {
+        
+        let language = languages[picker.selectedRow(inComponent: 0)]
+        
+        var languageIdentifier: String!
+        
+        switch language {
+        case "Svenska": languageIdentifier = "sv"
+        case "English": languageIdentifier = "en"
+        default: languageIdentifier = "sv"
+        }
+        
+        UserDefaults.standard.set(languageIdentifier, forKey: "AppleLanguages")
+        UserDefaults.standard.synchronize()
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "mainNavigation")
+        show(controller, sender: nil)
+        
+    }
 }
