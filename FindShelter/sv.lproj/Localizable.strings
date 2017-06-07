@@ -33,3 +33,8 @@ waiting_for_position = "Väntar på position...";
 
 back = "Tillbaka";
 OK = "OK";
+
+Cancel = "Avbryt";
+try_again = "Försök igen";
+Network_down = "Serveranropet misslyckades";
+Network_down_message = "Kontrollera din nätverksåtkomst och försök igen.";

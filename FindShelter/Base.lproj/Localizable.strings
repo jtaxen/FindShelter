@@ -33,3 +33,8 @@ waiting_for_position = "Waiting for position...";
 
 back = "Back";
 OK = "OK";
+
+Cancel = "Cancel";
+try_again = "Try again";
+Network_down = "Cannot connect to the server";
+Network_down_message = "Please check your internet connection and try again.";

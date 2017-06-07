@@ -32,6 +32,12 @@ class MapViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		if let lang = UserDefaults.standard.string(forKey: "AppleLanguages") {
+			UserDefaults.standard.removeObject(forKey: "AppleLanguages")
+			UserDefaults.standard.set(lang, forKey: "AppleLanguages")
+			UserDefaults.standard.synchronize()
+		}
+		
 		map.delegate = self
 		map.userTrackingMode = .follow
 		// If the app can not find a user location, the map starts by showing the demographical midpoint of Sweden.
@@ -59,6 +65,8 @@ class MapViewController: UIViewController {
 		
 		guard shelters != nil else {
 			debugPrint(Errors.new(code: 502))
+			let alert = self.networkAlert()
+			present(alert, animated: true, completion: nil)
 			return
 		}
 		
@@ -83,13 +91,28 @@ class MapViewController: UIViewController {
 			annotation.coordinate = coord
 			annotationArray.append(annotation)
 		}
-
+		
 		map.addAnnotations(annotationArray)
 		self.startUpdating = true
 		
 		DispatchQueue.main.async {
 			self.mapView(self.map, didUpdate: self.map.userLocation)
 		}
+	}
+	
+	internal func networkAlert() -> UIAlertController {
+		
+		let tryAgain = UIAlertAction(title: NSLocalizedString("try_again", comment: "try again"), style: .default) { alert in
+			self.client.makeAPIRequest(url: GISParameters.URL(.identify)!, parameters: GISParameters.shared.makeParameters(identify: self.map.userLocation.coordinate, inRadius: self.toleranceRadius(), mapExtent: self.map.region), completionHandler: self.completionHandlerForAPIRequest(_:))
+		}
+		
+		let cancel = UIAlertAction(title: NSLocalizedString("Cancel", comment: "cancel"), style: .cancel, handler: nil)
+		
+		let alert = UIAlertController(title: NSLocalizedString("Network_down", comment: "Server request failed"), message: NSLocalizedString("Network_down_message", comment: ""), preferredStyle: .alert)
+		alert.addAction(tryAgain)
+		alert.addAction(cancel)
+		
+		return alert
 	}
 	
 	internal func fetchAndDisplaySavedShelters() {
