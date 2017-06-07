@@ -34,3 +34,6 @@ When touching a shelter notation, a table with information about the chosen shel
 
 When at the map view, the navigation bar contains a button which takes the user to the "favorite list", which displays all the saved shelters. Here the user can choose to inspect the information by touching one of the rows. When displaying information about a saved location, the save button in the table is replaced by a button which takes the user back to the map view and centers the chosen shelter.
 
+## Language support
+
+The application is so far translated to Swedish and English.
