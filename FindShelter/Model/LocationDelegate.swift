@@ -14,9 +14,8 @@ class LocationDelegate: CLLocationManager {
 	internal var currentPosition: CLLocationCoordinate2D!
 	
 	
-	public static let shared = LocationDelegate()
 	
-	private override init() {
+	override init() {
 		super.init()
 		delegate = self
 		desiredAccuracy = kCLLocationAccuracyBest

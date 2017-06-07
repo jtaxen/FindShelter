@@ -10,18 +10,43 @@ import UIKit
 import CoreLocation
 
 class ShelterInfoTableViewController: UITableViewController {
-
-	var shelter: ShelterObject!
-	var thisPosition: CLLocationCoordinate2D!
 	
-    override func viewDidLoad() {
-        super.viewDidLoad()
+	var shelterObject: ShelterObject?
+	var shelterCoreData: Shelter?
+	var thisPosition: CLLocationCoordinate2D!
+	var locationManager = LocationDelegate()
+	internal var words = Words()
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
 		tableView.delegate = self
 		tableView.dataSource = self
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+		tableView.isScrollEnabled = false
+		tableView.tableFooterView = UIView()
+		tableView.tableHeaderView = setUpHeader()
+		
+		setUpNavigationBar()
+	}
+	
+	internal func setUpHeader() -> UIView {
+		
+		let rect = CGRect(x: 0, y: 0, width: tableView.frame.width, height: 60)
+		let label = UILabel(frame: rect)
+		label.textAlignment = NSTextAlignment.center
+		label.textColor = ColorScheme.Title
+		label.font = UIFont(name: "Futura", size: 17)
+		
+		if let title = shelterObject?.attributes?.additional {
+			label.text = title
+			return label
+		}
+		
+		CoreDataStack.shared?.persistingContext.performAndWait {
+			if let title = self.shelterCoreData?.additional {
+				label.text = title
+			}
+		}
+		
+		return (label.text != nil && label.text != "") ? label : UIView()
+	}
 }

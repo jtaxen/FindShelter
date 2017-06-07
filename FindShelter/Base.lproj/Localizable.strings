@@ -1,0 +1,40 @@
+/* 
+  Localizable.strings
+  
+
+  Created by ÅF Jacob Taxén on 2017-06-02.
+
+*/
+
+// Shelter info table view details
+Name = "Name";
+Address = "Address";
+Intended_for = "Intended for";
+City = "City";
+Municipality = "Municipality";
+people = "people";
+Capacity = "Capacity";
+Distance = "Distance";
+Point_of_contact = "Point of contact";
+Save = "Save";
+Show_shelter_on_map = "Show shelter on map";
+
+// Shelter info table view info is missing
+Name_is_missing = "Name is missing";
+Address_is_missing = "Address is missing";
+No_information = "No information";
+City_is_missing = "City is missing";
+Municipality_is_missing = "Municipality is missing";
+Capacity_unknown = "Capacity unkown";
+Cannot_find_your_current_position = "Cannot find your current position";
+
+distance_to_user = "The closest shelter is %d m away";
+waiting_for_position = "Waiting for position...";
+
+back = "Back";
+OK = "OK";
+
+Cancel = "Cancel";
+try_again = "Try again";
+Network_down = "Cannot connect to the server";
+Network_down_message = "Please check your internet connection and try again.";

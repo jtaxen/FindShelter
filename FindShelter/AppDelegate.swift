@@ -7,33 +7,35 @@
 //
 
 import UIKit
+import CoreLocation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-	var window: UIWindow?
-
-
-	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    
+    var window: UIWindow?
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 		
-		window = UIWindow(frame: UIScreen.main.bounds)
+        window = UIWindow(frame: UIScreen.main.bounds)
+        
+        var storyboard: UIStoryboard!
+        var initialController: UIViewController!
 		
-		var storyboard: UIStoryboard!
-		var initialController: UIViewController!
-		
-		if UserDefaults.standard.value(forKey: "firstTimeOpened") as? Bool == false {
-			storyboard = UIStoryboard(name: "Main", bundle: nil)
-			initialController = storyboard.instantiateViewController(withIdentifier: "mainMap") as! MapViewController
-		} else {
-			UserDefaults.standard.set(false, forKey: "firstTimeOpened")
-			storyboard = UIStoryboard(name: "Language", bundle: nil)
-			initialController = storyboard.instantiateViewController(withIdentifier: "language") as! ChooseLanguageController
-		}
+		if true {
+			
+            storyboard = UIStoryboard(name: "Main", bundle: nil)
+            initialController = storyboard.instantiateViewController(withIdentifier: "mainNavigation") as! UINavigationController
+        }
 		
 		window?.rootViewController = initialController
 		window?.makeKeyAndVisible()
 		
-		return true
-	}
+        return true
+    }
+    
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        
+        return UIInterfaceOrientationMask.portrait
+    }
 }
 

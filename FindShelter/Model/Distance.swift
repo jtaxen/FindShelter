@@ -22,11 +22,10 @@ class Distance {
 		guard tree.elements.count > 0 else {
 			return element
 		}
+		 
 		let nearest = tree.nearest(toElement: element)!
-		print("Distance to nearest shelter is \(Int(sqrt(element.squaredDistance(to: nearest)))) m")
 		return nearest
 	}
-	
 	func findNearest(_ number: Int, toElement element: CLLocationCoordinate2D) -> [CLLocationCoordinate2D] {
 		return tree.nearestK(number, toElement: element)
 	}
@@ -34,6 +33,12 @@ class Distance {
 	func appendToTree(elements: [CLLocationCoordinate2D]) {
 		for element in elements {
 			tree = tree.inserting(element)
+		}
+	}
+	
+	func emptyTree() {
+		for element in tree.elements {
+			tree = tree.removing(element)
 		}
 	}
 }

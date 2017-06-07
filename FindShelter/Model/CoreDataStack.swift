@@ -17,6 +17,8 @@ class CoreDataStack {
 	internal let dbUrl       : URL
 	let persistingContext    : NSManagedObjectContext
 	
+	static let shared = CoreDataStack(modelName: "Model")
+	
 	// MARK: - Initializer
 	init?(modelName: String) {
 		

@@ -17,8 +17,8 @@ class ArcGISClientTest: XCTestCase {
 	
 	override func setUp() {
 		client = ArcGISClient()
-		url = GISParameters.URL!
-		parameters = GISParameters.shared.makeParameters(search: "Hallenborgs gata")
+		url = GISParameters.URL(.find)!
+		parameters = GISParameters.shared.makeParameters(find: "Hallenborgs gata")
 	}
 	
 	func testAPIRequest() {

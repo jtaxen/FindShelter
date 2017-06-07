@@ -28,11 +28,11 @@
                                     <constraint firstAttribute="height" constant="130" id="J2l-9B-h0D"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="29"/>
-                                <color key="textColor" red="0.1058823529" green="0.42352941179999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.019607843137254902" green="0.2196078431372549" blue="0.49411764705882355" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.89411764709999997" green="0.3803921569" blue="0.047058823530000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.99215686274509807" green="0.66274509803921566" blue="0.16078431372549018" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="0.89411764705882346" green="0.38039215686274508" blue="0.047058823529411764" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="6oo-A1-hcS" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" multiplier="0.6" id="MzB-Xj-Ry0"/>

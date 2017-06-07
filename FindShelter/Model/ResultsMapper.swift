@@ -22,14 +22,16 @@ class ArcGISResults: Mappable {
 
 class ShelterObject: Mappable {
 	
-	var layerId          : String?
-	var layerName        : String?
-	var displayFieldName : String?
-	var foundFieldName   : String?
-	var value            : String?
-	var attributes       : Attributes?
-	var geometryType     : String?
-	var geometry         : Geometry?
+	public var isFavorite : Bool = false
+	
+	var layerId           : String?
+	var layerName         : String?
+	var displayFieldName  : String?
+	var foundFieldName    : String?
+	var value             : String?
+	var attributes        : Attributes?
+	var geometryType      : String?
+	var geometry          : Geometry?
 	
 	required init?(map: Map) {}
 	
@@ -77,7 +79,7 @@ class Attributes: Mappable {
 	var serviceLBAddress      : String?
 	var serviceLBCity         : String?
 	var serviceLBMunicipality : String?
-	var numberOfOccupants     : Int?
+	var numberOfOccupants     : String?
 	
 	required init?(map: Map) {}
 	
@@ -89,7 +91,7 @@ class Attributes: Mappable {
 		municipality      <- map["Kommunnamn"]
 		town              <- map["Ortsnamn"]
 		filterType        <- map["Filtertyp"]
-		capacity          <- map["AntalPlatser"]
+		numberOfOccupants <- map["AntalPlatser"]
 		estateDesignation <- map["Fastighetsbeteckning"]
 		shelterNumber     <- map["Skyddsrumsnr"]
 		airCleanerId      <- map["LuftrenareID"]

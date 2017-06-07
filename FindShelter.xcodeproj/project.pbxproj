@@ -9,7 +9,13 @@
 /* Begin PBXBuildFile section */
 		2DE92B5B1ECE355900A43B25 /* DistanceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE92B5A1ECE355900A43B25 /* DistanceTest.swift */; };
 		A0172A961EC9944600A9235A /* ArcGISClientTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0172A951EC9944600A9235A /* ArcGISClientTest.swift */; };
+		A01DA7E81EE189D40048A0F9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A01DA7EA1EE189D40048A0F9 /* Localizable.strings */; };
+		A033BE6A1EDD897C00831E22 /* LocationTest.gpx in Resources */ = {isa = PBXBuildFile; fileRef = A033BE691EDD897C00831E22 /* LocationTest.gpx */; };
+		A033BE6B1EDD897C00831E22 /* LocationTest.gpx in Resources */ = {isa = PBXBuildFile; fileRef = A033BE691EDD897C00831E22 /* LocationTest.gpx */; };
 		A03550691ECDF0CE007C5C29 /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03550681ECDF0CE007C5C29 /* Distance.swift */; };
+		A038143F1ED42EA000956633 /* ShelterCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A038143E1ED42EA000956633 /* ShelterCellTableViewCell.swift */; };
+		A03814411ED430D700956633 /* ShelterInfoTableViewControllerUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03814401ED430D700956633 /* ShelterInfoTableViewControllerUI.swift */; };
+		A03814431ED46B4000956633 /* SpatialServiceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03814421ED46B4000956633 /* SpatialServiceExtension.swift */; };
 		A06DC64E1ECA010500BC4590 /* Language.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A06DC64D1ECA010500BC4590 /* Language.storyboard */; };
 		A0763EBB1EC5B7340074E77C /* GISParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0763EB91EC5B7340074E77C /* GISParameters.swift */; };
 		A0763EBC1EC5B7340074E77C /* GISParametersConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0763EBA1EC5B7340074E77C /* GISParametersConstants.swift */; };
@@ -32,7 +38,6 @@
 		A0B94B5D1ECAF7E400F68F8B /* MapViewControllerUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B94B5C1ECAF7E400F68F8B /* MapViewControllerUI.swift */; };
 		A0B94B5F1ECAF7F700F68F8B /* MapViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B94B5E1ECAF7F700F68F8B /* MapViewControllerDelegate.swift */; };
 		A0D4311B1ECC331D00E024D6 /* ResponseHandlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D4311A1ECC331D00E024D6 /* ResponseHandlerProtocol.swift */; };
-		A0D4311D1ECC5F5D00E024D6 /* SpatialServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D4311C1ECC5F5D00E024D6 /* SpatialServiceProtocol.swift */; };
 		A0D4311F1ECC628E00E024D6 /* SpatialService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D4311E1ECC628E00E024D6 /* SpatialService.swift */; };
 		A0DB16B31EC31470005660F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DB16B21EC31470005660F9 /* AppDelegate.swift */; };
 		A0DB16B81EC31470005660F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0DB16B61EC31470005660F9 /* Main.storyboard */; };
@@ -41,10 +46,10 @@
 		A0DB16C81EC31470005660F9 /* FindShelterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DB16C71EC31470005660F9 /* FindShelterTests.swift */; };
 		A0DB16D31EC3193C005660F9 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DB16D21EC3193C005660F9 /* CoreDataStack.swift */; };
 		A0DF26701ECEE111004939CC /* CLLocationCoordinate2DExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DF266F1ECEE111004939CC /* CLLocationCoordinate2DExtension.swift */; };
-		A0DF26721ECF1332004939CC /* LocationTest.gpx in Resources */ = {isa = PBXBuildFile; fileRef = A0DF26711ECF1332004939CC /* LocationTest.gpx */; };
 		A0DF26771ECF2998004939CC /* ShelterPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DF26761ECF2998004939CC /* ShelterPointAnnotation.swift */; };
 		A0DF26791ECF326F004939CC /* ShelterInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DF26781ECF326F004939CC /* ShelterInfoTableViewController.swift */; };
 		A0DF267C1ECF32DD004939CC /* ShelterInfoTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DF267B1ECF32DD004939CC /* ShelterInfoTableViewDelegate.swift */; };
+		A0F7E7D91EDC25D7003A6D36 /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F7E7D81EDC25D7003A6D36 /* FavoritesTableViewController.swift */; };
 		B10F1C67541BAC3E096368D9 /* Pods_FindShelter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FF3B43206AE55F947AF1A /* Pods_FindShelter.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,7 +68,20 @@
 		5F8EE0E802DDEE6D284D25B9 /* Pods-FindShelter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindShelter.release.xcconfig"; path = "Pods/Target Support Files/Pods-FindShelter/Pods-FindShelter.release.xcconfig"; sourceTree = "<group>"; };
 		7B0A42C8F41D8D330F2EDAEF /* Pods-FindShelter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindShelter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FindShelter/Pods-FindShelter.debug.xcconfig"; sourceTree = "<group>"; };
 		A0172A951EC9944600A9235A /* ArcGISClientTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArcGISClientTest.swift; sourceTree = "<group>"; };
+		A01DA7DB1EE14F380048A0F9 /* Model 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 3.xcdatamodel"; sourceTree = "<group>"; };
+		A01DA7DC1EE15B580048A0F9 /* Model 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 4.xcdatamodel"; sourceTree = "<group>"; };
+		A01DA7E21EE16ED00048A0F9 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Main.strings; sourceTree = "<group>"; };
+		A01DA7E31EE16ED00048A0F9 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		A01DA7EB1EE189DD0048A0F9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A01DA7EC1EE189DE0048A0F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A01DA7ED1EE18A020048A0F9 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A01DA7EF1EE18F5D0048A0F9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		A033BE691EDD897C00831E22 /* LocationTest.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LocationTest.gpx; sourceTree = "<group>"; };
 		A03550681ECDF0CE007C5C29 /* Distance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Distance.swift; path = Model/Distance.swift; sourceTree = "<group>"; };
+		A038143E1ED42EA000956633 /* ShelterCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShelterCellTableViewCell.swift; path = View/ShelterCellTableViewCell.swift; sourceTree = "<group>"; };
+		A03814401ED430D700956633 /* ShelterInfoTableViewControllerUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShelterInfoTableViewControllerUI.swift; path = Controller/ShelterInfoTableViewControllerUI.swift; sourceTree = "<group>"; };
+		A03814421ED46B4000956633 /* SpatialServiceExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpatialServiceExtension.swift; path = Model/SpatialServiceExtension.swift; sourceTree = "<group>"; };
+		A038353A1EE00C930079E721 /* Model 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 2.xcdatamodel"; sourceTree = "<group>"; };
 		A06DC64D1ECA010500BC4590 /* Language.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Language.storyboard; sourceTree = "<group>"; };
 		A0763EB91EC5B7340074E77C /* GISParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GISParameters.swift; path = Model/GISParameters.swift; sourceTree = "<group>"; };
 		A0763EBA1EC5B7340074E77C /* GISParametersConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GISParametersConstants.swift; path = Model/GISParametersConstants.swift; sourceTree = "<group>"; };
@@ -86,7 +104,6 @@
 		A0B94B5C1ECAF7E400F68F8B /* MapViewControllerUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewControllerUI.swift; path = Controller/MapViewControllerUI.swift; sourceTree = "<group>"; };
 		A0B94B5E1ECAF7F700F68F8B /* MapViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewControllerDelegate.swift; path = Controller/MapViewControllerDelegate.swift; sourceTree = "<group>"; };
 		A0D4311A1ECC331D00E024D6 /* ResponseHandlerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResponseHandlerProtocol.swift; path = Model/ResponseHandlerProtocol.swift; sourceTree = "<group>"; };
-		A0D4311C1ECC5F5D00E024D6 /* SpatialServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpatialServiceProtocol.swift; path = Model/SpatialServiceProtocol.swift; sourceTree = "<group>"; };
 		A0D4311E1ECC628E00E024D6 /* SpatialService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpatialService.swift; path = Model/SpatialService.swift; sourceTree = "<group>"; };
 		A0DB16AF1EC31470005660F9 /* FindShelter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindShelter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0DB16B21EC31470005660F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -99,10 +116,10 @@
 		A0DB16C91EC31470005660F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0DB16D21EC3193C005660F9 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = Model/CoreDataStack.swift; sourceTree = "<group>"; };
 		A0DF266F1ECEE111004939CC /* CLLocationCoordinate2DExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CLLocationCoordinate2DExtension.swift; path = Model/CLLocationCoordinate2DExtension.swift; sourceTree = "<group>"; };
-		A0DF26711ECF1332004939CC /* LocationTest.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LocationTest.gpx; sourceTree = "<group>"; };
 		A0DF26761ECF2998004939CC /* ShelterPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShelterPointAnnotation.swift; path = Controller/ShelterPointAnnotation.swift; sourceTree = "<group>"; };
 		A0DF26781ECF326F004939CC /* ShelterInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShelterInfoTableViewController.swift; path = Controller/ShelterInfoTableViewController.swift; sourceTree = "<group>"; };
 		A0DF267B1ECF32DD004939CC /* ShelterInfoTableViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShelterInfoTableViewDelegate.swift; path = Controller/ShelterInfoTableViewDelegate.swift; sourceTree = "<group>"; };
+		A0F7E7D81EDC25D7003A6D36 /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoritesTableViewController.swift; path = Controller/FavoritesTableViewController.swift; sourceTree = "<group>"; };
 		E25FF3B43206AE55F947AF1A /* Pods_FindShelter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FindShelter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7CB64E2B69864A25F669456 /* Pods_FindShelterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FindShelterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -147,6 +164,7 @@
 		A03550671ECD89DE007C5C29 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A038143E1ED42EA000956633 /* ShelterCellTableViewCell.swift */,
 				A0B6439C1ECB20E10037B438 /* ShelterAnnotationView.swift */,
 			);
 			name = View;
@@ -155,7 +173,6 @@
 		A0763EC91EC5FD0F0074E77C /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				A0D4311C1ECC5F5D00E024D6 /* SpatialServiceProtocol.swift */,
 				A0D4311A1ECC331D00E024D6 /* ResponseHandlerProtocol.swift */,
 				A0763EC31EC5D14B0074E77C /* Parameters.swift */,
 			);
@@ -185,7 +202,8 @@
 		A078CB6F1EC9CFF80050F37C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				A0DF267A1ECF3273004939CC /* Tableview */,
+				A0F7E7DA1EDC25E0003A6D36 /* Favourites */,
+				A0DF267A1ECF3273004939CC /* ShelterInfo */,
 				A078CB711EC9DF140050F37C /* ColorScheme.swift */,
 				A078CB6B1EC9CFA40050F37C /* LanguageScreen */,
 				A0B94B4F1ECAE4C200F68F8B /* Map */,
@@ -201,6 +219,7 @@
 				A0DB16B91EC31470005660F9 /* Assets.xcassets */,
 				A0DB16BB1EC31470005660F9 /* LaunchScreen.storyboard */,
 				A0DB16BE1EC31470005660F9 /* Info.plist */,
+				A01DA7EA1EE189D40048A0F9 /* Localizable.strings */,
 				A0DB16B21EC31470005660F9 /* AppDelegate.swift */,
 			);
 			name = "Supporting files";
@@ -252,7 +271,7 @@
 		A0DB16C61EC31470005660F9 /* FindShelterTests */ = {
 			isa = PBXGroup;
 			children = (
-				A0DF26711ECF1332004939CC /* LocationTest.gpx */,
+				A033BE691EDD897C00831E22 /* LocationTest.gpx */,
 				A0B4BB5D1ECC7782003928AE /* SpatialServiceTest.swift */,
 				2DE92B5A1ECE355900A43B25 /* DistanceTest.swift */,
 				A0DB16C71EC31470005660F9 /* FindShelterTests.swift */,
@@ -277,17 +296,27 @@
 				A0DF266F1ECEE111004939CC /* CLLocationCoordinate2DExtension.swift */,
 				A0B6439E1ECB3D790037B438 /* ResultsMapper.swift */,
 				A0D4311E1ECC628E00E024D6 /* SpatialService.swift */,
+				A03814421ED46B4000956633 /* SpatialServiceExtension.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
 		};
-		A0DF267A1ECF3273004939CC /* Tableview */ = {
+		A0DF267A1ECF3273004939CC /* ShelterInfo */ = {
 			isa = PBXGroup;
 			children = (
 				A0DF26781ECF326F004939CC /* ShelterInfoTableViewController.swift */,
 				A0DF267B1ECF32DD004939CC /* ShelterInfoTableViewDelegate.swift */,
+				A03814401ED430D700956633 /* ShelterInfoTableViewControllerUI.swift */,
 			);
-			name = Tableview;
+			name = ShelterInfo;
+			sourceTree = "<group>";
+		};
+		A0F7E7DA1EDC25E0003A6D36 /* Favourites */ = {
+			isa = PBXGroup;
+			children = (
+				A0F7E7D81EDC25D7003A6D36 /* FavoritesTableViewController.swift */,
+			);
+			name = Favourites;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -362,6 +391,7 @@
 			knownRegions = (
 				en,
 				Base,
+				sv,
 			);
 			mainGroup = A0DB16A61EC31470005660F9;
 			productRefGroup = A0DB16B01EC31470005660F9 /* Products */;
@@ -380,7 +410,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0DB16BD1EC31470005660F9 /* LaunchScreen.storyboard in Resources */,
+				A01DA7E81EE189D40048A0F9 /* Localizable.strings in Resources */,
 				A0DB16BA1EC31470005660F9 /* Assets.xcassets in Resources */,
+				A033BE6A1EDD897C00831E22 /* LocationTest.gpx in Resources */,
 				A06DC64E1ECA010500BC4590 /* Language.storyboard in Resources */,
 				A0DB16B81EC31470005660F9 /* Main.storyboard in Resources */,
 			);
@@ -390,7 +422,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A0DF26721ECF1332004939CC /* LocationTest.gpx in Resources */,
+				A033BE6B1EDD897C00831E22 /* LocationTest.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,16 +488,19 @@
 				A078CB761EC9E4FE0050F37C /* LanguagePickerDelegate.swift in Sources */,
 				A0763EC81EC5FCC70074E77C /* ResponseHandler.swift in Sources */,
 				A0D4311F1ECC628E00E024D6 /* SpatialService.swift in Sources */,
+				A038143F1ED42EA000956633 /* ShelterCellTableViewCell.swift in Sources */,
 				A0B6439D1ECB20E10037B438 /* ShelterAnnotationView.swift in Sources */,
 				A078CB671EC9CBC60050F37C /* Shelter+CoreDataClass.swift in Sources */,
 				A0763EC41EC5D14B0074E77C /* Parameters.swift in Sources */,
 				A0763EC61EC5F3070074E77C /* Errors.swift in Sources */,
-				A0D4311D1ECC5F5D00E024D6 /* SpatialServiceProtocol.swift in Sources */,
+				A03814411ED430D700956633 /* ShelterInfoTableViewControllerUI.swift in Sources */,
 				A03550691ECDF0CE007C5C29 /* Distance.swift in Sources */,
 				A0B94B5F1ECAF7F700F68F8B /* MapViewControllerDelegate.swift in Sources */,
+				A03814431ED46B4000956633 /* SpatialServiceExtension.swift in Sources */,
 				A078CB741EC9E2F30050F37C /* ChooseLanguageController.swift in Sources */,
 				A0D4311B1ECC331D00E024D6 /* ResponseHandlerProtocol.swift in Sources */,
 				A0DF26701ECEE111004939CC /* CLLocationCoordinate2DExtension.swift in Sources */,
+				A0F7E7D91EDC25D7003A6D36 /* FavoritesTableViewController.swift in Sources */,
 				A0DF26771ECF2998004939CC /* ShelterPointAnnotation.swift in Sources */,
 				A0763EBC1EC5B7340074E77C /* GISParametersConstants.swift in Sources */,
 				A0B94B591ECAEE1D00F68F8B /* LocationDelegate.swift in Sources */,
@@ -503,10 +538,21 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		A01DA7EA1EE189D40048A0F9 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A01DA7EB1EE189DD0048A0F9 /* en */,
+				A01DA7EC1EE189DE0048A0F9 /* Base */,
+				A01DA7ED1EE18A020048A0F9 /* sv */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		A0DB16B61EC31470005660F9 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				A0DB16B71EC31470005660F9 /* Base */,
+				A01DA7E21EE16ED00048A0F9 /* sv */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -515,6 +561,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				A0DB16BC1EC31470005660F9 /* Base */,
+				A01DA7E31EE16ED00048A0F9 /* sv */,
+				A01DA7EF1EE18F5D0048A0F9 /* en */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -526,6 +574,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -577,6 +626,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -716,9 +766,12 @@
 		A078CB591EC9C3B70050F37C /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				A01DA7DC1EE15B580048A0F9 /* Model 4.xcdatamodel */,
+				A01DA7DB1EE14F380048A0F9 /* Model 3.xcdatamodel */,
+				A038353A1EE00C930079E721 /* Model 2.xcdatamodel */,
 				A078CB5A1EC9C3B70050F37C /* Model.xcdatamodel */,
 			);
-			currentVersion = A078CB5A1EC9C3B70050F37C /* Model.xcdatamodel */;
+			currentVersion = A01DA7DC1EE15B580048A0F9 /* Model 4.xcdatamodel */;
 			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

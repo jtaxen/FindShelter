@@ -10,60 +10,67 @@
 //  can be found here:
 //  http://www.lantmateriet.se/globalassets/kartor-och-geografisk-information/gps-och-matning/geodesi/formelsamling/xyz_geodetiska_koord_och_exempel.pdf
 //  https://www.lantmateriet.se/globalassets/kartor-och-geografisk-information/gps-och-matning/geodesi/formelsamling/gauss_conformal_projection.pdf
+//  The refined method are based on the following papers:
+//  http://krcmar.ca/sites/default/files/Coordinate%20Transformations-%20UTM%20to%20Geographic_0.pdf
+//  http://earth-info.nga.mil/GandG/publications/tm8358.2/TM8358_2.pdf
 //
 
 import Foundation
 import CoreLocation
 
+/// Use ** as exponentiation operator
 infix operator **: BitwiseShiftPrecedence
 func ** (left: Double, right: Double) -> Double {
 	return pow(left, right)
 }
 
-class SpatialService: SpatialServiceProtocol {
+/**
+This class contains methods for converting between the Universal Transverse Mercator coordinate 
+system and WGS 84.
+*/
+class SpatialService {
 	
-	var a        : Double = 6378137 // meters
-	var fInverse : Double = 298.257222101
-	var k0       : Double = 0.9996
-	var f        : Double { get { return 1/fInverse } }
-	var e2       : Double { get { return f * ( 2 - f )  } }
-	var b        : Double { get { return a * ( 1 - f) } }
-	var n        : Double { get { return f / ( 2 - f ) } }
-	var B0       : Double { get { return b * ( 1 + n + 5 * (n**2) / 4 + 5 * (n**3) / 4 ) }}
-	var mp       : Double { get { return Double.pi * B0 / 2 } }
+	/// Semi-major axis
+	public var a        : Double = 6378137 // meters
+	/// Inverse flattening
+	public var fInverse : Double = 298.257222101
+	/// Central scale factor
+	public var k0       : Double = 0.9996
 	
-	let falseEasting: Double = 500000.0
-	let falseNorthing: Double = 0.0
-	var aHat: Double { get { return a * ( 1 + (n**2) / 4 + (n**4) / 64) } }
-	var zone: Int = 33
-	var midmeridian: Double { get { return Double(zone * 6 - 183) } }
-	var meanEarthRadius: Double { get { return ( 2 * a + b) / 3 } }
+	internal var f    : Double { get { return 1/fInverse } }
+	internal var e2   : Double { get { return f * ( 2 - f ) } }
+	internal var b    : Double { get { return a * ( 1 - f) } }
+	internal var n    : Double { get { return f / ( 2 - f ) } }
+	internal var B0   : Double { get { return b * ( 1 + n + 5 * (n**2) / 4 + 5 * (n**3) / 4 ) } }
+	internal var mp   : Double { get { return Double.pi * B0 / 2 } }
+	internal var A0   : Double { get { return 1 + e2 * ( 3/4 + e2 * ( 45/64 + e2 * ( 175/256 + e2 * ( 11025/16384 + e2 * ( 43659/65536 + e2 * 693693/1048576))))) } }
+	internal var aHat : Double { get { return a * ( 1 + (n**2) / 4 + (n**4) / 64) } }
 	
-	var radian = { (_ degree: Double) -> Double in
+	/// False easting
+	public let falseEasting: Double = 500000.0
+	/// False northing
+	public let falseNorthing: Double = 0.0
+	
+	/// UTM zone
+	public internal(set) var zone : Int = 33
+	public var midmeridian       : Double { get { return Double(zone * 6 - 183) } }
+	
+	internal var meanEarthRadius: Double { get { return ( 2 * a + b) / 3 } }
+	
+	/// Helper closures to convert angles between radians and degrees
+	internal var radian = { (_ degree: Double) -> Double in
 		return Double.pi * degree / 180
 	}
 	
-	var degree = { (_ radian: Double) -> Double in
+	internal var degree = { (_ radian: Double) -> Double in
 		return 180 * radian / Double.pi
 	}
 	
-	
+	/// Singleton
 	static let shared = SpatialService()
-	
 	private init() {}
-	
-	func carthesianToGeodetic(_ x: Int, _ y: Int) -> CLLocationCoordinate2D {
-		return CLLocationCoordinate2D(latitude: 0, longitude: 0)
-	}
-	
-	func geodeticToCarthesian(_ coordinate: CLLocationCoordinate2D) -> (Int, Int) {
-		return (0,0)
-	}
-	
-	func convert(fromSWEREF99 coordinate: (Int, Int)) -> CLLocationCoordinate2D {
-		return CLLocationCoordinate2D(latitude: 0, longitude: 0)
-	}
 }
+
 
 extension SpatialService {
 	
@@ -109,7 +116,7 @@ extension SpatialService {
 		return (x, y, z)
 	}
 	
-	func convertUTMToLatLon(north x: Double, east y: Double) -> CLLocationCoordinate2D {
+	func deprecatedConvertUTMToLatLon(north x: Double, east y: Double) -> CLLocationCoordinate2D {
 		
 		let xi = ( x - falseNorthing ) / ( k0 * aHat )
 		let eta = ( y - falseEasting) / ( k0 * aHat )
