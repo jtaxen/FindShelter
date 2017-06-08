@@ -6,11 +6,11 @@ Find Shelter is an application that keeps track on the nearest air-raid shelters
 
 To install the app, open the terminal and go to the directory where you want to download the project. Type
 
-'''bash
+''''bash
 $ git clone git clone https://github.com/jtaxen/FindShelter.git
-'''
+''''
 
-This will download the whole project, including the frameworks. Start Xcode and open '''FindShelter.xcworkspace'''. Now you are ready to build and run the project.
+This will download the whole project, including the frameworks. Start Xcode and open ''''FindShelter.xcworkspace''''. Now you are ready to build and run the project.
 
 ## Features
 
