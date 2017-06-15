@@ -23,6 +23,7 @@ class MapViewController: UIViewController {
 	var distanceTool           : Distance!
 	var startUpdating          : Bool = false
 	var following              : Bool = false
+	var firstUpdateDone        : Bool = false
 	var locationOfLatestUpdate : CLLocationCoordinate2D?
 	var closestShelter         : CLLocationCoordinate2D?
 	
@@ -39,10 +40,9 @@ class MapViewController: UIViewController {
 		}
 		
 		map.delegate = self
-		// If the app can not find a user location, the map starts by showing the demographical midpoint of Sweden.
-		map.centerCoordinate = CLLocationCoordinate2D(latitude: 58.89555556, longitude: 15.43138889)
 		
 		locationManager.requestWhenInUseAuthorization()
+		map.setUserTrackingMode(.follow, animated: true)
 		
 		distanceTool = Distance(coordinateList)
 		
@@ -54,6 +54,7 @@ class MapViewController: UIViewController {
 		setUpFavoritesButton()
 		setUpCenterUserButton()
 		fetchAndDisplaySavedShelters()
+		
 	}
 	
 	/**

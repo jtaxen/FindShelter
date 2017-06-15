@@ -10,8 +10,6 @@
 		2DE92B5B1ECE355900A43B25 /* DistanceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE92B5A1ECE355900A43B25 /* DistanceTest.swift */; };
 		A0172A961EC9944600A9235A /* ArcGISClientTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0172A951EC9944600A9235A /* ArcGISClientTest.swift */; };
 		A01DA7E81EE189D40048A0F9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A01DA7EA1EE189D40048A0F9 /* Localizable.strings */; };
-		A033BE6A1EDD897C00831E22 /* LocationTest.gpx in Resources */ = {isa = PBXBuildFile; fileRef = A033BE691EDD897C00831E22 /* LocationTest.gpx */; };
-		A033BE6B1EDD897C00831E22 /* LocationTest.gpx in Resources */ = {isa = PBXBuildFile; fileRef = A033BE691EDD897C00831E22 /* LocationTest.gpx */; };
 		A03550691ECDF0CE007C5C29 /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03550681ECDF0CE007C5C29 /* Distance.swift */; };
 		A038143F1ED42EA000956633 /* ShelterCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A038143E1ED42EA000956633 /* ShelterCellTableViewCell.swift */; };
 		A03814411ED430D700956633 /* ShelterInfoTableViewControllerUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03814401ED430D700956633 /* ShelterInfoTableViewControllerUI.swift */; };
@@ -76,12 +74,13 @@
 		A01DA7EC1EE189DE0048A0F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A01DA7ED1EE18A020048A0F9 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A01DA7EF1EE18F5D0048A0F9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		A033BE691EDD897C00831E22 /* LocationTest.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LocationTest.gpx; sourceTree = "<group>"; };
 		A03550681ECDF0CE007C5C29 /* Distance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Distance.swift; path = Model/Distance.swift; sourceTree = "<group>"; };
 		A038143E1ED42EA000956633 /* ShelterCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShelterCellTableViewCell.swift; path = View/ShelterCellTableViewCell.swift; sourceTree = "<group>"; };
 		A03814401ED430D700956633 /* ShelterInfoTableViewControllerUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShelterInfoTableViewControllerUI.swift; path = Controller/ShelterInfoTableViewControllerUI.swift; sourceTree = "<group>"; };
 		A03814421ED46B4000956633 /* SpatialServiceExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpatialServiceExtension.swift; path = Model/SpatialServiceExtension.swift; sourceTree = "<group>"; };
 		A038353A1EE00C930079E721 /* Model 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 2.xcdatamodel"; sourceTree = "<group>"; };
+		A06D37DE1EF2ADED008B5F26 /* TestMalmo.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TestMalmo.gpx; sourceTree = "<group>"; };
+		A06D37DF1EF2AE00008B5F26 /* TestStockholm.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TestStockholm.gpx; sourceTree = "<group>"; };
 		A06DC64D1ECA010500BC4590 /* Language.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Language.storyboard; sourceTree = "<group>"; };
 		A0763EB91EC5B7340074E77C /* GISParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GISParameters.swift; path = Model/GISParameters.swift; sourceTree = "<group>"; };
 		A0763EBA1EC5B7340074E77C /* GISParametersConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GISParametersConstants.swift; path = Model/GISParametersConstants.swift; sourceTree = "<group>"; };
@@ -271,7 +270,8 @@
 		A0DB16C61EC31470005660F9 /* FindShelterTests */ = {
 			isa = PBXGroup;
 			children = (
-				A033BE691EDD897C00831E22 /* LocationTest.gpx */,
+				A06D37DE1EF2ADED008B5F26 /* TestMalmo.gpx */,
+				A06D37DF1EF2AE00008B5F26 /* TestStockholm.gpx */,
 				A0B4BB5D1ECC7782003928AE /* SpatialServiceTest.swift */,
 				2DE92B5A1ECE355900A43B25 /* DistanceTest.swift */,
 				A0DB16C71EC31470005660F9 /* FindShelterTests.swift */,
@@ -412,7 +412,6 @@
 				A0DB16BD1EC31470005660F9 /* LaunchScreen.storyboard in Resources */,
 				A01DA7E81EE189D40048A0F9 /* Localizable.strings in Resources */,
 				A0DB16BA1EC31470005660F9 /* Assets.xcassets in Resources */,
-				A033BE6A1EDD897C00831E22 /* LocationTest.gpx in Resources */,
 				A06DC64E1ECA010500BC4590 /* Language.storyboard in Resources */,
 				A0DB16B81EC31470005660F9 /* Main.storyboard in Resources */,
 			);
@@ -422,7 +421,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A033BE6B1EDD897C00831E22 /* LocationTest.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,6 +12,20 @@ $ git clone git clone https://github.com/jtaxen/FindShelter.git
 
 This will download the whole project, including the frameworks. Start Xcode and open ```FindShelter.xcworkspace```. Now you are ready to build and run the project.
 
+## Testing outside of Sweden
+
+Moving the map view to any place in Sweden should make the application load shelters. There will of course be more shelters visible in the biggest cities: Stockholm, Gothenburg and Malmö.
+
+For testing how the app behaves while moving, two scripts have been added: TestMalmo.gpx and TestStockholm.gpx. When activated, these scripts simulates the position of the user, moving between different waypoints in Malmö and Stockholm respectively.
+
+To test the app with these scripts:
+
+1. Open the scheme preferences (from the menu bar: Product->Scheme->Edit Scheme, or by shortcut: ⌘<)
+2. In the menu to the left, choose "Run", and go to "Options".
+3. Select "Allow Location Simulation", and select either "TestStockholm" or "TestMalmo" as the default location.
+
+This should work both in the simulator and on a phone, as long as the phone is connected to a computer with a cord.
+
 ## Features
 
 The main view comprises a map on which the position of the local air-raid shelters are marked out. The closest one is marked with a circle, and a label on top of the map tells the user how far away it is (this data is not displayed if the distance is greater than 5 km) . By default, the map centers on the location of the user, but he or she can drag around the map and always return the view to his or her position by pressing a back-button. New shelter positions are downloaded, either when the user has moved a certain distance from the location of the last update, or if the user location is not visible, when the map finnishes loading.
