@@ -19,7 +19,6 @@ internal extension MapViewController {
 	
 	func setUpMap() {
 		
-		map.userTrackingMode = .follow
 		map.region = MKCoordinateRegion(center: map.userLocation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
 	}
 	
@@ -90,9 +89,9 @@ internal extension MapViewController {
 	
 	@objc func centerUser(_ sender: UIBarButtonItem) {
 		
-//		map.centerCoordinate = map.userLocation.coordinate
-//		following = !following
-		map.userTrackingMode = .follow
+		map.setUserTrackingMode(.follow, animated: true)
+		
+		client.makeAPIRequest(url: GISParameters.URL(.identify)! , parameters: GISParameters.shared.makeParameters(identify: map.centerCoordinate, inRadius: toleranceRadius(), mapExtent: map.region), completionHandler: completionHandlerForAPIRequest(_:))
 		
 	}
 }

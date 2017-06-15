@@ -17,7 +17,7 @@ extension MapViewController: MKMapViewDelegate {
 	When the user location changes, several things happens:
 	#1, If the map is set to track the position, the map centers around the user location.
 	#2, If the distance between the user location and the point where the last update 
-	    was made is greater than half the distance of the last search's tolerance radius,
+	    was made is grer than half the distance of the last search's tolerance radius,
         a new update is made, to load new shelters before the user sees the empty area
 	    on the screen (the units that are compared are meters to points, so it is rather
 	    arbitrarily implemented as of now).
@@ -26,9 +26,11 @@ extension MapViewController: MKMapViewDelegate {
 	    overlayed.
 	*/
 	func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-//		if following {
-//			mapView.centerCoordinate = userLocation.coordinate
-//		}
+		if !firstUpdateDone && userLocation.coordinate != CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0) {
+			mapView.centerCoordinate = userLocation.coordinate
+			firstUpdateDone = true
+			client.makeAPIRequest(url: GISParameters.URL(.identify)! , parameters: GISParameters.shared.makeParameters(identify: mapView.centerCoordinate, inRadius: toleranceRadius(), mapExtent: mapView.region), completionHandler: completionHandlerForAPIRequest(_:))
+		}
 		
 		if locationOfLatestUpdate != nil {
 			
@@ -40,7 +42,7 @@ extension MapViewController: MKMapViewDelegate {
 		if startUpdating {
 			if userAnnotationIsVisible() {
 				
-				map.userTrackingMode = .none
+				map.setUserTrackingMode(.none, animated: true)
 				
 				let closestPoint = distanceTool.findNearest(toElement: userLocation.coordinate)
 				
@@ -81,9 +83,9 @@ extension MapViewController: MKMapViewDelegate {
 //			following = !following
 			
 			if map.userTrackingMode == .follow {
-				map.userTrackingMode = .none
+				map.setUserTrackingMode(.none, animated: true)
 			} else {
-				map.userTrackingMode = .follow
+				map.setUserTrackingMode(.follow, animated: true)
 			}
 			
 			mapView.deselectAnnotation(view.annotation, animated: false)

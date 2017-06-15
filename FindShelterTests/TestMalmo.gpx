@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<gpx version="1.1" creator="Xcode">
+    
+	<!-- Malmös höjdpunkter -->
+	<wpt lat="55.61331" lon="12.98832">
+		<name>ÅF Malmö</name>
+		<time>2017-05-29T16:00:00Z</time>
+	</wpt>
+	<wpt lat="55.596085" lon="12.996376">
+		<name>Malmöoperan</name>
+		<time>2017-05-29T16:02:00Z</time>
+	</wpt>
+	<wpt lat="55.595558" lon="13.013306">
+		<name>Folkets Park</name>
+		<time>2017-05-29T16:10:00Z</time>
+	</wpt>
+	<wpt lat="55.605563" lon="13.022854">
+		<name>Värnhem</name>
+		<time>2017-05-29T16:15:00Z</time>
+	</wpt>
+	<wpt lat="55.613315" lon="12.988329">
+		<name>ÅF Malmö</name>
+		<time>2017-05-29T16:20:00Z</time>
+	</wpt>
+	
+</gpx>

@@ -24,7 +24,21 @@ $ pod install
 
 This will install the frameworks needed to run the app.
 
-3. Now start Xcode and open ```FindShelter.xcworkspace```. The application should be ready to be built and runned.
+3. Now start Xcode and open ```FindShelter.xcworkspace```. The application should be ready to be built and runned
+
+## Testing outside of Sweden
+
+Moving the map view to any place in Sweden should make the application load shelters. There will of course be more shelters visible in the biggest cities: Stockholm, Gothenburg and Malmö.
+
+For testing how the app behaves while moving, two scripts have been added: TestMalmo.gpx and TestStockholm.gpx. When activated, these scripts simulates the position of the user, moving between different waypoints in Malmö and Stockholm respectively.
+
+To test the app with these scripts:
+
+1. Open the scheme preferences (from the menu bar: Product->Scheme->Edit Scheme, or by shortcut: ⌘<)
+2. In the menu to the left, choose "Run", and go to "Options".
+3. Select "Allow Location Simulation", and select either "TestStockholm" or "TestMalmo" as the default location.
+
+This should work both in the simulator and on a phone, as long as the phone is connected to a computer with a cord.
 
 ## Features
 
