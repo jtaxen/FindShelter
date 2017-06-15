@@ -39,6 +39,7 @@ class MapViewController: UIViewController {
 		}
 		
 		map.delegate = self
+		map.userTrackingMode = .none
 		// If the app can not find a user location, the map starts by showing the demographical midpoint of Sweden.
 		map.centerCoordinate = CLLocationCoordinate2D(latitude: 58.89555556, longitude: 15.43138889)
 		

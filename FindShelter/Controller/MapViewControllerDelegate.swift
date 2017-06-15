@@ -26,9 +26,9 @@ extension MapViewController: MKMapViewDelegate {
 	    overlayed.
 	*/
 	func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-		if following {
-			mapView.centerCoordinate = userLocation.coordinate
-		}
+//		if following {
+//			mapView.centerCoordinate = userLocation.coordinate
+//		}
 		
 		if locationOfLatestUpdate != nil {
 			
@@ -39,6 +39,9 @@ extension MapViewController: MKMapViewDelegate {
 		
 		if startUpdating {
 			if userAnnotationIsVisible() {
+				
+				map.userTrackingMode = .none
+				
 				let closestPoint = distanceTool.findNearest(toElement: userLocation.coordinate)
 				
 				let dist = sqrt(userLocation.coordinate.squaredDistance(to: closestPoint))
@@ -75,7 +78,14 @@ extension MapViewController: MKMapViewDelegate {
 	func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
 		
 		if (view.annotation?.isEqual(mapView.userLocation))! {
-			following = !following
+//			following = !following
+			
+			if map.userTrackingMode == .follow {
+				map.userTrackingMode = .none
+			} else {
+				map.userTrackingMode = .follow
+			}
+			
 			mapView.deselectAnnotation(view.annotation, animated: false)
 		}
 		

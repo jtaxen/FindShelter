@@ -58,7 +58,7 @@ internal extension MapViewController {
 		
 		let centerButton = UIBarButtonItem(barButtonSystemItem: .reply, target: self, action: #selector(centerUser(_:)))
 		centerButton.tintColor = ColorScheme.Title
-		
+		client.makeAPIRequest(url: GISParameters.URL(.identify)! , parameters: GISParameters.shared.makeParameters(identify: map.centerCoordinate, inRadius: toleranceRadius(), mapExtent: map.region), completionHandler: completionHandlerForAPIRequest(_:))
 		navigationItem.leftBarButtonItem = centerButton
 	}
 	
@@ -90,8 +90,9 @@ internal extension MapViewController {
 	
 	@objc func centerUser(_ sender: UIBarButtonItem) {
 		
-		map.centerCoordinate = map.userLocation.coordinate
-		following = !following
+//		map.centerCoordinate = map.userLocation.coordinate
+//		following = !following
+		map.userTrackingMode = .follow
 		
 	}
 }
