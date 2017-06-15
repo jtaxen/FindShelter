@@ -32,8 +32,8 @@ internal extension ShelterInfoTableViewController {
 		if shelterObject != nil {
 			switch indexPath.row {
 			case 0:
-				cell.textLabel?.text = shelterObject!.attributes?.serviceLBAddress ?? words.noName
-				cell.detailTextLabel?.text = words.sName
+				cell.textLabel?.text = shelterObject!.attributes?.serviceLBAddress ?? words.noAddress
+				cell.detailTextLabel?.text = words.sAddress
 			case 1:
 				cell.textLabel?.text = shelterObject!.attributes?.typeOfOccupants ?? words.noOccupants
 				cell.detailTextLabel?.text = words.sOccupants
