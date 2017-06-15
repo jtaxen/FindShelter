@@ -4,27 +4,13 @@ Find Shelter is an application that keeps track on the nearest air-raid shelters
 
 ## Installation
 
-The easiest way to install the application is by using the terminal (_bash_). This guide assumes that you have already installed [CocoaPods](https://cocoapods.org/) to manage your frameworks. If you have not, open your terminal and run
+To install the app, open the terminal and go to the directory where you want to download the project. Type
 
 ```bash
-$ sudo gem install cocoapods
+$ git clone git clone https://github.com/jtaxen/FindShelter.git
 ```
 
-1. Start by cloning the repository to your computer
-
-```bash
-$ git clone https://github.com/jtaxen/FindShelter.git
-```
-
-2. Go to the repository directory and run
-
-```bash
-$ pod install
-```
-
-This will install the frameworks needed to run the app.
-
-3. Now start Xcode and open ```FindShelter.xcworkspace```. The application should be ready to be built and runned
+This will download the whole project, including the frameworks. Start Xcode and open ```FindShelter.xcworkspace```. Now you are ready to build and run the project.
 
 ## Testing outside of Sweden
 
