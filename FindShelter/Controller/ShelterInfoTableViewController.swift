@@ -21,7 +21,7 @@ class ShelterInfoTableViewController: UITableViewController {
 		super.viewDidLoad()
 		tableView.delegate = self
 		tableView.dataSource = self
-		tableView.isScrollEnabled = false
+		tableView.isScrollEnabled = true
 		tableView.tableFooterView = UIView()
 		tableView.tableHeaderView = setUpHeader()
 		

@@ -7,7 +7,8 @@
 	 Xcode will simulate a route visiting each waypoint.
 	 -->
 	
-	<!-- Stockholm City
+	<!-- Stockholm City -->
+	<!--
 	<wpt lat="59.330668" lon="18.057932">
 		<name>Stockholms Centralstation</name>
 		<time>2017-05-19T14:00:00Z</time>

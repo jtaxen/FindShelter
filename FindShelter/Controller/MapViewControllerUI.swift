@@ -27,6 +27,8 @@ internal extension MapViewController {
 		
 		infoLabel.text = NSLocalizedString("waiting_for_position", comment: "Waiting for position")
 		infoLabel.font = UIFont(name: "Futura", size: 17)
+		infoLabel.numberOfLines = 1
+		infoLabel.adjustsFontSizeToFitWidth = true
 	}
 	
 	func setUpBackButton() {
