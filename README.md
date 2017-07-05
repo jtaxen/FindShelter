@@ -50,4 +50,6 @@ When at the map view, the navigation bar contains a button which takes the user 
 
 ## Language support
 
-The application is so far translated to Swedish and English.
+The application is so far translated to Swedish and English. To change language, you have to go to your phone's settings and choose General->Language & Region ->iPhone Language and change it to Swedish, or, if you want to change it back to English, Inställningar->Allmänt->Språk och region->iPhone-språk.
+
+The intention was at first to make it possible for the user to change the language within the app at will, but changing language within an app is strictly dissuaded by Apple, and the Locale functionality is completely based on the phone's language and region settings.

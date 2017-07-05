@@ -57,7 +57,7 @@ extension FavoritesTableViewController {
         cell.textLabel?.tintColor = ColorScheme.Title
 		
 		CoreDataStack.shared?.persistingContext.performAndWait {
-			cell.textLabel?.text = shelter.address
+			cell.textLabel?.text = shelter.additional
 		}
 		cell.detailTextLabel?.text = ""
 		
