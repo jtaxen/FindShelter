@@ -46,6 +46,13 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="6Dv-Sf-mS4">
+                                        <rect key="frame" x="335" y="2.5" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="7UH-8X-Zyf"/>
+                                            <constraint firstAttribute="width" constant="20" id="Qjx-hL-YiQ"/>
+                                        </constraints>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -53,6 +60,8 @@
                                     <constraint firstItem="g4V-Nk-1G7" firstAttribute="leading" secondItem="QBv-0l-K1b" secondAttribute="leading" constant="20" id="4eC-NX-joT"/>
                                     <constraint firstItem="g4V-Nk-1G7" firstAttribute="top" secondItem="QBv-0l-K1b" secondAttribute="top" id="Dyc-yF-wsK"/>
                                     <constraint firstAttribute="trailing" secondItem="g4V-Nk-1G7" secondAttribute="trailing" constant="20" id="ZZI-hH-Jvh"/>
+                                    <constraint firstAttribute="trailing" secondItem="6Dv-Sf-mS4" secondAttribute="trailing" constant="20" id="nwY-fC-riS"/>
+                                    <constraint firstItem="6Dv-Sf-mS4" firstAttribute="centerY" secondItem="QBv-0l-K1b" secondAttribute="centerY" id="s6f-zU-BYU"/>
                                     <constraint firstAttribute="bottom" secondItem="g4V-Nk-1G7" secondAttribute="bottom" id="wj4-vb-8CX"/>
                                 </constraints>
                             </view>
@@ -75,6 +84,7 @@
                     <connections>
                         <outlet property="infoLabel" destination="g4V-Nk-1G7" id="tQA-60-2JH"/>
                         <outlet property="map" destination="tX0-1l-yTB" id="qYh-CB-Qj8"/>
+                        <outlet property="spinner" destination="6Dv-Sf-mS4" id="atv-pF-0Vp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rpi-Yv-cBE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -145,7 +155,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="C3h-kM-Stl" id="tVM-nq-n9B">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>

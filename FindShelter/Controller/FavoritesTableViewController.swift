@@ -16,7 +16,7 @@ class FavoritesTableViewController: UITableViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-        
+		
         setUpNavigationBar()
 		
 		tableView.delegate   = self
@@ -28,17 +28,16 @@ class FavoritesTableViewController: UITableViewController {
 		swipeDeleteGestureRecognizer.direction = .left
 		tableView.addGestureRecognizer(swipeDeleteGestureRecognizer)
 	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		sortOutShelterDoublets()
+	}
 }
 
 
 //MARK: - Delegate functions
 /// This extension contains the relevant tableview delegate methods.
 extension FavoritesTableViewController {
-	
-	/// There is only one section.
-	override func numberOfSections(in tableView: UITableView) -> Int {
-		return 1
-	}
 	
 	/// There are as many rows as saved shelters.
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -58,7 +57,7 @@ extension FavoritesTableViewController {
         cell.textLabel?.tintColor = ColorScheme.Title
 		
 		CoreDataStack.shared?.persistingContext.performAndWait {
-			cell.textLabel?.text = shelter.address
+			cell.textLabel?.text = shelter.additional
 		}
 		cell.detailTextLabel?.text = ""
 		
@@ -113,7 +112,6 @@ extension FavoritesTableViewController {
 		
 		let confirmAction = UIAlertAction(title: NSLocalizedString("OK", comment: "OK"), style: .destructive) { actionAlert in
 			
-			print("Samling vid pumpen")
 			CoreDataStack.shared?.persistingContext.perform {
 				
 				CoreDataStack.shared?.persistingContext.delete(self.shelters[indexPath.row])
@@ -144,4 +142,28 @@ extension FavoritesTableViewController {
         navigationItem.backBarButtonItem?.setTitleTextAttributes(attributes, for: .normal)
         navigationController?.navigationBar.tintColor = ColorScheme.Title
     }
+	
+	/**
+	When the view is loaded, this method goes through the shelter list and removes all doublets, 
+	in case the user has saved the same shelter twice.
+	*/
+	func sortOutShelterDoublets() {
+		
+		var set = Set<String>()
+		let result = shelters.filter { shelter in
+			guard !set.contains(shelter.address!) else {
+				CoreDataStack.shared?.persistingContext.performAndWait {
+					CoreDataStack.shared?.persistingContext.delete(shelter)
+				}
+				return false
+			}
+			set.insert(shelter.address!)
+			return true
+		}
+		shelters = result
+		CoreDataStack.shared?.persistingContext.performAndWait {
+			CoreDataStack.shared?.save()
+		}
+		tableView.reloadData()
+	}
 }
