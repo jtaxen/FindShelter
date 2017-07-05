@@ -16,7 +16,7 @@ class FavoritesTableViewController: UITableViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-        
+		
         setUpNavigationBar()
 		
 		tableView.delegate   = self
@@ -27,6 +27,10 @@ class FavoritesTableViewController: UITableViewController {
 		let swipeDeleteGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(deleteShelter(_:)))
 		swipeDeleteGestureRecognizer.direction = .left
 		tableView.addGestureRecognizer(swipeDeleteGestureRecognizer)
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		sortOutShelterDoublets()
 	}
 }
 
@@ -108,7 +112,6 @@ extension FavoritesTableViewController {
 		
 		let confirmAction = UIAlertAction(title: NSLocalizedString("OK", comment: "OK"), style: .destructive) { actionAlert in
 			
-			print("Samling vid pumpen")
 			CoreDataStack.shared?.persistingContext.perform {
 				
 				CoreDataStack.shared?.persistingContext.delete(self.shelters[indexPath.row])
@@ -139,4 +142,28 @@ extension FavoritesTableViewController {
         navigationItem.backBarButtonItem?.setTitleTextAttributes(attributes, for: .normal)
         navigationController?.navigationBar.tintColor = ColorScheme.Title
     }
+	
+	/**
+	When the view is loaded, this method goes through the shelter list and removes all doublets, 
+	in case the user has saved the same shelter twice.
+	*/
+	func sortOutShelterDoublets() {
+		
+		var set = Set<String>()
+		let result = shelters.filter { shelter in
+			guard !set.contains(shelter.address!) else {
+				CoreDataStack.shared?.persistingContext.performAndWait {
+					CoreDataStack.shared?.persistingContext.delete(shelter)
+				}
+				return false
+			}
+			set.insert(shelter.address!)
+			return true
+		}
+		shelters = result
+		CoreDataStack.shared?.persistingContext.performAndWait {
+			CoreDataStack.shared?.save()
+		}
+		tableView.reloadData()
+	}
 }
