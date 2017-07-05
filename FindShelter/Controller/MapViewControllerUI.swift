@@ -57,8 +57,12 @@ internal extension MapViewController {
 		
 		let centerButton = UIBarButtonItem(barButtonSystemItem: .reply, target: self, action: #selector(centerUser(_:)))
 		centerButton.tintColor = ColorScheme.Title
-		client.makeAPIRequest(url: GISParameters.URL(.identify)! , parameters: GISParameters.shared.makeParameters(identify: map.centerCoordinate, inRadius: toleranceRadius(), mapExtent: map.region), completionHandler: completionHandlerForAPIRequest(_:))
 		navigationItem.leftBarButtonItem = centerButton
+	}
+	
+	func setUpSpinner() {
+		
+		spinner.hidesWhenStopped = true
 	}
 	
 	@objc func popView(_ sender: UIBarButtonItem) {
@@ -90,7 +94,7 @@ internal extension MapViewController {
 	@objc func centerUser(_ sender: UIBarButtonItem) {
 		
 		map.setUserTrackingMode(.follow, animated: true)
-		
+		spinner.startAnimating()
 		client.makeAPIRequest(url: GISParameters.URL(.identify)! , parameters: GISParameters.shared.makeParameters(identify: map.centerCoordinate, inRadius: toleranceRadius(), mapExtent: map.region), completionHandler: completionHandlerForAPIRequest(_:))
 		
 	}

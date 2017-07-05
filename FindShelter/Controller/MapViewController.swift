@@ -16,6 +16,7 @@ class MapViewController: UIViewController {
 	
 	@IBOutlet weak var map: MKMapView!
 	@IBOutlet weak var infoLabel: UILabel!
+	@IBOutlet weak var spinner: UIActivityIndicatorView!
 	
 	var coordinateList         : [CLLocationCoordinate2D] = []
 	var shelterList            : [CLLocationCoordinate2D : ShelterObject] = [:]
@@ -46,20 +47,23 @@ class MapViewController: UIViewController {
 		
 		distanceTool = Distance(coordinateList)
 		
-		client.makeAPIRequest(url: GISParameters.URL(.identify)!, parameters: GISParameters.shared.makeParameters(identify: map.userLocation.coordinate, inRadius: toleranceRadius(), mapExtent: map.region), completionHandler: completionHandlerForAPIRequest(_:))
-		
 		setUpMap()
 		setUpInfoBar()
+		setUpSpinner()
 		setUpBackButton()
 		setUpFavoritesButton()
 		setUpCenterUserButton()
 		fetchAndDisplaySavedShelters()
+		
+		spinner.startAnimating()
+		client.makeAPIRequest(url: GISParameters.URL(.identify)!, parameters: GISParameters.shared.makeParameters(identify: map.userLocation.coordinate, inRadius: toleranceRadius(), mapExtent: map.region), completionHandler: completionHandlerForAPIRequest(_:))
 		
 	}
 	
 	/**
 	*/
 	internal func completionHandlerForAPIRequest(_ shelters: [ShelterObject]?) {
+		
 		
 		locationOfLatestUpdate = map.userLocation.coordinate
 		
@@ -97,6 +101,7 @@ class MapViewController: UIViewController {
 		
 		DispatchQueue.main.async {
 			self.mapView(self.map, didUpdate: self.map.userLocation)
+			self.spinner.stopAnimating()
 		}
 	}
 	

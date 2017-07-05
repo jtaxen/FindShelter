@@ -35,11 +35,6 @@ class FavoritesTableViewController: UITableViewController {
 /// This extension contains the relevant tableview delegate methods.
 extension FavoritesTableViewController {
 	
-	/// There is only one section.
-	override func numberOfSections(in tableView: UITableView) -> Int {
-		return 1
-	}
-	
 	/// There are as many rows as saved shelters.
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return shelters.count
