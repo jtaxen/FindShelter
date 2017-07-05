@@ -29,12 +29,14 @@ extension MapViewController: MKMapViewDelegate {
 		if !firstUpdateDone && userLocation.coordinate != CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0) {
 			mapView.centerCoordinate = userLocation.coordinate
 			firstUpdateDone = true
+			spinner.startAnimating()
 			client.makeAPIRequest(url: GISParameters.URL(.identify)! , parameters: GISParameters.shared.makeParameters(identify: mapView.centerCoordinate, inRadius: toleranceRadius(), mapExtent: mapView.region), completionHandler: completionHandlerForAPIRequest(_:))
 		}
 		
 		if locationOfLatestUpdate != nil {
 			
 			if sqrt(userLocation.coordinate.squaredDistance(to: locationOfLatestUpdate!)) > Double(toleranceRadius()) / 2 && toleranceRadius() > 0 {
+				spinner.startAnimating()
 				client.makeAPIRequest(url: GISParameters.URL(.identify)! , parameters: GISParameters.shared.makeParameters(identify: mapView.centerCoordinate, inRadius: toleranceRadius(), mapExtent: mapView.region), completionHandler: completionHandlerForAPIRequest(_:))
 			}
 		}
@@ -149,6 +151,7 @@ extension MapViewController: MKMapViewDelegate {
 	func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
 		
 		if !userAnnotationIsVisible() {
+			spinner.startAnimating()
 			client.makeAPIRequest(url: GISParameters.URL(.identify)! , parameters: GISParameters.shared.makeParameters(identify: mapView.centerCoordinate, inRadius: toleranceRadius(), mapExtent: mapView.region), completionHandler: completionHandlerForAPIRequest(_:))
 		}
 	}

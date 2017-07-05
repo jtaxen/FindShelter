@@ -109,10 +109,19 @@ internal extension ShelterInfoTableViewController {
 		case 7:
 			if shelterObject != nil {
 				CoreDataStack.shared?.persistingContext.perform {
-					_ = Shelter(self.shelterObject!, context: (CoreDataStack.shared?.persistingContext)!)
+					let newShelter = Shelter(self.shelterObject!, context: (CoreDataStack.shared?.persistingContext)!)
 					CoreDataStack.shared?.save()
+					
 					DispatchQueue.main.async {
-						tableView.deselectRow(at: indexPath, animated: false)
+						
+						let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+						let controller = storyboard.instantiateViewController(withIdentifier: "shelterTable") as! ShelterInfoTableViewController
+						controller.shelterCoreData = newShelter
+						CoreDataStack.shared?.persistingContext.performAndWait{
+							controller.thisPosition = SpatialService.shared.convertUTMToLatLon(north: Double(newShelter!.yCoordinate), east: Double(newShelter!.xCoordinate))
+						}
+						self.navigationController?.pushViewController(controller, animated: false)
+						self.navigationController?.viewControllers.remove(at: (self.navigationController?.viewControllers.count)! - 2)
 					}
 				}
 			} else if shelterCoreData != nil {

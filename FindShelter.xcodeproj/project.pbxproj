@@ -14,7 +14,6 @@
 		A038143F1ED42EA000956633 /* ShelterCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A038143E1ED42EA000956633 /* ShelterCellTableViewCell.swift */; };
 		A03814411ED430D700956633 /* ShelterInfoTableViewControllerUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03814401ED430D700956633 /* ShelterInfoTableViewControllerUI.swift */; };
 		A03814431ED46B4000956633 /* SpatialServiceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03814421ED46B4000956633 /* SpatialServiceExtension.swift */; };
-		A06DC64E1ECA010500BC4590 /* Language.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A06DC64D1ECA010500BC4590 /* Language.storyboard */; };
 		A0763EBB1EC5B7340074E77C /* GISParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0763EB91EC5B7340074E77C /* GISParameters.swift */; };
 		A0763EBC1EC5B7340074E77C /* GISParametersConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0763EBA1EC5B7340074E77C /* GISParametersConstants.swift */; };
 		A0763EC01EC5B8B60074E77C /* GISParametersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0763EBF1EC5B8B60074E77C /* GISParametersTests.swift */; };
@@ -26,8 +25,6 @@
 		A078CB671EC9CBC60050F37C /* Shelter+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A078CB651EC9CBC60050F37C /* Shelter+CoreDataClass.swift */; };
 		A078CB681EC9CBC60050F37C /* Shelter+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A078CB661EC9CBC60050F37C /* Shelter+CoreDataProperties.swift */; };
 		A078CB721EC9DF140050F37C /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A078CB711EC9DF140050F37C /* ColorScheme.swift */; };
-		A078CB741EC9E2F30050F37C /* ChooseLanguageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A078CB731EC9E2F30050F37C /* ChooseLanguageController.swift */; };
-		A078CB761EC9E4FE0050F37C /* LanguagePickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A078CB751EC9E4FE0050F37C /* LanguagePickerDelegate.swift */; };
 		A0B4BB5E1ECC7782003928AE /* SpatialServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B4BB5D1ECC7782003928AE /* SpatialServiceTest.swift */; };
 		A0B6439D1ECB20E10037B438 /* ShelterAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B6439C1ECB20E10037B438 /* ShelterAnnotationView.swift */; };
 		A0B6439F1ECB3D790037B438 /* ResultsMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B6439E1ECB3D790037B438 /* ResultsMapper.swift */; };
@@ -81,7 +78,6 @@
 		A038353A1EE00C930079E721 /* Model 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 2.xcdatamodel"; sourceTree = "<group>"; };
 		A06D37DE1EF2ADED008B5F26 /* TestMalmo.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TestMalmo.gpx; sourceTree = "<group>"; };
 		A06D37DF1EF2AE00008B5F26 /* TestStockholm.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TestStockholm.gpx; sourceTree = "<group>"; };
-		A06DC64D1ECA010500BC4590 /* Language.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Language.storyboard; sourceTree = "<group>"; };
 		A0763EB91EC5B7340074E77C /* GISParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GISParameters.swift; path = Model/GISParameters.swift; sourceTree = "<group>"; };
 		A0763EBA1EC5B7340074E77C /* GISParametersConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GISParametersConstants.swift; path = Model/GISParametersConstants.swift; sourceTree = "<group>"; };
 		A0763EBF1EC5B8B60074E77C /* GISParametersTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GISParametersTests.swift; sourceTree = "<group>"; };
@@ -93,8 +89,6 @@
 		A078CB651EC9CBC60050F37C /* Shelter+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Shelter+CoreDataClass.swift"; path = "Model/Shelter+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A078CB661EC9CBC60050F37C /* Shelter+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Shelter+CoreDataProperties.swift"; path = "Model/Shelter+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A078CB711EC9DF140050F37C /* ColorScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorScheme.swift; path = Controller/ColorScheme.swift; sourceTree = "<group>"; };
-		A078CB731EC9E2F30050F37C /* ChooseLanguageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChooseLanguageController.swift; path = Controller/ChooseLanguageController.swift; sourceTree = "<group>"; };
-		A078CB751EC9E4FE0050F37C /* LanguagePickerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LanguagePickerDelegate.swift; path = Controller/LanguagePickerDelegate.swift; sourceTree = "<group>"; };
 		A0B4BB5D1ECC7782003928AE /* SpatialServiceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpatialServiceTest.swift; sourceTree = "<group>"; };
 		A0B6439C1ECB20E10037B438 /* ShelterAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShelterAnnotationView.swift; path = View/ShelterAnnotationView.swift; sourceTree = "<group>"; };
 		A0B6439E1ECB3D790037B438 /* ResultsMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultsMapper.swift; path = Model/ResultsMapper.swift; sourceTree = "<group>"; };
@@ -189,22 +183,12 @@
 			name = DataModel;
 			sourceTree = "<group>";
 		};
-		A078CB6B1EC9CFA40050F37C /* LanguageScreen */ = {
-			isa = PBXGroup;
-			children = (
-				A078CB751EC9E4FE0050F37C /* LanguagePickerDelegate.swift */,
-				A078CB731EC9E2F30050F37C /* ChooseLanguageController.swift */,
-			);
-			name = LanguageScreen;
-			sourceTree = "<group>";
-		};
 		A078CB6F1EC9CFF80050F37C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				A0F7E7DA1EDC25E0003A6D36 /* Favourites */,
 				A0DF267A1ECF3273004939CC /* ShelterInfo */,
 				A078CB711EC9DF140050F37C /* ColorScheme.swift */,
-				A078CB6B1EC9CFA40050F37C /* LanguageScreen */,
 				A0B94B4F1ECAE4C200F68F8B /* Map */,
 			);
 			name = Controller;
@@ -214,7 +198,6 @@
 			isa = PBXGroup;
 			children = (
 				A0DB16B61EC31470005660F9 /* Main.storyboard */,
-				A06DC64D1ECA010500BC4590 /* Language.storyboard */,
 				A0DB16B91EC31470005660F9 /* Assets.xcassets */,
 				A0DB16BB1EC31470005660F9 /* LaunchScreen.storyboard */,
 				A0DB16BE1EC31470005660F9 /* Info.plist */,
@@ -412,7 +395,6 @@
 				A0DB16BD1EC31470005660F9 /* LaunchScreen.storyboard in Resources */,
 				A01DA7E81EE189D40048A0F9 /* Localizable.strings in Resources */,
 				A0DB16BA1EC31470005660F9 /* Assets.xcassets in Resources */,
-				A06DC64E1ECA010500BC4590 /* Language.storyboard in Resources */,
 				A0DB16B81EC31470005660F9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -483,7 +465,6 @@
 				A0B94B5D1ECAF7E400F68F8B /* MapViewControllerUI.swift in Sources */,
 				A0763EBB1EC5B7340074E77C /* GISParameters.swift in Sources */,
 				A078CB681EC9CBC60050F37C /* Shelter+CoreDataProperties.swift in Sources */,
-				A078CB761EC9E4FE0050F37C /* LanguagePickerDelegate.swift in Sources */,
 				A0763EC81EC5FCC70074E77C /* ResponseHandler.swift in Sources */,
 				A0D4311F1ECC628E00E024D6 /* SpatialService.swift in Sources */,
 				A038143F1ED42EA000956633 /* ShelterCellTableViewCell.swift in Sources */,
@@ -495,7 +476,6 @@
 				A03550691ECDF0CE007C5C29 /* Distance.swift in Sources */,
 				A0B94B5F1ECAF7F700F68F8B /* MapViewControllerDelegate.swift in Sources */,
 				A03814431ED46B4000956633 /* SpatialServiceExtension.swift in Sources */,
-				A078CB741EC9E2F30050F37C /* ChooseLanguageController.swift in Sources */,
 				A0D4311B1ECC331D00E024D6 /* ResponseHandlerProtocol.swift in Sources */,
 				A0DF26701ECEE111004939CC /* CLLocationCoordinate2DExtension.swift in Sources */,
 				A0F7E7D91EDC25D7003A6D36 /* FavoritesTableViewController.swift in Sources */,
